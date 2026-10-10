@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0b0b0d;color:#edf2f4;-webkit-font-smoothing:antialiased}
+a{color:#edf2f4;text-decoration-color:#ef233c;text-underline-offset:5px}
+a:hover{color:#ffffff;text-decoration-color:#d90429}
+</style>
+</helmet>
+
+<section data-screen-label="Cover" style="padding:96px 96px 0;font-family:'Geist', sans-serif;display:flex;flex-direction:column;gap:20px;max-width:1100px">
+  <p style="margin:0;font-family:'Geist Mono', monospace;font-size:14px;color:#8d99ae">rachmad.id · portfolio design · Oct 2026</p>
+  <h1 style="margin:0;font-size:64px;line-height:1.05;font-weight:500;letter-spacing:-0.03em">Rachmad, Senior Software Engineer</h1>
+  <p style="margin:0;font-size:20px;line-height:1.6;max-width:860px;text-wrap:pretty">Single-page portfolio in two directions, sharing one palette and one component set. Text sits in a 760px column; the timeline and project gallery break out to 1040px so the S-curve has room to sweep and the second tier fits three columns.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+    <a href="Portfolio.dc.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:#edf2f4;color:#0b0b0d;font-size:15px;font-weight:500;text-decoration:none">Open live page ↗</a>
+    <a href="Project%20Page.dc.html?p=quickbill-platform" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:15px;text-decoration:none">Project page ↗</a>
+    <a href="ConceptEmbeddedPayment.dc.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:15px;text-decoration:none">Loop a ↗</a>
+    <a href="ConceptMultiplayer.dc.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:15px;text-decoration:none">Loop b ↗</a>
+    <a href="ConceptMicroFrontend.dc.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:15px;text-decoration:none">Loop c ↗</a>
+  </div>
+</section>
+
+<section data-screen-label="Directions" style="padding:96px;font-family:'Geist', sans-serif">
+  <h2 style="margin:0 0 40px;font-size:32px;font-weight:500;letter-spacing:-0.02em">Two directions</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:120px;align-items:flex-start">
+    <div id="1a" style="display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:#edf2f4;color:#0b0b0d;font-family:'Geist Mono', monospace;font-size:14px;font-weight:500">1a</span>
+        <span style="font-size:22px;font-weight:500">Geist + Geist Mono</span>
+        <span style="font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">8pt rhythm · sections 160 / 96 · plain titles</span>
+      </div>
+      <div style="display:flex;gap:64px;align-items:flex-start">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">Desktop · 1440</span>
+          <div style="width:1440px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12)">
+            <dc-import name="Portfolio" direction="A" animate="{{ false }}" progress="{{ 0.58 }}" embedded="{{ true }}" hint-size="1440px,7200px" style="display:block;width:1440px"></dc-import>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">Mobile · 390</span>
+          <div style="width:390px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12)">
+            <dc-import name="Portfolio" direction="A" animate="{{ false }}" progress="{{ 0.58 }}" embedded="{{ true }}" hint-size="390px,9000px" style="display:block;width:390px"></dc-import>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="1b" style="display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:#edf2f4;color:#0b0b0d;font-family:'Geist Mono', monospace;font-size:14px;font-weight:500">1b</span>
+        <span style="font-size:22px;font-weight:500;font-family:'Instrument Sans', sans-serif">Instrument Sans + JetBrains Mono</span>
+        <span style="font-family:'JetBrains Mono', monospace;font-size:13px;color:#8d99ae">12pt rhythm · sections 224 / 120 · larger display · numbered eyebrows</span>
+      </div>
+      <div style="display:flex;gap:64px;align-items:flex-start">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">Desktop · 1440</span>
+          <div style="width:1440px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12)">
+            <dc-import name="Portfolio" direction="B" animate="{{ false }}" progress="{{ 0.58 }}" embedded="{{ true }}" hint-size="1440px,7800px" style="display:block;width:1440px"></dc-import>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">Mobile · 390 · Bahasa Indonesia</span>
+          <div style="width:390px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12)">
+            <dc-import name="Portfolio" direction="B" lang="id" animate="{{ false }}" progress="{{ 0.58 }}" embedded="{{ true }}" hint-size="390px,9400px" style="display:block;width:390px"></dc-import>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Modal and project page" style="padding:96px;font-family:'Geist', sans-serif">
+  <h2 style="margin:0 0 12px;font-size:32px;font-weight:500;letter-spacing:-0.02em">Project modal and project page</h2>
+  <p style="margin:0 0 40px;font-size:17px;color:#8d99ae;max-width:820px">Clicking a card opens the modal and writes <span style="font-family:'Geist Mono', monospace;color:#edf2f4">#project/slug</span> to the URL. Cmd/Ctrl-click or “Open project page” goes to the shareable page. Quickbill Platform shows the long pattern: index chips, three full-width features, then a two-column grid for the rest.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">Modal · desktop 1440 × 900</span>
+      <div style="width:1440px;height:900px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12);transform:translateZ(0)">
+        <dc-import name="Portfolio" direction="A" open-project="quickbill-platform" animate="{{ false }}" progress="{{ 0.58 }}" embedded="{{ true }}" hint-size="1440px,900px" style="display:block;width:1440px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">Modal · mobile 390 × 844</span>
+      <div style="width:390px;height:844px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12);transform:translateZ(0)">
+        <dc-import name="Portfolio" direction="A" open-project="maybank-dbds" animate="{{ false }}" progress="{{ 0.58 }}" embedded="{{ true }}" hint-size="390px,844px" style="display:block;width:390px"></dc-import>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start;margin-top:64px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">Project page · Quickbill Platform · desktop 1440</span>
+      <div style="width:1440px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12)">
+        <dc-import name="Project Page" slug="quickbill-platform" direction="A" embedded="{{ true }}" hint-size="1440px,7000px" style="display:block;width:1440px"></dc-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">Project page · mobile 390</span>
+      <div style="width:390px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12)">
+        <dc-import name="Project Page" slug="quickbill-platform" direction="A" embedded="{{ true }}" hint-size="390px,8000px" style="display:block;width:390px"></dc-import>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Concept loops" style="padding:96px;font-family:'Geist', sans-serif">
+  <h2 style="margin:0 0 12px;font-size:32px;font-weight:500;letter-spacing:-0.02em">Concept card loops</h2>
+  <p style="margin:0 0 40px;font-size:17px;color:#8d99ae;max-width:820px">Seamless loops on the #151518 surface, 16:10. Each opens standalone at any width for screen recording. Reduced motion shows the frame noted below.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:40px">
+    <div style="width:640px;display:flex;flex-direction:column;gap:16px">
+      <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1)"><dc-import name="ConceptEmbeddedPayment" hint-size="640px,400px"></dc-import></div>
+      <p style="margin:0;font-size:18px;font-weight:500">a · Quickbill Embedded Payment</p>
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;line-height:1.7;color:#8d99ae">6.0s · Home → Invoice → Pay → iframe opens inside the partner window → amount, method → Confirm → Payment success → reset. Static frame 4.3s.</p>
+    </div>
+    <div style="width:640px;display:flex;flex-direction:column;gap:16px">
+      <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1)"><dc-import name="ConceptMultiplayer" hint-size="640px,400px"></dc-import></div>
+      <p style="margin:0;font-size:18px;font-weight:500">b · Accelbyte Multiplayer Service</p>
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;line-height:1.7;color:#8d99ae">5.0s · dot travels client → matchmaking → session; six log lines cycle into the console, one every 0.83s, so the loop closes exactly. Static frame 2.3s.</p>
+    </div>
+    <div style="width:640px;display:flex;flex-direction:column;gap:16px">
+      <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1)"><dc-import name="ConceptMicroFrontend" hint-size="640px,400px"></dc-import></div>
+      <p style="margin:0;font-size:18px;font-weight:500">c · Maybank Digital Branch Delivery System</p>
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;line-height:1.7;color:#8d99ae">6.0s · txn starts in teller → shell router → mgr-auth → auth-svc → approved → back to teller. Generic module names only. Static frame 3.3s.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Tokens" style="padding:96px;font-family:'Geist', sans-serif">
+  <h2 style="margin:0 0 40px;font-size:32px;font-weight:500;letter-spacing:-0.02em">Design tokens</h2>
+  <div style="display:grid;grid-template-columns:repeat(2,640px);gap:40px">
+    <div style="padding:32px;border-radius:24px;background:#151518;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:16px">
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">color</p>
+      <div style="display:grid;grid-template-columns:56px 140px 1fr;gap:14px 16px;align-items:center;font-size:15px">
+        <span style="width:56px;height:40px;border-radius:12px;background:#0b0b0d;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'Geist Mono', monospace;font-size:13px">#0b0b0d</span><span>Page background</span>
+        <span style="width:56px;height:40px;border-radius:12px;background:#151518;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'Geist Mono', monospace;font-size:13px">#151518</span><span>Surface, cards, nav, modal</span>
+        <span style="width:56px;height:40px;border-radius:12px;background:#1b1b1f;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'Geist Mono', monospace;font-size:13px">#1b1b1f</span><span>Media frame fill (placeholder)</span>
+        <span style="width:56px;height:40px;border-radius:12px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'Geist Mono', monospace;font-size:13px">#fff / 8–10%</span><span>Border; 14–16% buttons; 22% hover</span>
+        <span style="width:56px;height:40px;border-radius:12px;background:#edf2f4"></span><span style="font-family:'Geist Mono', monospace;font-size:13px">#edf2f4</span><span>Primary text, primary button fill</span>
+        <span style="width:56px;height:40px;border-radius:12px;background:#8d99ae"></span><span style="font-family:'Geist Mono', monospace;font-size:13px">#8d99ae</span><span>Meta, descriptions, muted curve 30%</span>
+        <span style="width:56px;height:40px;border-radius:12px;background:#ef233c"></span><span style="font-family:'Geist Mono', monospace;font-size:13px">#ef233c</span><span>Curve progress, nodes, underlines, focus, dot</span>
+        <span style="width:56px;height:40px;border-radius:12px;background:#d90429"></span><span style="font-family:'Geist Mono', monospace;font-size:13px">#d90429</span><span>Hover / active for red elements</span>
+      </div>
+    </div>
+    <div style="padding:32px;border-radius:24px;background:#151518;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:16px">
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">type scale · desktop / mobile px</p>
+      <div style="display:grid;grid-template-columns:150px 1fr 1fr;gap:12px 16px;font-size:15px;align-items:baseline">
+        <span style="font-family:'Geist Mono', monospace;font-size:12.5px;color:#8d99ae">role</span><span style="font-family:'Geist Mono', monospace;font-size:12.5px;color:#8d99ae">1a Geist</span><span style="font-family:'Geist Mono', monospace;font-size:12.5px;color:#8d99ae">1b Instrument Sans</span>
+        <span>Name / display</span><span>56 / 40 · 500 · −2.5%</span><span>76 / 46 · 500 · −3%</span>
+        <span>Section title</span><span>30 / 24</span><span>40 / 30</span>
+        <span>Card title</span><span>22 · 18</span><span>22 · 18</span>
+        <span>Title line</span><span>20 / 18</span><span>22 / 19</span>
+        <span>Body</span><span>17 / 16 · lh 1.6</span><span>18 / 16 · lh 1.6</span>
+        <span>Small / tags</span><span>15 · 13.5 · 12.5</span><span>15 · 13.5 · 12.5</span>
+        <span>Meta (mono)</span><span>Geist Mono 12–13</span><span>JetBrains Mono 12–13</span>
+      </div>
+      <p style="margin:12px 0 0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">spacing</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;font-family:'Geist Mono', monospace;font-size:12.5px">
+        <span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">4</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">8</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">12</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">16</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">24</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">32</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">40</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">56</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">72</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">96</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">160 · 1a section</span><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">224 · 1b section</span>
+      </div>
+      <p style="margin:12px 0 0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">radii · borders</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;font-family:'Geist Mono', monospace;font-size:12px;color:#8d99ae">
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="width:96px;height:36px;border-radius:999px;border:1px solid rgba(255,255,255,.2)"></span>pill 999</div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="width:72px;height:56px;border-radius:24px;border:1px solid rgba(255,255,255,.2)"></span>card 24</div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="width:72px;height:56px;border-radius:20px;border:1px solid rgba(255,255,255,.2)"></span>tile 20</div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="width:72px;height:56px;border-radius:16px;border:1px solid rgba(255,255,255,.2)"></span>media 16</div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,255,255,.2)"></span>circle</div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="width:72px;height:36px;border-radius:999px;border:1px solid rgba(255,255,255,.1);outline:2px solid #ef233c;outline-offset:3px"></span>focus 2 / +3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Components" style="padding:96px 96px 160px;font-family:'Geist', sans-serif">
+  <h2 style="margin:0 0 40px;font-size:32px;font-weight:500;letter-spacing:-0.02em">Components and motion</h2>
+  <div style="display:grid;grid-template-columns:repeat(2,640px);gap:40px">
+
+    <div style="padding:32px;border-radius:24px;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:20px">
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">nav · EN / ID (+18%) / mobile compact</p>
+      <div style="display:flex;align-self:flex-start;align-items:center;gap:2px;padding:6px;border-radius:999px;background:#151518;border:1px solid rgba(255,255,255,.09);font-size:14px">
+        <span style="padding:9px 16px">Experience</span><span style="padding:9px 16px">Projects</span><span style="padding:9px 16px">Skills</span><span style="padding:9px 16px">Contact</span>
+        <span style="width:1px;height:20px;background:rgba(255,255,255,.1);margin:0 8px 0 6px"></span>
+        <span style="display:flex;padding:3px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-family:'Geist Mono', monospace;font-size:12px"><span style="padding:5px 10px;border-radius:999px;background:#edf2f4;color:#0b0b0d">EN</span><span style="padding:5px 10px;color:#8d99ae">ID</span></span>
+      </div>
+      <div style="display:flex;align-self:flex-start;align-items:center;gap:2px;padding:6px;border-radius:999px;background:#151518;border:1px solid rgba(255,255,255,.09);font-size:14px">
+        <span style="padding:9px 16px">Pengalaman</span><span style="padding:9px 16px">Proyek</span><span style="padding:9px 16px">Keahlian</span><span style="padding:9px 16px">Kontak</span>
+        <span style="width:1px;height:20px;background:rgba(255,255,255,.1);margin:0 8px 0 6px"></span>
+        <span style="display:flex;padding:3px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-family:'Geist Mono', monospace;font-size:12px"><span style="padding:5px 10px;color:#8d99ae">EN</span><span style="padding:5px 10px;border-radius:999px;background:#edf2f4;color:#0b0b0d">ID</span></span>
+      </div>
+      <div style="width:342px;display:flex;align-items:center;justify-content:space-between;padding:5px 5px 5px 20px;border-radius:999px;background:#151518;border:1px solid rgba(255,255,255,.09)">
+        <span style="font-family:'Geist Mono', monospace;font-size:13px">rachmad.id</span>
+        <span style="display:flex;gap:6px;align-items:center"><span style="display:flex;padding:2px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-family:'Geist Mono', monospace;font-size:12px"><span style="display:flex;align-items:center;height:40px;padding:0 12px;border-radius:999px;background:#edf2f4;color:#0b0b0d">EN</span><span style="display:flex;align-items:center;height:40px;padding:0 12px;color:#8d99ae">ID</span></span><span style="display:flex;align-items:center;height:46px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-size:14px">Menu</span></span>
+      </div>
+      <p style="margin:0;font-size:14px;color:#8d99ae">Sticky 16px from top, z 30, solid surface (no blur). Mobile: 44px+ targets, menu opens a rounded sheet with 52px rows.</p>
+    </div>
+
+    <div style="padding:32px;border-radius:24px;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:24px">
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">section heading · 1a / 1b</p>
+      <div style="display:flex;gap:24px">
+        <div style="flex:1;padding:28px 0;border-radius:20px;background:#151518;display:flex;justify-content:center"><span style="font-size:30px;font-weight:500;letter-spacing:-0.025em">Projects</span></div>
+        <div style="flex:1;padding:22px 0;border-radius:20px;background:#151518;display:flex;flex-direction:column;align-items:center;gap:10px;font-family:'Instrument Sans', sans-serif"><span style="font-family:'JetBrains Mono', monospace;font-size:13px;color:#8d99ae;letter-spacing:.08em">02</span><span style="font-size:40px;font-weight:500;letter-spacing:-0.03em;line-height:1">Projects</span></div>
+      </div>
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">pill tag · buttons · text link</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <span style="display:inline-flex;align-items:center;height:34px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:#151518;font-size:13.5px">Frontend Engineer</span>
+        <span style="display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:12.5px">Next.js</span>
+        <span style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:999px;background:#edf2f4;color:#0b0b0d;font-size:15px;font-weight:500">Contact</span>
+        <span style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:15px;font-weight:500">Download CV</span>
+        <span style="font-size:14px;text-decoration:underline;text-decoration-color:#ef233c;text-decoration-thickness:1.5px;text-underline-offset:5px">4 projects →</span>
+      </div>
+      <p style="margin:0;font-size:14px;color:#8d99ae">Hover: primary fill → #fff; outline border 16% → 34%; link underline #ef233c → #d90429, text → #fff. Focus: 2px #ef233c ring, 3px offset.</p>
+    </div>
+
+    <div style="padding:32px;border-radius:24px;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:20px">
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">timeline node + curve</p>
+      <div style="display:flex;gap:40px;align-items:center">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><span style="width:56px;height:56px;box-sizing:border-box;border-radius:50%;background:#0b0b0d;border:1.5px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center"><span style="width:34px;height:34px;border-radius:10px;background:#26262b;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono', monospace;font-size:11px">MO</span></span><span style="font-family:'Geist Mono', monospace;font-size:12px;color:#8d99ae">ahead</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><span style="width:56px;height:56px;box-sizing:border-box;border-radius:50%;background:#0b0b0d;border:1.5px solid #ef233c;display:flex;align-items:center;justify-content:center"><span style="width:34px;height:34px;border-radius:10px;background:#26262b;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono', monospace;font-size:11px">QB</span></span><span style="font-family:'Geist Mono', monospace;font-size:12px;color:#8d99ae">reached</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><span style="width:44px;height:44px;box-sizing:border-box;border-radius:50%;background:#0b0b0d;border:1.5px solid #ef233c;display:flex;align-items:center;justify-content:center"><span style="width:28px;height:28px;border-radius:10px;background:#26262b;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono', monospace;font-size:11px">QB</span></span><span style="font-family:'Geist Mono', monospace;font-size:12px;color:#8d99ae">mobile 44</span></div>
+      </div>
+      <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;color:#8d99ae">
+        <li>Path: cubic Béziers with vertical tangents at each node (control offset 0.55 × row height), so it reads as one continuous sinusoid.</li>
+        <li>Desktop: nodes alternate at center ± 170px, 200px rows; text sits on the outer side of each apex, right-aligned on the left, left-aligned on the right.</li>
+        <li>Mobile: 46px-wide lane (x 24–70), 150px rows; all text in one column starting past the lane, so it never meets the path.</li>
+        <li>Base stroke Lavender Grey 30% at 1.5px; red 2px drawn to 60% of viewport height; nodes turn red as the line passes.</li>
+      </ul>
+    </div>
+
+    <div style="padding:32px;border-radius:24px;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:20px">
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">project card · media types</p>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
+        <div style="padding:8px;border-radius:20px;background:#151518;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:10px">
+          <div style="aspect-ratio:16/10;border-radius:14px;background-color:#1b1b1f;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2710%27%20height=%2710%27%3E%3Cpath%20d=%27M-1%201L1%20-1M0%2010L10%200M9%2011L11%209%27%20stroke=%27%23fff%27%20stroke-opacity=%27.045%27/%3E%3C/svg%3E);display:flex;align-items:center;justify-content:center;font-family:'Geist Mono', monospace;font-size:11px;color:#8d99ae">screenshot</div>
+          <span style="padding:0 6px 6px;font-size:14px">a · static</span>
+        </div>
+        <div style="padding:8px;border-radius:20px;background:#151518;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:10px">
+          <div style="position:relative;aspect-ratio:16/10;border-radius:14px;background-color:#1b1b1f;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2710%27%20height=%2710%27%3E%3Cpath%20d=%27M-1%201L1%20-1M0%2010L10%200M9%2011L11%209%27%20stroke=%27%23fff%27%20stroke-opacity=%27.045%27/%3E%3C/svg%3E);display:flex;align-items:center;justify-content:center;font-family:'Geist Mono', monospace;font-size:11px;color:#8d99ae">slide 2 / 4<span style="position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px"><span style="width:5px;height:5px;border-radius:9px;background:rgba(237,242,244,.35)"></span><span style="width:14px;height:5px;border-radius:9px;background:#ef233c"></span><span style="width:5px;height:5px;border-radius:9px;background:rgba(237,242,244,.35)"></span><span style="width:5px;height:5px;border-radius:9px;background:rgba(237,242,244,.35)"></span></span></div>
+          <span style="padding:0 6px 6px;font-size:14px">b · carousel, 3.4s crossfade</span>
+        </div>
+        <div style="padding:8px;border-radius:20px;background:#151518;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:10px">
+          <div style="aspect-ratio:16/10;border-radius:14px;background:#1b1b1f;display:flex;flex-direction:column;gap:6px;padding:10px 18%;box-sizing:border-box;overflow:hidden"><span style="flex:1;border-radius:8px;background:#222227"></span><span style="flex:1;border-radius:8px;background:#222227"></span><span style="flex:1;border-radius:8px;background:#222227"></span></div>
+          <span style="padding:0 6px 6px;font-size:14px">c · page scroll, 14s loop</span>
+        </div>
+        <div style="padding:8px;border-radius:20px;background:#151518;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:10px">
+          <div style="border-radius:14px;overflow:hidden"><dc-import name="ConceptMicroFrontend" reduced-motion="{{ true }}" hint-size="100%,170px"></dc-import></div>
+          <span style="padding:0 6px 6px;font-size:14px">d · concept loop</span>
+        </div>
+      </div>
+      <p style="margin:0;font-size:14px;color:#8d99ae">Card: 24 radius, 10 padding, media 16:10 at 16 radius. Caption: company · year (mono), title, ≤140-char description, 3–5 tags. Hover: media scale 1.02 over .6s, border 8% → 22%. Carousel pauses on hover.</p>
+    </div>
+
+    <div style="padding:32px;border-radius:24px;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:20px">
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">bottom vignette</p>
+      <div style="position:relative;height:220px;border-radius:20px;overflow:hidden;background:#0b0b0d;border:1px solid rgba(255,255,255,.08);padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;font-size:16px">
+        <span>Senior Software Engineer, Full Stack</span>
+        <span style="color:#8d99ae">Jan 2025 – Jul 2026</span>
+        <span>Software Engineer II, Frontend</span>
+        <span style="color:#8d99ae">Jan 2023 – Apr 2024</span>
+        <span>Frontend Developer</span>
+        <span style="position:absolute;left:0;right:0;bottom:0;height:140px;background:linear-gradient(to bottom, rgba(11,11,13,0), #0b0b0d)"></span>
+      </div>
+      <p style="margin:0;font-size:14px;color:#8d99ae">140px, transparent → #0b0b0d. Sticky to the viewport bottom on every page, z 20 (above content, below nav at 30 and modal at 50), pointer-events none. The only gradient in the system. Footer has 140px bottom padding so it clears the fade at full scroll.</p>
+    </div>
+
+    <div style="padding:32px;border-radius:24px;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font-family:'Geist Mono', monospace;font-size:13px;color:#8d99ae">motion</p>
+      <div style="display:grid;grid-template-columns:150px 1fr;gap:12px 16px;font-size:14.5px;line-height:1.55">
+        <span style="color:#8d99ae">Reveal</span><span>Sections, timeline entries, cards: opacity 0 → 1, translateY 10px → 0, .7s ease, once, when 40px inside the viewport.</span>
+        <span style="color:#8d99ae">S-curve</span><span>Red stroke-dashoffset follows scroll; drawn up to 60% of viewport height.</span>
+        <span style="color:#8d99ae">Hover</span><span>Underline and color shifts only. Media scale ≤ 1.02. No tilt, bounce, parallax or custom cursor.</span>
+        <span style="color:#8d99ae">Modal</span><span>Opens without motion; Esc or backdrop closes.</span>
+        <span style="color:#8d99ae">Reduced motion</span><span>No reveals, carousel holds slide 1, page scroll static, concept loops show their static frame, curve fully drawn, smooth scroll off.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+</body>
+</html>

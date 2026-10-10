@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0b0b0d;color:#edf2f4;-webkit-font-smoothing:antialiased}
+a{color:#edf2f4;text-decoration-color:#ef233c;text-underline-offset:5px}
+a:hover{color:#ffffff;text-decoration-color:#d90429}
+:focus-visible{outline:2px solid #ef233c;outline-offset:3px}
+button{font:inherit;color:inherit}
+::selection{background:#d90429;color:#ffffff}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position:relative;min-height:100vh;background:#0b0b0d;color:#edf2f4;font-family:{{ t.sans }};font-size:{{ t.body }}px;line-height:1.6">
+
+  <header style="position:sticky;top:16px;z-index:30;display:flex;justify-content:center;padding:0 16px;pointer-events:none">
+    <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Primary" style="pointer-events:auto;display:flex;align-items:center;gap:2px;padding:6px;border-radius:999px;background:#151518;border:1px solid rgba(255,255,255,.09)">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+          <a href="{{ n.href }}" onClick="{{ n.go }}" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;font-size:14px;color:#edf2f4;text-decoration:none;white-space:nowrap" style-hover="background:rgba(255,255,255,.06);color:#ffffff">{{ n.label }}</a>
+        </sc-for>
+        <span style="width:1px;height:20px;background:rgba(255,255,255,.1);margin:0 8px 0 6px"></span>
+        <div role="group" aria-label="Language" style="display:flex;padding:3px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">
+          <button onClick="{{ setEn }}" aria-pressed="{{ lg.en }}" style="height:28px;min-width:38px;padding:0 10px;border:0;border-radius:999px;background:{{ lg.enBg }};color:{{ lg.enC }};font-family:{{ t.mono }};font-size:12px;cursor:pointer">EN</button>
+          <button onClick="{{ setId }}" aria-pressed="{{ lg.id }}" style="height:28px;min-width:38px;padding:0 10px;border:0;border-radius:999px;background:{{ lg.idBg }};color:{{ lg.idC }};font-family:{{ t.mono }};font-size:12px;cursor:pointer">ID</button>
+        </div>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ mob }}">
+      <div style="pointer-events:auto;position:relative;width:100%;max-width:440px">
+        <nav aria-label="Primary" style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:5px 5px 5px 20px;border-radius:999px;background:#151518;border:1px solid rgba(255,255,255,.09)">
+          <a href="#top" onClick="{{ goTop }}" style="font-family:{{ t.mono }};font-size:13px;color:#edf2f4;text-decoration:none">rachmad.id</a>
+          <div style="display:flex;align-items:center;gap:6px">
+            <div role="group" aria-label="Language" style="display:flex;padding:2px;border-radius:999px;border:1px solid rgba(255,255,255,.1)">
+              <button onClick="{{ setEn }}" style="height:40px;min-width:44px;padding:0 10px;border:0;border-radius:999px;background:{{ lg.enBg }};color:{{ lg.enC }};font-family:{{ t.mono }};font-size:12px;cursor:pointer">EN</button>
+              <button onClick="{{ setId }}" style="height:40px;min-width:44px;padding:0 10px;border:0;border-radius:999px;background:{{ lg.idBg }};color:{{ lg.idC }};font-family:{{ t.mono }};font-size:12px;cursor:pointer">ID</button>
+            </div>
+            <button onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" style="height:46px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:transparent;font-size:14px;cursor:pointer">{{ menuLabel }}</button>
+          </div>
+        </nav>
+        <sc-if value="{{ menuOpen }}">
+          <div style="position:absolute;top:66px;left:0;right:0;padding:8px;border-radius:24px;background:#151518;border:1px solid rgba(255,255,255,.09);display:flex;flex-direction:column">
+            <sc-for list="{{ nav }}" as="n">
+              <a href="{{ n.href }}" onClick="{{ n.go }}" style="display:flex;align-items:center;min-height:52px;padding:0 16px;border-radius:16px;font-size:17px;color:#edf2f4;text-decoration:none" style-hover="background:rgba(255,255,255,.05)">{{ n.label }}</a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+  </header>
+
+  <section id="top" data-screen-label="Intro" style="padding:{{ t.introTop }}px {{ t.pad }}px 0">
+    <div data-reveal style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center">
+      <div aria-label="Avatar placeholder" style="width:{{ t.avatar }}px;height:{{ t.avatar }}px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background-color:#151518;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2710%27%20height=%2710%27%3E%3Cpath%20d=%27M-1%201L1%20-1M0%2010L10%200M9%2011L11%209%27%20stroke=%27%23fff%27%20stroke-opacity=%27.05%27/%3E%3C/svg%3E);display:flex;align-items:center;justify-content:center;font-family:{{ t.mono }};font-size:11px;color:#8d99ae">avatar</div>
+      <h1 style="margin:32px 0 0;font-size:{{ t.h1 }}px;line-height:1.05;font-weight:500;letter-spacing:{{ t.track }};text-align:center">Rachmad</h1>
+      <p style="margin:14px 0 0;font-size:{{ t.sub }}px;line-height:1.3;text-align:center">Senior Software Engineer</p>
+      <p style="margin:10px 0 0;font-family:{{ t.mono }};font-size:13px;color:#8d99ae;text-align:center">{{ L.loc }}</p>
+      <div style="margin-top:28px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+        <span style="display:inline-flex;align-items:center;height:34px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:#151518;font-size:13.5px">Frontend Engineer</span>
+        <span style="display:inline-flex;align-items:center;height:34px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:#151518;font-size:13.5px">UI Engineer</span>
+        <span style="display:inline-flex;align-items:center;height:34px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:#151518;font-size:13.5px">AI Engineer</span>
+        <span style="display:inline-flex;align-items:center;height:34px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:#151518;font-size:13.5px">Full Stack Engineer</span>
+      </div>
+      <p style="margin:{{ t.introGap }}px 0 0;max-width:600px;width:100%;text-align:left;text-wrap:pretty">{{ L.intro }}</p>
+      <div style="margin-top:40px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+        <a href="#contact" onClick="{{ goContact }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;background:#edf2f4;color:#0b0b0d;font-size:15px;font-weight:500;text-decoration:none" style-hover="background:#ffffff;color:#0b0b0d">{{ L.contact }}</a>
+        <a href="#cv" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:#edf2f4;font-size:15px;font-weight:500;text-decoration:none" style-hover="border-color:rgba(255,255,255,.34);background:rgba(255,255,255,.04)">{{ L.cv }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" data-screen-label="Experience" style="padding:{{ t.gap }}px {{ t.pad }}px 0">
+    <div data-reveal style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:{{ t.titleGap }}px">
+      <sc-if value="{{ t.eyebrow }}"><span style="font-family:{{ t.mono }};font-size:13px;color:#8d99ae;letter-spacing:.08em">01</span></sc-if>
+      <h2 style="margin:0;font-size:{{ t.h2 }}px;line-height:1.15;font-weight:500;letter-spacing:{{ t.track }};text-align:center">{{ L.experience }}</h2>
+    </div>
+    <div ref="{{ tlRef }}" style="position:relative;max-width:1040px;margin:0 auto;height:{{ tl.h }}px">
+      <svg width="{{ tl.w }}" height="{{ tl.h }}" aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible">
+        <path d="{{ tl.d }}" style="fill:none;stroke:rgba(141,153,174,.3);stroke-width:1.5"></path>
+        <path ref="{{ redRef }}" d="{{ tl.d }}" style="fill:none;stroke:#ef233c;stroke-width:2;stroke-linecap:round"></path>
+      </svg>
+      <sc-for list="{{ tl.nodes }}" as="n" hint-placeholder-count="6">
+        <div data-tl-node="" data-y="{{ n.y }}" style="position:absolute;left:{{ n.nx }}px;top:{{ n.ny }}px;width:{{ n.size }}px;height:{{ n.size }}px;box-sizing:border-box;border-radius:50%;background:#0b0b0d;border:1.5px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;transition:border-color .4s ease">
+          <span style="width:{{ n.logo }}px;height:{{ n.logo }}px;border-radius:10px;background:#26262b;display:flex;align-items:center;justify-content:center;font-family:{{ t.mono }};font-size:11px;color:#edf2f4">{{ n.initials }}</span>
+        </div>
+        <div data-reveal style="position:absolute;top:{{ n.ty }}px;left:{{ n.tl }};right:{{ n.tr }};width:{{ n.tw }}px;display:flex;flex-direction:column;align-items:{{ n.items }};text-align:{{ n.align }};gap:2px">
+          <h3 style="margin:0;font-size:{{ t.co }}px;font-weight:500;line-height:1.35">{{ n.company }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.45">{{ n.role }}</p>
+          <p style="margin:4px 0 0;font-family:{{ t.mono }};font-size:12.5px;line-height:1.5;color:#8d99ae">{{ n.dates }}</p>
+          <sc-if value="{{ n.hasProj }}">
+            <a href="#projects" onClick="{{ n.go }}" style="margin-top:4px;display:inline-flex;align-items:center;min-height:{{ n.linkH }}px;font-size:14px;color:#edf2f4;text-decoration:underline;text-decoration-color:#ef233c;text-decoration-thickness:1.5px;text-underline-offset:5px" style-hover="color:#ffffff;text-decoration-color:#d90429">{{ n.projLabel }}</a>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="projects" data-screen-label="Projects" style="padding:{{ t.gap }}px {{ t.pad }}px 0">
+    <div data-reveal style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:{{ t.titleGap }}px">
+      <sc-if value="{{ t.eyebrow }}"><span style="font-family:{{ t.mono }};font-size:13px;color:#8d99ae;letter-spacing:.08em">02</span></sc-if>
+      <h2 style="margin:0;font-size:{{ t.h2 }}px;line-height:1.15;font-weight:500;letter-spacing:{{ t.track }};text-align:center">{{ L.projects }}</h2>
+    </div>
+    <div style="max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:{{ t.tierGap }}px">
+      <sc-for list="{{ tiers }}" as="tier" hint-placeholder-count="2">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <p style="margin:0;font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae;letter-spacing:.04em">{{ tier.label }}</p>
+          <div style="display:grid;grid-template-columns:{{ tier.cols }};gap:{{ tier.gap }}px">
+            <sc-for list="{{ tier.items }}" as="item" hint-placeholder-count="2">
+              <article id="{{ item.anchor }}" data-reveal onMouseEnter="{{ item.enter }}" onMouseLeave="{{ item.leave }}" style="position:relative;display:flex;flex-direction:column;padding:10px;border-radius:24px;background:#151518;border:1px solid {{ item.border }};transition:border-color .3s ease">
+                <div style="position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#1b1b1f">
+                  <div style="position:absolute;inset:0;transform:scale({{ item.scale }});transition:transform .6s cubic-bezier(.2,.7,.2,1)">
+                    <sc-if value="{{ item.isShot }}">
+                      <div style="position:absolute;inset:0;background-color:#1b1b1f;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2710%27%20height=%2710%27%3E%3Cpath%20d=%27M-1%201L1%20-1M0%2010L10%200M9%2011L11%209%27%20stroke=%27%23fff%27%20stroke-opacity=%27.045%27/%3E%3C/svg%3E);display:flex;align-items:center;justify-content:center">
+                        <span style="font-family:{{ t.mono }};font-size:12px;color:#8d99ae;padding:6px 12px;border-radius:999px;background:#0b0b0d;border:1px solid rgba(255,255,255,.08)">screenshot · {{ item.media.label }}</span>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ item.isCarousel }}">
+                      <sc-for list="{{ item.slides }}" as="s">
+                        <div style="position:absolute;inset:0;opacity:{{ s.op }};transition:opacity .9s ease;background-color:#1b1b1f;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2710%27%20height=%2710%27%3E%3Cpath%20d=%27M-1%201L1%20-1M0%2010L10%200M9%2011L11%209%27%20stroke=%27%23fff%27%20stroke-opacity=%27.045%27/%3E%3C/svg%3E);display:flex;align-items:center;justify-content:center">
+                          <span style="font-family:{{ t.mono }};font-size:12px;color:#8d99ae;padding:6px 12px;border-radius:999px;background:#0b0b0d;border:1px solid rgba(255,255,255,.08)">screenshot · {{ s.label }}</span>
+                        </div>
+                      </sc-for>
+                      <div style="position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:6px">
+                        <sc-for list="{{ item.slides }}" as="s">
+                          <span style="width:{{ s.dotW }}px;height:6px;border-radius:999px;background:{{ s.dotC }};transition:width .4s ease, background-color .4s ease"></span>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ item.isScroll }}">
+                      <div data-scroll-through="" style="position:absolute;left:12%;right:12%;top:0;height:320%;padding:14px 0;box-sizing:border-box;display:flex;flex-direction:column;gap:10px">
+                        <sc-for list="{{ item.media.sections }}" as="sec">
+                          <div style="flex:1;border-radius:12px;background-color:#222227;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2710%27%20height=%2710%27%3E%3Cpath%20d=%27M-1%201L1%20-1M0%2010L10%200M9%2011L11%209%27%20stroke=%27%23fff%27%20stroke-opacity=%27.045%27/%3E%3C/svg%3E);display:flex;align-items:center;justify-content:center;font-family:{{ t.mono }};font-size:11.5px;color:#8d99ae">{{ sec }}</div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ item.cA }}"><dc-import name="ConceptEmbeddedPayment" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+                    <sc-if value="{{ item.cB }}"><dc-import name="ConceptMultiplayer" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+                    <sc-if value="{{ item.cC }}"><dc-import name="ConceptMicroFrontend" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;padding:{{ item.capPad }}">
+                  <div style="display:flex;justify-content:space-between;gap:12px;font-family:{{ t.mono }};font-size:12px;color:#8d99ae"><span>{{ item.company }}</span><span>{{ item.year }}</span></div>
+                  <h3 style="margin:0;font-size:{{ item.titleSize }}px;font-weight:500;line-height:1.3;letter-spacing:-0.01em;text-wrap:pretty">
+                    <a href="{{ item.href }}" onClick="{{ item.open }}" style="color:#edf2f4;text-decoration:none">{{ item.title }}<span style="position:absolute;inset:0;border-radius:24px"></span></a>
+                  </h3>
+                  <p style="margin:0;font-size:15px;line-height:1.55;color:#8d99ae;text-wrap:pretty">{{ item.desc }}</p>
+                  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+                    <sc-for list="{{ item.tags }}" as="tag">
+                      <span style="display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:12.5px">{{ tag }}</span>
+                    </sc-for>
+                  </div>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="skills" data-screen-label="Skills" style="padding:{{ t.gap }}px {{ t.pad }}px 0">
+    <div data-reveal style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:{{ t.titleGap }}px">
+      <sc-if value="{{ t.eyebrow }}"><span style="font-family:{{ t.mono }};font-size:13px;color:#8d99ae;letter-spacing:.08em">03</span></sc-if>
+      <h2 style="margin:0;font-size:{{ t.h2 }}px;line-height:1.15;font-weight:500;letter-spacing:{{ t.track }};text-align:center">{{ L.skills }}</h2>
+    </div>
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;border-bottom:1px solid rgba(255,255,255,.08)">
+      <div data-reveal style="display:grid;grid-template-columns:{{ t.skillCols }};gap:{{ t.skillGap }}px;padding:24px 0;border-top:1px solid rgba(255,255,255,.08)">
+        <p style="margin:0;padding-top:5px;font-family:{{ t.mono }};font-size:13px;color:#8d99ae">{{ L.sF }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">React</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Next.js</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">React Native</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">React Query</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Redux</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Tailwind CSS</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Micro-frontends</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Electron</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Accessibility</span>
+        </div>
+      </div>
+      <div data-reveal style="display:grid;grid-template-columns:{{ t.skillCols }};gap:{{ t.skillGap }}px;padding:24px 0;border-top:1px solid rgba(255,255,255,.08)">
+        <p style="margin:0;padding-top:5px;font-family:{{ t.mono }};font-size:13px;color:#8d99ae">{{ L.sL }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">TypeScript</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">JavaScript</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Go</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">PHP</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">SQL</span>
+        </div>
+      </div>
+      <div data-reveal style="display:grid;grid-template-columns:{{ t.skillCols }};gap:{{ t.skillGap }}px;padding:24px 0;border-top:1px solid rgba(255,255,255,.08)">
+        <p style="margin:0;padding-top:5px;font-family:{{ t.mono }};font-size:13px;color:#8d99ae">{{ L.sB }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Node.js</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">NestJS</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Laravel</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">PostgreSQL</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">MySQL</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Redis</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">GraphQL</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">WebSocket</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">LLM APIs</span>
+        </div>
+      </div>
+      <div data-reveal style="display:grid;grid-template-columns:{{ t.skillCols }};gap:{{ t.skillGap }}px;padding:24px 0;border-top:1px solid rgba(255,255,255,.08)">
+        <p style="margin:0;padding-top:5px;font-family:{{ t.mono }};font-size:13px;color:#8d99ae">{{ L.sT }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Git</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Docker</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">GitHub Actions</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Jest</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Playwright</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Storybook</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Figma</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">Sentry</span>
+          <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">AWS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-screen-label="Contact" style="padding:{{ t.gap }}px {{ t.pad }}px 0">
+    <div data-reveal style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:{{ t.titleGap }}px">
+      <sc-if value="{{ t.eyebrow }}"><span style="font-family:{{ t.mono }};font-size:13px;color:#8d99ae;letter-spacing:.08em">04</span></sc-if>
+      <h2 style="margin:0;font-size:{{ t.h2 }}px;line-height:1.15;font-weight:500;letter-spacing:{{ t.track }};text-align:center">{{ L.contactT }}</h2>
+    </div>
+    <div data-reveal style="max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+      <p style="margin:0;text-align:left;text-wrap:pretty">{{ L.contactLine }}</p>
+      <div style="display:grid;grid-template-columns:{{ t.contactCols }};gap:10px">
+        <a href="mailto:hello@rachmad.id" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:0 22px;border-radius:999px;background:#151518;border:1px solid rgba(255,255,255,.09);color:#edf2f4;text-decoration:none" style-hover="border-color:rgba(255,255,255,.24)"><span style="font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae">Email</span><span style="font-size:15px;text-decoration:underline;text-decoration-color:#ef233c;text-decoration-thickness:1.5px;text-underline-offset:5px">hello@rachmad.id</span></a>
+        <a href="https://linkedin.com/in/rachmad" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:0 22px;border-radius:999px;background:#151518;border:1px solid rgba(255,255,255,.09);color:#edf2f4;text-decoration:none" style-hover="border-color:rgba(255,255,255,.24)"><span style="font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae">LinkedIn</span><span style="font-size:15px;text-decoration:underline;text-decoration-color:#ef233c;text-decoration-thickness:1.5px;text-underline-offset:5px">in/rachmad</span></a>
+        <a href="https://github.com/rachmad" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:0 22px;border-radius:999px;background:#151518;border:1px solid rgba(255,255,255,.09);color:#edf2f4;text-decoration:none" style-hover="border-color:rgba(255,255,255,.24)"><span style="font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae">GitHub</span><span style="font-size:15px;text-decoration:underline;text-decoration-color:#ef233c;text-decoration-thickness:1.5px;text-underline-offset:5px">@rachmad</span></a>
+        <a href="https://instagram.com/rachmad" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:0 22px;border-radius:999px;background:#151518;border:1px solid rgba(255,255,255,.09);color:#edf2f4;text-decoration:none" style-hover="border-color:rgba(255,255,255,.24)"><span style="font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae">Instagram</span><span style="font-size:15px;text-decoration:underline;text-decoration-color:#ef233c;text-decoration-thickness:1.5px;text-underline-offset:5px">@rachmad.id</span></a>
+      </div>
+      <div style="display:flex">
+        <a href="#cv" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;background:#edf2f4;color:#0b0b0d;font-size:15px;font-weight:500;text-decoration:none" style-hover="background:#ffffff;color:#0b0b0d">{{ L.cv }}</a>
+      </div>
+    </div>
+    <footer style="max-width:760px;margin:{{ t.gap }}px auto 0;padding:28px 0 140px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;font-family:{{ t.mono }};font-size:13px;color:#8d99ae">
+      <span>rachmad.id</span>
+      <span>© {{ year }}</span>
+    </footer>
+  </section>
+
+  <sc-if value="{{ modalOpen }}">
+    <div role="dialog" aria-modal="true" aria-label="{{ md.title }}" onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:50;background:rgba(11,11,13,.9);display:flex;justify-content:center;align-items:flex-start;padding:{{ md.outer }};box-sizing:border-box;overflow-y:auto">
+      <div onClick="{{ stop }}" style="width:100%;max-width:880px;border-radius:24px;background:#151518;border:1px solid rgba(255,255,255,.1);padding:{{ md.pad }}px;box-sizing:border-box;display:flex;flex-direction:column;gap:32px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <span style="font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae">{{ md.company }} · {{ md.year }}</span>
+          <button onClick="{{ closeModal }}" style="height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:transparent;font-size:14px;cursor:pointer">{{ L.close }}</button>
+        </div>
+        <div style="position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background-color:#1b1b1f;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2710%27%20height=%2710%27%3E%3Cpath%20d=%27M-1%201L1%20-1M0%2010L10%200M9%2011L11%209%27%20stroke=%27%23fff%27%20stroke-opacity=%27.045%27/%3E%3C/svg%3E);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:{{ t.mono }};font-size:12px;color:#8d99ae;padding:6px 12px;border-radius:999px;background:#0b0b0d;border:1px solid rgba(255,255,255,.08)">{{ md.heroLabel }}</span>
+          <sc-if value="{{ md.cA }}"><dc-import name="ConceptEmbeddedPayment" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+          <sc-if value="{{ md.cB }}"><dc-import name="ConceptMultiplayer" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+          <sc-if value="{{ md.cC }}"><dc-import name="ConceptMicroFrontend" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+          <h2 style="margin:0;font-size:{{ md.h }}px;line-height:1.15;font-weight:500;letter-spacing:{{ t.track }};text-align:center;text-wrap:balance">{{ md.title }}</h2>
+          <p style="margin:0;font-family:{{ t.mono }};font-size:13px;color:#8d99ae;text-align:center">{{ md.role }}</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <p style="margin:0;font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae">{{ L.overview }}</p>
+          <p style="margin:0;text-wrap:pretty">{{ md.overview }}</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <p style="margin:0;font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae">{{ L.features }}</p>
+          <div style="display:grid;grid-template-columns:{{ md.cols }};gap:10px">
+            <sc-for list="{{ md.features }}" as="f">
+              <div style="display:flex;gap:14px;padding:18px 20px;border-radius:20px;border:1px solid rgba(255,255,255,.08)">
+                <span style="font-family:{{ t.mono }};font-size:12px;color:#8d99ae;padding-top:3px">{{ f.num }}</span>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <p style="margin:0;font-size:15px;font-weight:500">{{ f.title }}</p>
+                  <p style="margin:0;font-size:14px;line-height:1.55;color:#8d99ae">{{ f.text }}</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ md.hasMore }}"><p style="margin:0;font-size:14px;color:#8d99ae">{{ md.moreText }}</p></sc-if>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae">{{ L.stack }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ md.stack }}" as="tag">
+              <span style="display:inline-flex;align-items:center;height:30px;padding:0 13px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:13px">{{ tag }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08)">
+          <div style="display:flex;gap:8px">
+            <button onClick="{{ md.goPrev }}" aria-label="{{ L.prev }}" style="height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:transparent;font-size:14px;cursor:pointer">← {{ L.prev }}</button>
+            <button onClick="{{ md.goNext }}" aria-label="{{ L.next }}" style="height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:transparent;font-size:14px;cursor:pointer">{{ L.next }} →</button>
+          </div>
+          <a href="{{ md.href }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;background:#edf2f4;color:#0b0b0d;font-size:14px;font-weight:500;text-decoration:none" style-hover="background:#ffffff;color:#0b0b0d">{{ L.open }} ↗</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div aria-hidden="true" style="position:sticky;bottom:0;height:140px;margin-top:-140px;pointer-events:none;z-index:20;background:linear-gradient(to bottom, rgba(11,11,13,0), #0b0b0d)"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;direction&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;A&quot;,&quot;B&quot;],&quot;default&quot;:&quot;A&quot;,&quot;tsType&quot;:&quot;'A' | 'B'&quot;,&quot;section&quot;:&quot;Direction&quot;},&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;id&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en' | 'id'&quot;},&quot;reducedMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;animate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;progress&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;number | null&quot;},&quot;openProject&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;embedded&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const T = {
+  A: { sans: "'Geist', ui-sans-serif, system-ui, sans-serif", mono: "'Geist Mono', ui-monospace, monospace", gap: [160, 96], h1: [56, 40], h2: [30, 24], body: [17, 16], sub: [20, 18], titleGap: [56, 40], introTop: [168, 112], avatar: [104, 88], introGap: [44, 36], co: 18, tierGap: [72, 56], track: '-0.025em', eyebrow: false },
+  B: { sans: "'Instrument Sans', ui-sans-serif, system-ui, sans-serif", mono: "'JetBrains Mono', ui-monospace, monospace", gap: [224, 120], h1: [76, 46], h2: [40, 30], body: [18, 16], sub: [22, 19], titleGap: [80, 52], introTop: [208, 128], avatar: [120, 96], introGap: [56, 40], co: 19, tierGap: [96, 64], track: '-0.03em', eyebrow: true },
+};
+const STR = {
+  en: { nav: ['Experience', 'Projects', 'Skills', 'Contact'], loc: 'Jakarta, Indonesia · 7 years', intro: 'I’m a frontend-focused engineer in Jakarta with 7 years of building products for banking, fintech and gaming. I turn complex flows like payments, approvals and real-time data into interfaces that feel simple. Lately I work across the stack with React, Next.js, Node.js and Go.', contact: 'Contact', cv: 'Download CV', experience: 'Experience', projects: 'Projects', skills: 'Skills', contactT: 'Contact', featured: 'Featured', more: 'More projects', remote: 'Remote, USA', sF: 'Frontend', sL: 'Languages', sB: 'Backend and Data', sT: 'Tooling', contactLine: 'Open to senior frontend and full stack roles, remote or in Jakarta. I usually reply within a day.', menu: 'Menu', close: 'Close', overview: 'Overview', features: 'Key features', stack: 'Tech stack', open: 'Open project page', prev: 'Previous', next: 'Next', proj: n => n === 1 ? '1 project →' : `${n} projects →`, moreF: n => `+ ${n} more features on the project page` },
+  id: { nav: ['Pengalaman', 'Proyek', 'Keahlian', 'Kontak'], loc: 'Jakarta, Indonesia · 7 tahun', intro: 'Saya engineer yang berfokus pada frontend di Jakarta dengan pengalaman 7 tahun membangun produk untuk perbankan, fintech, dan gaming. Saya mengubah alur yang kompleks seperti pembayaran, persetujuan, dan data real-time menjadi antarmuka yang terasa sederhana. Belakangan ini saya bekerja di seluruh stack dengan React, Next.js, Node.js, dan Go.', contact: 'Hubungi Saya', cv: 'Unduh CV', experience: 'Pengalaman Kerja', projects: 'Proyek', skills: 'Keahlian', contactT: 'Kontak', featured: 'Unggulan', more: 'Proyek lainnya', remote: 'Remote, AS', sF: 'Frontend', sL: 'Bahasa Pemrograman', sB: 'Backend dan Data', sT: 'Perkakas', contactLine: 'Terbuka untuk posisi senior frontend dan full stack, secara remote atau di Jakarta. Biasanya saya membalas dalam satu hari.', menu: 'Menu', close: 'Tutup', overview: 'Ringkasan', features: 'Fitur utama', stack: 'Teknologi', open: 'Buka halaman proyek', prev: 'Sebelumnya', next: 'Berikutnya', proj: n => `${n} proyek →`, moreF: n => `+ ${n} fitur lainnya di halaman proyek` },
+};
+const EXP = [
+  { company: 'Quickbill', initials: 'QB', role: 'Senior Software Engineer, Full Stack', dates: 'Jan 2025 – Jul 2026', count: 4, slug: 'quickbill-platform' },
+  { company: '1Engage (Sinarmas Group)', initials: '1E', role: 'Software Engineer, Full Stack', dates: 'Apr 2024 – Dec 2024', count: 1, slug: '1engage-platform' },
+  { company: 'Accelbyte', initials: 'AB', role: 'Software Engineer II, Frontend', dates: 'Jan 2023 – Apr 2024', remote: true, count: 2, slug: 'accelbyte-dev-toolkit' },
+  { company: 'Moladin', initials: 'MO', role: 'Software Engineer II, Frontend', dates: 'Feb 2022 – Jan 2023', count: 0 },
+  { company: 'Maybank', initials: 'MB', role: 'Frontend Developer', dates: 'Mar 2021 – Feb 2022', count: 1, slug: 'maybank-dbds' },
+  { company: 'vOffice Indonesia', initials: 'VO', role: 'Web Developer', dates: 'Mar 2019 – Mar 2021', count: 3, slug: 'voffice-website' },
+];
+
+class Component extends DCLogic {
+  state = { w: 0, lang: this.props.lang === 'id' ? 'id' : 'en', projects: null, hover: null, slide: {}, modal: this.props.openProject || null, menu: false };
+  rootRef = React.createRef(); tlRef = React.createRef(); redRef = React.createRef();
+
+  get reduced() { return !!this.props.reducedMotion || !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
+
+  componentDidMount() {
+    this.measure = () => { const el = this.rootRef.current; const w = el ? el.getBoundingClientRect().width : 0; if (w && Math.abs(w - (this.state.w || 0)) > 1) this.setState({ w }); };
+    try { this.ro = new ResizeObserver(() => this.measure()); this.rootRef.current && this.ro.observe(this.rootRef.current); } catch (e) {}
+    setTimeout(this.measure, 0);
+    import(new URL('projects.js', document.baseURI).href).then(m => this.setState({ projects: m.PROJECTS }));
+    if (!this.props.embedded && !this.props.openProject && location.hash.startsWith('#project/')) this.setState({ modal: location.hash.slice(9) });
+    this.onScroll = () => { if (this.raf) return; this.raf = requestAnimationFrame(() => { this.raf = null; this.updateProgress(); this.revealCheck(); }); };
+    window.addEventListener('scroll', this.onScroll, true);
+    window.addEventListener('resize', this.onScroll); window.addEventListener('resize', () => this.measure());
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ modal: null, menu: false }); };
+    window.addEventListener('keydown', this.onKey);
+    this.timer = setInterval(() => this.tick(), 3400);
+    this.after();
+  }
+  componentDidUpdate(pp) {
+    if (pp.lang !== this.props.lang && this.props.lang) this.setState({ lang: this.props.lang === 'id' ? 'id' : 'en' });
+    if (pp.openProject !== this.props.openProject) this.setState({ modal: this.props.openProject || null });
+    this.after();
+  }
+  componentWillUnmount() {
+    this.ro && this.ro.disconnect(); clearInterval(this.timer);
+    window.removeEventListener('scroll', this.onScroll, true); window.removeEventListener('resize', this.onScroll); window.removeEventListener('keydown', this.onKey);
+  }
+  after() { this.measure && this.measure(); this.sample(); this.updateProgress(); this.reveal(); this.scrollThrough(); }
+
+  tick() {
+    if (this.reduced || !this.state.projects) return;
+    this.setState(s => {
+      const slide = { ...s.slide };
+      s.projects.forEach(p => { if (p.media.type === 'carousel' && s.hover !== p.slug) slide[p.slug] = ((slide[p.slug] || 0) + 1) % p.media.slides.length; });
+      return { slide };
+    });
+  }
+
+  scrollParent() {
+    if (this._sp !== undefined) return this._sp;
+    let n = this.rootRef.current && this.rootRef.current.parentElement; this._sp = null;
+    while (n && n !== document.body && n !== document.documentElement) {
+      const o = getComputedStyle(n).overflowY;
+      if ((o === 'auto' || o === 'scroll') && n.scrollHeight > n.clientHeight) { this._sp = n; break; }
+      n = n.parentElement;
+    }
+    return this._sp;
+  }
+  vp() { const sp = this.scrollParent(); if (sp) { const r = sp.getBoundingClientRect(); return { top: r.top, h: r.height }; } return { top: 0, h: window.innerHeight }; }
+
+  sample() {
+    const p = this.redRef.current; if (!p) return;
+    const d = p.getAttribute('d'); if (!d || d === this._d) return; this._d = d;
+    const total = p.getTotalLength(), N = 240, ys = [];
+    for (let i = 0; i <= N; i++) ys.push(p.getPointAtLength(total * i / N).y);
+    this.samples = { total, ys, N };
+    p.style.strokeDasharray = total;
+  }
+  updateProgress() {
+    const s = this.samples, p = this.redRef.current, el = this.tlRef.current; if (!s || !p || !el) return;
+    const h = el.offsetHeight; let y;
+    if (this.reduced) y = h + 1;
+    else if (this.props.progress != null) y = this.props.progress * h;
+    else { const r = el.getBoundingClientRect(), v = this.vp(); y = v.top + v.h * 0.6 - r.top; }
+    let len;
+    if (y <= s.ys[0]) len = 0; else if (y >= s.ys[s.N]) len = s.total;
+    else { let i = 1; while (s.ys[i] < y) i++; const f = (y - s.ys[i - 1]) / ((s.ys[i] - s.ys[i - 1]) || 1); len = s.total * (i - 1 + f) / s.N; }
+    p.style.strokeDashoffset = s.total - len;
+    el.querySelectorAll('[data-tl-node]').forEach(n => { n.style.borderColor = (+n.dataset.y <= y) ? '#ef233c' : 'rgba(255,255,255,.12)'; });
+  }
+  reveal() {
+    if (this.props.animate === false || this.reduced || !window.IntersectionObserver || !this.rootRef.current) return;
+    const v = this.vp();
+    this.rootRef.current.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      if (el.getBoundingClientRect().top < v.top + v.h) return;
+      el.style.opacity = 0; el.style.transform = 'translateY(10px)';
+      el.style.transition = (el.style.transition ? el.style.transition + ', ' : '') + 'opacity .7s ease, transform .7s ease';
+      el.setAttribute('data-pending', '');
+    });
+    this.revealCheck();
+  }
+  revealCheck() {
+    if (!this.rootRef.current) return;
+    const v = this.vp();
+    this.rootRef.current.querySelectorAll('[data-pending]').forEach(el => {
+      if (el.getBoundingClientRect().top < v.top + v.h - 40) { el.removeAttribute('data-pending'); el.style.opacity = 1; el.style.transform = 'none'; }
+    });
+  }
+  scrollThrough() {
+    if (this.reduced || !this.rootRef.current) return;
+    this.rootRef.current.querySelectorAll('[data-scroll-through]:not([data-anim])').forEach(el => {
+      el.setAttribute('data-anim', '');
+      const e = 'ease-in-out', y = 'translateY(-68.75%)';
+      el.animate([{ transform: 'translateY(0)', easing: e }, { transform: 'translateY(0)', offset: .08, easing: e }, { transform: y, offset: .78, easing: e }, { transform: y, offset: .9, easing: e }, { transform: 'translateY(0)' }], { duration: 14000, iterations: Infinity });
+    });
+  }
+
+  scrollToEl(el) {
+    if (!el) return;
+    const sp = this.scrollParent(), b = this.reduced ? 'auto' : 'smooth';
+    const top = el.getBoundingClientRect().top - (sp ? sp.getBoundingClientRect().top : 0) - 88;
+    (sp || window).scrollBy({ top, behavior: b });
+  }
+  go(e, id) { e && e.preventDefault(); this.setState({ menu: false }); this.scrollToEl(this.rootRef.current.querySelector('#' + id)); }
+  openModal(slug) { this.setState({ modal: slug, menu: false }); if (!this.props.embedded) history.replaceState(null, '', '#project/' + slug); }
+  closeModal() { this.setState({ modal: null }); if (!this.props.embedded) history.replaceState(null, '', location.pathname + location.search); }
+
+  geom(w, m) {
+    const n = EXP.length, size = m ? 44 : 56, P = m ? 150 : 200, top = m ? 64 : 110, k = 0.55;
+    let L, R, cx;
+    if (m) { L = 24; R = 70; cx = 47; } else { cx = w / 2; const amp = Math.min(170, w * 0.17); L = cx - amp; R = cx + amp; }
+    const pts = EXP.map((_, i) => ({ x: i % 2 === 0 ? L : R, y: top + i * P }));
+    const h = top + (n - 1) * P + top;
+    let d = `M ${cx} 0 C ${cx} ${top * k} ${pts[0].x} ${top - top * k} ${pts[0].x} ${top}`;
+    for (let i = 1; i < n; i++) { const a = pts[i - 1], b = pts[i]; d += ` C ${a.x} ${a.y + P * k} ${b.x} ${b.y - P * k} ${b.x} ${b.y}`; }
+    const l = pts[n - 1]; d += ` C ${l.x} ${l.y + top * k} ${cx} ${h - top * k} ${cx} ${h}`;
+    const nodes = pts.map(p => {
+      const base = { nx: p.x - size / 2, ny: p.y - size / 2, y: p.y, size, logo: m ? 28 : 34 };
+      if (m) { const x = R + size / 2 + 18; return { ...base, ty: p.y - 24, tl: x + 'px', tr: 'auto', tw: Math.max(160, w - x), items: 'flex-start', align: 'left' }; }
+      const left = p.x === L, gap = 26, tw = Math.max(180, (left ? L : w - R) - size / 2 - gap);
+      return { ...base, ty: p.y - 30, tl: left ? 'auto' : (R + size / 2 + gap) + 'px', tr: left ? (w - (L - size / 2 - gap)) + 'px' : 'auto', tw, items: left ? 'flex-end' : 'flex-start', align: left ? 'right' : 'left' };
+    });
+    return { w, h, d, nodes };
+  }
+
+  renderVals() {
+    const s = this.state, D = T[this.props.direction === 'B' ? 'B' : 'A'];
+    const w = s.w || 1440, m = w < 720, ix = m ? 1 : 0;
+    const Ls = STR[s.lang], reduced = this.reduced;
+    const t = {
+      sans: D.sans, mono: D.mono, gap: D.gap[ix], h1: D.h1[ix], h2: D.h2[ix], body: D.body[ix], sub: D.sub[ix], titleGap: D.titleGap[ix],
+      introTop: D.introTop[ix], avatar: D.avatar[ix], introGap: D.introGap[ix], co: m ? 17 : D.co, tierGap: D.tierGap[ix], track: D.track, eyebrow: D.eyebrow,
+      pad: m ? 24 : 40, skillCols: m ? 'minmax(0,1fr)' : '200px minmax(0,1fr)', skillGap: m ? 12 : 24, contactCols: m ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))',
+    };
+    const L = { ...Ls, proj: undefined, moreF: undefined };
+    const tlW = Math.min(1040, w - t.pad * 2);
+    const g = this.geom(tlW, m);
+    g.nodes = g.nodes.map((nd, i) => {
+      const e = EXP[i];
+      return { ...nd, ...e, dates: e.remote ? `${e.dates} · ${Ls.remote}` : e.dates, hasProj: e.count > 0, projLabel: Ls.proj(e.count), linkH: m ? 44 : 28,
+        go: ev => { ev.preventDefault(); this.scrollToEl(this.rootRef.current.querySelector('#card-' + e.slug)); } };
+    });
+    const P = s.projects || [];
+    const items = P.map(pr => {
+      const hov = s.hover === pr.slug, ty = pr.media.type, n = (pr.media.slides || []).length, cur = n ? (s.slide[pr.slug] || 0) % n : 0;
+      return {
+        ...pr, anchor: 'card-' + pr.slug, href: 'Project%20Page.dc.html?p=' + pr.slug,
+        isShot: ty === 'shot', isCarousel: ty === 'carousel', isScroll: ty === 'scroll', cA: pr.media.concept === 'a', cB: pr.media.concept === 'b', cC: pr.media.concept === 'c',
+        slides: (pr.media.slides || []).map((label, i) => ({ label, op: i === cur ? 1 : 0, dotW: i === cur ? 18 : 6, dotC: i === cur ? '#ef233c' : 'rgba(237,242,244,.35)' })),
+        scale: hov && !reduced ? 1.02 : 1, border: hov ? 'rgba(255,255,255,.22)' : 'rgba(255,255,255,.08)',
+        titleSize: pr.featured ? (m ? 19 : 22) : 18, capPad: pr.featured ? '20px 12px 14px' : '18px 10px 10px',
+        enter: () => this.setState({ hover: pr.slug }), leave: () => this.setState({ hover: null }),
+        open: e => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); this.openModal(pr.slug); },
+      };
+    });
+    const tiers = [
+      { label: Ls.featured, cols: m ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))', gap: m ? 20 : 24, items: items.filter(i => i.featured) },
+      { label: Ls.more, cols: m ? 'minmax(0,1fr)' : (w < 1000 ? 'repeat(2,minmax(0,1fr))' : 'repeat(3,minmax(0,1fr))'), gap: 20, items: items.filter(i => !i.featured) },
+    ];
+    const mi = P.findIndex(p => p.slug === s.modal), mp = P[mi];
+    const md = mp ? {
+      ...mp, role: `${mp.role} · ${mp.company} · ${mp.year}`, heroLabel: 'screenshot · ' + (mp.media.label || (mp.media.slides && mp.media.slides[0]) || 'full page'),
+      cA: mp.media.concept === 'a', cB: mp.media.concept === 'b', cC: mp.media.concept === 'c',
+      features: mp.features.slice(0, 4).map((f, i) => ({ ...f, num: String(i + 1).padStart(2, '0') })),
+      hasMore: mp.features.length > 4, moreText: Ls.moreF(mp.features.length - 4), href: 'Project%20Page.dc.html?p=' + mp.slug,
+      cols: m ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))', pad: m ? 20 : 40, outer: m ? '12px' : '48px 24px', h: m ? 28 : 36,
+      goPrev: () => this.openModal(P[(mi - 1 + P.length) % P.length].slug), goNext: () => this.openModal(P[(mi + 1) % P.length].slug),
+    } : {};
+    const on = { bg: '#edf2f4', c: '#0b0b0d' }, off = { bg: 'transparent', c: '#8d99ae' }, en = s.lang === 'en';
+    return {
+      rootRef: this.rootRef, tlRef: this.tlRef, redRef: this.redRef, t, L, reduced,
+      desk: !m, mob: m, year: new Date().getFullYear(),
+      nav: ['experience', 'projects', 'skills', 'contact'].map((id, i) => ({ label: Ls.nav[i], href: '#' + id, go: e => this.go(e, id) })),
+      lg: { en, id: !en, enBg: en ? on.bg : off.bg, enC: en ? on.c : off.c, idBg: en ? off.bg : on.bg, idC: en ? off.c : on.c },
+      setEn: () => this.setState({ lang: 'en' }), setId: () => this.setState({ lang: 'id' }),
+      menuOpen: s.menu, menuLabel: s.menu ? Ls.close : Ls.menu, toggleMenu: () => this.setState({ menu: !s.menu }),
+      goTop: e => this.go(e, 'top'), goContact: e => this.go(e, 'contact'),
+      tl: g, tiers, modalOpen: !!mp, md, closeModal: () => this.closeModal(), stop: e => e.stopPropagation(),
+    };
+  }
+}
+</script>
+</body>
+</html>

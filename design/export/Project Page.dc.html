@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0b0b0d;color:#edf2f4;-webkit-font-smoothing:antialiased}
+a{color:#edf2f4;text-decoration-color:#ef233c;text-underline-offset:5px}
+a:hover{color:#ffffff;text-decoration-color:#d90429}
+:focus-visible{outline:2px solid #ef233c;outline-offset:3px}
+::selection{background:#d90429;color:#ffffff}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position:relative;min-height:100vh;background:#0b0b0d;color:#edf2f4;font-family:{{ t.sans }};font-size:{{ t.body }}px;line-height:1.6">
+  <header style="position:sticky;top:16px;z-index:30;display:flex;justify-content:center;padding:0 16px;pointer-events:none">
+    <nav aria-label="Project" style="pointer-events:auto;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:#151518;border:1px solid rgba(255,255,255,.09)">
+      <a href="Portfolio.dc.html#projects" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;font-size:14px;color:#edf2f4;text-decoration:none" style-hover="background:rgba(255,255,255,.06)">← All projects</a>
+      <span style="width:1px;height:20px;background:rgba(255,255,255,.1)"></span>
+      <a href="Portfolio.dc.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;font-family:{{ t.mono }};font-size:13px;color:#8d99ae;text-decoration:none" style-hover="color:#edf2f4">rachmad.id</a>
+    </nav>
+  </header>
+
+  <section data-screen-label="Project hero" style="padding:{{ t.top }}px {{ t.pad }}px 0">
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <p style="margin:0;font-family:{{ t.mono }};font-size:13px;color:#8d99ae;text-align:center">{{ p.company }} · {{ p.year }}</p>
+      <h1 style="margin:0;font-size:{{ t.h1 }}px;line-height:1.08;font-weight:500;letter-spacing:{{ t.track }};text-align:center;text-wrap:balance">{{ p.title }}</h1>
+      <p style="margin:0;font-size:{{ t.sub }}px;text-align:center">{{ p.role }}</p>
+    </div>
+    <div style="position:relative;max-width:1040px;margin:{{ t.heroGap }}px auto 0;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background-color:#1b1b1f;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2710%27%20height=%2710%27%3E%3Cpath%20d=%27M-1%201L1%20-1M0%2010L10%200M9%2011L11%209%27%20stroke=%27%23fff%27%20stroke-opacity=%27.045%27/%3E%3C/svg%3E);display:flex;align-items:center;justify-content:center">
+      <span style="font-family:{{ t.mono }};font-size:12px;color:#8d99ae;padding:6px 12px;border-radius:999px;background:#0b0b0d;border:1px solid rgba(255,255,255,.08)">{{ p.heroLabel }}</span>
+      <sc-if value="{{ p.cA }}"><dc-import name="ConceptEmbeddedPayment" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+      <sc-if value="{{ p.cB }}"><dc-import name="ConceptMultiplayer" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+      <sc-if value="{{ p.cC }}"><dc-import name="ConceptMicroFrontend" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+    </div>
+  </section>
+
+  <section data-screen-label="Overview" style="padding:{{ t.gap }}px {{ t.pad }}px 0">
+    <h2 style="margin:0 0 {{ t.titleGap }}px;font-size:{{ t.h2 }}px;line-height:1.15;font-weight:500;letter-spacing:{{ t.track }};text-align:center">Overview</h2>
+    <p style="max-width:760px;margin:0 auto;text-align:left;text-wrap:pretty">{{ p.overview }}</p>
+  </section>
+
+  <section data-screen-label="Key features" style="padding:{{ t.gap }}px {{ t.pad }}px 0">
+    <h2 style="margin:0 0 {{ t.titleGap }}px;font-size:{{ t.h2 }}px;line-height:1.15;font-weight:500;letter-spacing:{{ t.track }};text-align:center">Key features</h2>
+    <sc-if value="{{ p.hasIndex }}">
+      <div style="max-width:760px;margin:0 auto {{ t.titleGap }}px;display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ p.feats }}" as="f">
+          <a href="{{ f.hash }}" onClick="{{ f.go }}" style="display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:13.5px;color:#edf2f4;text-decoration:none" style-hover="border-color:rgba(255,255,255,.26)"><span style="font-family:{{ t.mono }};font-size:11.5px;color:#8d99ae">{{ f.num }}</span>{{ f.title }}</a>
+        </sc-for>
+      </div>
+    </sc-if>
+    <div style="max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:{{ t.featGap }}px">
+      <sc-for list="{{ p.primary }}" as="f" hint-placeholder-count="3">
+        <article id="{{ f.id }}" style="display:flex;flex-direction:column;gap:28px">
+          <div style="position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background-color:#1b1b1f;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2710%27%20height=%2710%27%3E%3Cpath%20d=%27M-1%201L1%20-1M0%2010L10%200M9%2011L11%209%27%20stroke=%27%23fff%27%20stroke-opacity=%27.045%27/%3E%3C/svg%3E);display:flex;align-items:center;justify-content:center">
+            <span style="font-family:{{ t.mono }};font-size:12px;color:#8d99ae;padding:6px 12px;border-radius:999px;background:#0b0b0d;border:1px solid rgba(255,255,255,.08)">screenshot · {{ f.label }}</span>
+            <sc-if value="{{ f.cA }}"><dc-import name="ConceptEmbeddedPayment" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+            <sc-if value="{{ f.cB }}"><dc-import name="ConceptMultiplayer" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+            <sc-if value="{{ f.cC }}"><dc-import name="ConceptMicroFrontend" reduced-motion="{{ reduced }}" hint-size="100%,100%" style="position:absolute;inset:0;display:block;width:100%;height:100%"></dc-import></sc-if>
+          </div>
+          <div style="width:100%;max-width:760px;margin:0 auto;display:grid;grid-template-columns:{{ t.featCols }};gap:{{ t.featColGap }}px">
+            <span style="font-family:{{ t.mono }};font-size:13px;color:#8d99ae;padding-top:4px">{{ f.num }}</span>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <h3 style="margin:0;font-size:{{ t.h3 }}px;line-height:1.3;font-weight:500">{{ f.title }}</h3>
+              <p style="margin:0;color:#8d99ae;text-wrap:pretty">{{ f.text }}</p>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+      <sc-if value="{{ p.hasSecondary }}">
+        <div style="display:grid;grid-template-columns:{{ t.secCols }};gap:20px">
+          <sc-for list="{{ p.secondary }}" as="f">
+            <article id="{{ f.id }}" style="display:flex;flex-direction:column;padding:10px;border-radius:24px;background:#151518;border:1px solid rgba(255,255,255,.08)">
+              <div style="position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background-color:#1b1b1f;background-image:url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2710%27%20height=%2710%27%3E%3Cpath%20d=%27M-1%201L1%20-1M0%2010L10%200M9%2011L11%209%27%20stroke=%27%23fff%27%20stroke-opacity=%27.045%27/%3E%3C/svg%3E);display:flex;align-items:center;justify-content:center">
+                <span style="font-family:{{ t.mono }};font-size:12px;color:#8d99ae;padding:6px 12px;border-radius:999px;background:#0b0b0d;border:1px solid rgba(255,255,255,.08)">screenshot · {{ f.label }}</span>
+              </div>
+              <div style="display:flex;gap:14px;padding:20px 12px 14px">
+                <span style="font-family:{{ t.mono }};font-size:12px;color:#8d99ae;padding-top:3px">{{ f.num }}</span>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <h3 style="margin:0;font-size:17px;line-height:1.35;font-weight:500">{{ f.title }}</h3>
+                  <p style="margin:0;font-size:15px;line-height:1.55;color:#8d99ae;text-wrap:pretty">{{ f.text }}</p>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section data-screen-label="Tech stack" style="padding:{{ t.gap }}px {{ t.pad }}px 0">
+    <h2 style="margin:0 0 {{ t.titleGap }}px;font-size:{{ t.h2 }}px;line-height:1.15;font-weight:500;letter-spacing:{{ t.track }};text-align:center">Tech stack</h2>
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ p.stack }}" as="tag">
+        <span style="display:inline-flex;align-items:center;height:34px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px">{{ tag }}</span>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Outcome" style="padding:{{ t.gap }}px {{ t.pad }}px 0">
+    <h2 style="margin:0 0 {{ t.titleGap }}px;font-size:{{ t.h2 }}px;line-height:1.15;font-weight:500;letter-spacing:{{ t.track }};text-align:center">Outcome and learnings</h2>
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+      <p style="margin:0;text-wrap:pretty">{{ p.outcome }}</p>
+      <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ p.learnings }}" as="l">
+          <li style="display:flex;gap:14px;align-items:baseline;color:#8d99ae"><span style="flex:none;width:6px;height:6px;border-radius:50%;background:#ef233c;transform:translateY(-2px)"></span>{{ l }}</li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+
+  <section data-screen-label="Prev / next" style="padding:{{ t.gap }}px {{ t.pad }}px 0">
+    <div style="max-width:760px;margin:0 auto;display:grid;grid-template-columns:{{ t.pnCols }};gap:12px">
+      <a href="{{ p.prevHref }}" style="display:flex;flex-direction:column;gap:6px;padding:22px 26px;border-radius:24px;background:#151518;border:1px solid rgba(255,255,255,.08);text-decoration:none;color:#edf2f4" style-hover="border-color:rgba(255,255,255,.22)">
+        <span style="font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae">← Previous</span>
+        <span style="font-size:17px;font-weight:500">{{ p.prevTitle }}</span>
+      </a>
+      <a href="{{ p.nextHref }}" style="display:flex;flex-direction:column;align-items:flex-end;text-align:right;gap:6px;padding:22px 26px;border-radius:24px;background:#151518;border:1px solid rgba(255,255,255,.08);text-decoration:none;color:#edf2f4" style-hover="border-color:rgba(255,255,255,.22)">
+        <span style="font-family:{{ t.mono }};font-size:12.5px;color:#8d99ae">Next →</span>
+        <span style="font-size:17px;font-weight:500">{{ p.nextTitle }}</span>
+      </a>
+    </div>
+    <footer style="max-width:760px;margin:{{ t.gap }}px auto 0;padding:28px 0 140px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;font-family:{{ t.mono }};font-size:13px;color:#8d99ae">
+      <span>rachmad.id</span>
+      <span>© {{ year }}</span>
+    </footer>
+  </section>
+
+  <div aria-hidden="true" style="position:sticky;bottom:0;height:140px;margin-top:-140px;pointer-events:none;z-index:20;background:linear-gradient(to bottom, rgba(11,11,13,0), #0b0b0d)"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;slug&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;quickbill-platform&quot;,&quot;quickbill-mobile&quot;,&quot;1engage-platform&quot;,&quot;accelbyte-dev-toolkit&quot;,&quot;quickbill-enterprise&quot;,&quot;quickbill-embedded&quot;,&quot;accelbyte-multiplayer&quot;,&quot;maybank-dbds&quot;,&quot;voffice-website&quot;,&quot;izin-co-id&quot;,&quot;company-profiles&quot;],&quot;default&quot;:&quot;quickbill-platform&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;direction&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;A&quot;,&quot;B&quot;],&quot;default&quot;:&quot;A&quot;,&quot;tsType&quot;:&quot;'A' | 'B'&quot;},&quot;reducedMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const T = {
+  A: { sans: "'Geist', ui-sans-serif, system-ui, sans-serif", mono: "'Geist Mono', ui-monospace, monospace", gap: [160, 96], h1: [52, 36], h2: [30, 24], h3: [22, 19], body: [17, 16], sub: [18, 16], titleGap: [48, 32], top: [168, 112], heroGap: [64, 40], featGap: [96, 64], track: '-0.025em' },
+  B: { sans: "'Instrument Sans', ui-sans-serif, system-ui, sans-serif", mono: "'JetBrains Mono', ui-monospace, monospace", gap: [208, 112], h1: [68, 40], h2: [40, 28], h3: [24, 20], body: [18, 16], sub: [20, 17], titleGap: [64, 40], top: [200, 120], heroGap: [80, 48], featGap: [128, 72], track: '-0.03em' },
+};
+const page = slug => 'Project%20Page.dc.html?p=' + slug;
+
+class Component extends DCLogic {
+  state = { w: 0, projects: null };
+  rootRef = React.createRef();
+  get reduced() { return !!this.props.reducedMotion || !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
+  componentDidMount() {
+    this.measure = () => { const el = this.rootRef.current; const w = el ? el.getBoundingClientRect().width : 0; if (w && Math.abs(w - (this.state.w || 0)) > 1) this.setState({ w }); };
+    try { this.ro = new ResizeObserver(() => this.measure()); this.ro.observe(this.rootRef.current); } catch (e) {}
+    setTimeout(this.measure, 0);
+    import(new URL('projects.js', document.baseURI).href).then(m => this.setState({ projects: m.PROJECTS }));
+  }
+  componentDidUpdate() { this.measure(); }
+  componentWillUnmount() { this.ro && this.ro.disconnect(); }
+  renderVals() {
+    const D = T[this.props.direction === 'B' ? 'B' : 'A'], w = this.state.w || 1440, m = w < 720, ix = m ? 1 : 0;
+    const t = { sans: D.sans, mono: D.mono, track: D.track, pad: m ? 24 : 40, featCols: m ? 'minmax(0,1fr)' : '64px minmax(0,1fr)', featColGap: m ? 8 : 16, secCols: m ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))', pnCols: m ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))' };
+    ['gap', 'h1', 'h2', 'h3', 'body', 'sub', 'titleGap', 'top', 'heroGap', 'featGap'].forEach(k => t[k] = D[k][ix]);
+    const P = this.state.projects || [];
+    let slug = null;
+    if (!this.props.embedded) { try { slug = new URLSearchParams(location.search).get('p'); } catch (e) {} }
+    slug = slug || this.props.slug;
+    let i = P.findIndex(x => x.slug === slug); if (i < 0) i = 0;
+    const pr = P[i];
+    let p = {};
+    if (pr) {
+      const feats = pr.features.map((f, j) => ({ ...f, num: String(j + 1).padStart(2, '0'), id: 'feature-' + (j + 1), hash: '#feature-' + (j + 1), cA: f.concept === 'a', cB: f.concept === 'b', cC: f.concept === 'c',
+        go: e => { e.preventDefault(); const el = this.rootRef.current.querySelector('#feature-' + (j + 1)); el && window.scrollBy({ top: el.getBoundingClientRect().top - 96, behavior: this.reduced ? 'auto' : 'smooth' }); } }));
+      const prev = P[(i - 1 + P.length) % P.length], next = P[(i + 1) % P.length];
+      p = { ...pr, feats, primary: feats.slice(0, 3), secondary: feats.slice(3), hasSecondary: feats.length > 3, hasIndex: feats.length > 4,
+        heroLabel: 'screenshot · ' + (pr.media.label || (pr.media.slides && pr.media.slides[0]) || 'full page'),
+        cA: pr.media.concept === 'a', cB: pr.media.concept === 'b', cC: pr.media.concept === 'c',
+        prevHref: page(prev.slug), nextHref: page(next.slug), prevTitle: prev.title, nextTitle: next.title };
+    }
+    return { rootRef: this.rootRef, t, p, reduced: this.reduced, year: new Date().getFullYear() };
+  }
+}
+</script>
+</body>
+</html>

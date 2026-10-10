@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b0b0d;
+  --color-surface: #151518;
+  --color-media-fill: #1b1b1f;
+  --color-border: rgb(255 255 255 / 0.08);
+  --color-border-strong: rgb(255 255 255 / 0.22);
+  --color-fg: #edf2f4;
+  --color-muted: #8d99ae;
+  --color-accent: #ef233c;
+  --color-accent-hover: #d90429;
+
+  --radius-card: 1.5rem;
+  --radius-media: 1rem;
+  --radius-pill: 9999px;
+
+  --container-content: 47.5rem;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
