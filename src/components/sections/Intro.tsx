@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Pill } from "@/components/ui/Pill";
 import { Button } from "@/components/ui/Button";
@@ -15,12 +16,14 @@ export async function Intro() {
       className="px-[24px] pt-[112px] md:px-[40px] md:pt-[168px]"
     >
       <div className="mx-auto flex max-w-content flex-col items-center">
-        <div
-          aria-hidden
-          className="flex h-[88px] w-[88px] items-center justify-center rounded-full border border-[rgba(255,255,255,0.1)] bg-surface font-mono text-[11px] text-muted md:h-[104px] md:w-[104px]"
-        >
-          avatar
-        </div>
+        <Image
+          src="/avatar.jpg"
+          alt=""
+          width={104}
+          height={104}
+          priority
+          className="h-[88px] w-[88px] rounded-full border border-[rgba(255,255,255,0.1)] bg-surface object-cover md:h-[104px] md:w-[104px]"
+        />
         <h1 className="m-0 mt-8 text-center text-[40px] leading-[1.05] font-medium tracking-[-0.025em] md:text-[56px]">
           {site.name}
         </h1>
