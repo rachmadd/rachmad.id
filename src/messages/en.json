@@ -1,0 +1,48 @@
+{
+  "Nav": {
+    "brand": "rachmad.id",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact",
+    "language": "Language",
+    "menuOpen": "Menu",
+    "menuClose": "Close"
+  },
+  "Common": {
+    "contact": "Contact",
+    "downloadCv": "Download CV",
+    "screenshotLabel": "screenshot"
+  },
+  "Intro": {
+    "meta": "{location} · {years} years",
+    "description": "I build web products, mostly on the frontend. Seven years across banking, fintech and gaming, from a bank's branch systems to an invoicing platform I helped start from scratch. I like work where the interface has to be fast and hard to break."
+  },
+  "Experience": {
+    "remote": "Remote, USA",
+    "projectsLink": "{count, plural, one {# project} other {# projects}} →"
+  },
+  "Projects": {
+    "featured": "Featured",
+    "more": "More projects"
+  },
+  "Contact": {
+    "line": "Open to new roles. Email is the fastest way to reach me.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "instagram": "Instagram",
+    "tbd": "TBD"
+  },
+  "Project": {
+    "overview": "Overview",
+    "keyFeatures": "Key features",
+    "techStack": "Tech stack",
+    "outcome": "Outcome and learnings",
+    "previous": "Previous",
+    "next": "Next",
+    "openProjectPage": "Open project page",
+    "close": "Close",
+    "moreFeatures": "{count, plural, one {+ # more feature on the project page} other {+ # more features on the project page}}"
+  }
+}

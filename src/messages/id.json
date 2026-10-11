@@ -1,0 +1,48 @@
+{
+  "Nav": {
+    "brand": "rachmad.id",
+    "experience": "Pengalaman",
+    "projects": "Proyek",
+    "skills": "Keahlian",
+    "contact": "Kontak",
+    "language": "Bahasa",
+    "menuOpen": "Menu",
+    "menuClose": "Tutup"
+  },
+  "Common": {
+    "contact": "Hubungi Saya",
+    "downloadCv": "Unduh CV",
+    "screenshotLabel": "screenshot"
+  },
+  "Intro": {
+    "meta": "{location} · {years} tahun",
+    "description": "Saya membuat produk web, kebanyakan di sisi frontend. Tujuh tahun di perbankan, fintech, dan game, dari sistem cabang bank sampai platform invoice yang saya bantu bangun dari awal. Saya suka pekerjaan yang antarmukanya harus cepat dan tidak gampang rusak."
+  },
+  "Experience": {
+    "remote": "Remote, AS",
+    "projectsLink": "{count} proyek →"
+  },
+  "Projects": {
+    "featured": "Unggulan",
+    "more": "Proyek lainnya"
+  },
+  "Contact": {
+    "line": "Terbuka untuk peran baru. Cara tercepat menghubungi saya lewat email.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "instagram": "Instagram",
+    "tbd": "TBD"
+  },
+  "Project": {
+    "overview": "Ringkasan",
+    "keyFeatures": "Fitur utama",
+    "techStack": "Teknologi",
+    "outcome": "Hasil dan pembelajaran",
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "openProjectPage": "Buka halaman proyek",
+    "close": "Tutup",
+    "moreFeatures": "+ {count} fitur lainnya di halaman proyek"
+  }
+}

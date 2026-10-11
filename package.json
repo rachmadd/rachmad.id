@@ -10,6 +10,7 @@
     "dev": "next dev",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "test": "node --test src/**/*.test.ts",
     "build": "next build",
     "start": "next start"
   },
