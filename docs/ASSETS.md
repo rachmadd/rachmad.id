@@ -14,7 +14,8 @@ Status key: **have** = Rachmad has it and will drop it in, **placeholder** = age
 | `public/cv/Rachmad-CV-en.pdf` | English CV | have | Download button |
 | `public/cv/Rachmad-CV-id.pdf` | Indonesian CV | tbd | If missing, the ID button falls back to the English file |
 | `public/media/projects/<slug>/` | Screenshots per project | have (most) | Name files `01.webp`, `02.webp`, ... in display order |
-| `public/media/projects/quickbill-platform/scroll.webm` and `.mp4` | Scroll-through loop | tbd | Optional. Falls back to carousel |
+| `public/media/projects/quickbill-platform/01.webp`–`04.webp` | Screenshots | have | Real carousel, rendered via `ImageCarousel` |
+| `public/media/projects/{hellolive,izin-co-id,voffice-website}/scroll.mp4` | Scroll-through loop | have (mp4 only) | No `.webm`/poster yet — files are 10–15 MB, over the 1.5 MB target below. Re-encode before shipping. See `docs/DECISIONS.md` 2026-10-12 |
 | `public/media/concepts/quickbill-embedded-payment.{webm,mp4,jpg}` | Concept loop plus poster | placeholder | Exported from Claude Design |
 | `public/media/concepts/accelbyte-multiplayer-service.{webm,mp4,jpg}` | same | placeholder | same |
 | `public/media/concepts/maybank-digital-branch.{webm,mp4,jpg}` | same | placeholder | same |

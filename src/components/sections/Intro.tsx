@@ -16,7 +16,7 @@ export async function Intro() {
     >
       <div className="mx-auto flex max-w-content flex-col items-center">
         <Image
-          src="/avatar.jpg"
+          src="/avatar.webp"
           alt=""
           width={104}
           height={104}

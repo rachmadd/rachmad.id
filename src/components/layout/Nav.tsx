@@ -72,29 +72,23 @@ export function Nav() {
       <div className="relative w-full max-w-[440px] md:hidden">
         <nav
           aria-label="Primary"
-          className="nav-glass flex items-center justify-between gap-2 rounded-pill py-[5px] pr-[5px] pl-5"
+          className="bg-surface flex items-center justify-between gap-2 rounded-pill py-[5px] pr-[5px] pl-5"
         >
-          <Link
-            href="/#top"
-            className="font-mono text-[13px] text-fg no-underline"
+          <button
+            type="button"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+            className="h-[46px] rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.12)] bg-transparent px-5 text-sm text-fg"
           >
-            {t('brand')}
-          </Link>
+            {menuOpen ? t('menuClose') : t('menuOpen')}
+          </button>
           <div className="flex items-center gap-1.5">
             <LanguageToggle size="mobile" />
             <ThemeToggle size="mobile" />
-            <button
-              type="button"
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((open) => !open)}
-              className="h-[46px] rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.12)] bg-transparent px-5 text-sm text-fg"
-            >
-              {menuOpen ? t('menuClose') : t('menuOpen')}
-            </button>
           </div>
         </nav>
         {menuOpen && (
-          <div className="nav-glass absolute inset-x-0 top-[66px] flex flex-col rounded-[24px] p-2">
+          <div className="bg-surface absolute inset-x-0 top-[66px] flex flex-col rounded-[24px] p-2">
             {links.map((link) => (
               <Link
                 key={link.id}

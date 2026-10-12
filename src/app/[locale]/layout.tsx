@@ -5,6 +5,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { Nav } from "@/components/layout/Nav";
+import { ThemeSync } from "@/components/layout/ThemeSync";
 import { Vignette } from "@/components/layout/Vignette";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/schema";
@@ -97,6 +98,7 @@ export default async function LocaleLayout({
         </noscript>
       </head>
       <body className="relative min-h-screen bg-bg text-fg antialiased">
+        <ThemeSync />
         <NextIntlClientProvider>
           <Nav />
           <main>{children}</main>

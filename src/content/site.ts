@@ -12,10 +12,10 @@ export const site = {
     id: "Software Engineer",
   } satisfies Localized,
   roleTags: [
-    "Software Engineer",
-    "Frontend Engineer",
+    "Mobile",
+    "Web Frontend",
     "UI Engineer",
-    "Full Stack Engineer",
+    "Full Stack",
   ],
   location: {
     en: "Jakarta, Indonesia",

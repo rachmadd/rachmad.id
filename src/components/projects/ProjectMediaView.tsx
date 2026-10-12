@@ -1,3 +1,4 @@
+import { ImageCarousel } from "./ImageCarousel";
 import { MediaFrame } from "./MediaFrame";
 import { PlaceholderSlide } from "./PlaceholderSlide";
 import { ProjectCarousel } from "./ProjectCarousel";
@@ -29,6 +30,8 @@ export function ProjectMediaView({
     <MediaFrame className={className}>
       {descriptor.kind === "carousel" ? (
         <ProjectCarousel labels={descriptor.labels} paused={paused} />
+      ) : descriptor.kind === "imageCarousel" ? (
+        <ImageCarousel slides={descriptor.slides} paused={paused} />
       ) : descriptor.kind === "video" ? (
         <VideoLoop
           webm={descriptor.webm}

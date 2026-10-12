@@ -15,7 +15,7 @@ export type ConceptComponentKey = "embedded-payment" | "micro-frontend" | "multi
 export type Media =
   | { type: "image"; src: string; alt: Localized }
   | { type: "carousel"; images: { src: string; alt: Localized }[] }
-  | { type: "scroll"; webm: string; mp4: string; poster: string; alt: Localized }
+  | { type: "scroll"; mp4: string; webm?: string; poster?: string; alt: Localized }
   | {
       type: "concept";
       component: ConceptComponentKey;

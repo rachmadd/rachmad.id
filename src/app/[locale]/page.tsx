@@ -33,7 +33,7 @@ export default async function Home({ params }: HomeProps) {
       name: site.name,
       jobTitle: site.primaryTitle[locale],
       url: `${siteUrl}/${locale}`,
-      image: `${siteUrl}/avatar.jpg`,
+      image: `${siteUrl}/avatar.webp`,
       ...(sameAs.length > 0 ? { sameAs } : {}),
       address: {
         "@type": "PostalAddress",

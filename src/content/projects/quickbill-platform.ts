@@ -22,6 +22,7 @@ export const project: Project = {
       { src: "/media/projects/quickbill-platform/01.webp", alt: { en: "Quickbill Platform screenshot", id: "Quickbill Platform screenshot" } },
       { src: "/media/projects/quickbill-platform/02.webp", alt: { en: "Quickbill Platform screenshot", id: "Quickbill Platform screenshot" } },
       { src: "/media/projects/quickbill-platform/03.webp", alt: { en: "Quickbill Platform screenshot", id: "Quickbill Platform screenshot" } },
+      { src: "/media/projects/quickbill-platform/04.webp", alt: { en: "Quickbill Platform screenshot", id: "Quickbill Platform screenshot" } },
     ],
   },
   tagline: {

@@ -4,7 +4,8 @@ import type { ConceptComponentKey, Locale, Media } from "@/content/schema";
 
 export type MediaDescriptor =
   | { kind: "carousel"; labels: string[] }
-  | { kind: "video"; webm: string; mp4: string; poster: string; alt: string }
+  | { kind: "imageCarousel"; slides: { src: string; alt: string }[] }
+  | { kind: "video"; webm?: string; mp4: string; poster?: string; alt: string }
   | { kind: "concept"; component: ConceptComponentKey; alt: string }
   | { kind: "placeholder"; label: string };
 
@@ -14,18 +15,12 @@ function publicFileExists(relativePath: string): boolean {
 
 function hasVideoFiles(
   media: Extract<Media, { type: "scroll" | "concept" }>,
-): media is Extract<Media, { type: "scroll" | "concept" }> & {
-  webm: string;
-  mp4: string;
-  poster: string;
-} {
+): media is Extract<Media, { type: "scroll" | "concept" }> & { mp4: string } {
   return (
-    !!media.webm &&
     !!media.mp4 &&
-    !!media.poster &&
-    publicFileExists(media.webm) &&
     publicFileExists(media.mp4) &&
-    publicFileExists(media.poster)
+    (!media.webm || publicFileExists(media.webm)) &&
+    (!media.poster || publicFileExists(media.poster))
   );
 }
 
@@ -35,6 +30,20 @@ export function resolveProjectMedia(
   locale: Locale,
 ): MediaDescriptor {
   if (media.type === "carousel") {
+    const hasAllImages = media.images.every((image) =>
+      publicFileExists(image.src),
+    );
+
+    if (hasAllImages) {
+      return {
+        kind: "imageCarousel",
+        slides: media.images.map((image, i) => ({
+          src: image.src,
+          alt: image.alt[locale] || `${label} ${i + 1}`,
+        })),
+      };
+    }
+
     return {
       kind: "carousel",
       labels: media.images.map(

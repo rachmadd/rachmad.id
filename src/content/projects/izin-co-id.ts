@@ -22,9 +22,9 @@ export const project: Project = {
     tags: ["Laravel", "PHP", "SEO"],
   },
   media: {
-    type: "image",
-    src: "/media/projects/izin-co-id/01.webp",
-    alt: { en: "IZIN.co.id screenshot", id: "IZIN.co.id screenshot" },
+    type: "scroll",
+    mp4: "/media/projects/izin-co-id/scroll.mp4",
+    alt: { en: "IZIN.co.id walkthrough", id: "IZIN.co.id walkthrough" },
   },
   tagline: {
     en: "Making business paperwork a little less scary.",

@@ -34,7 +34,7 @@ export function ProjectCarousel({ labels, paused }: ProjectCarouselProps) {
     <div className="absolute inset-0">
       {labels.map((label, i) => (
         <PlaceholderSlide
-          key={label}
+          key={i}
           label={label}
           className="transition-opacity duration-[900ms] ease-in-out"
           style={{ opacity: i === activeIndex ? 1 : 0 }}
@@ -44,7 +44,7 @@ export function ProjectCarousel({ labels, paused }: ProjectCarouselProps) {
         <div className="absolute right-0 bottom-3 left-0 flex justify-center gap-[6px]">
           {labels.map((label, i) => (
             <span
-              key={label}
+              key={i}
               className="h-[6px] rounded-pill transition-[width,background-color] duration-[400ms] ease-in-out"
               style={{
                 width: i === activeIndex ? 18 : 6,

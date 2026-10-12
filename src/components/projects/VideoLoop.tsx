@@ -2,15 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
+import { PlaceholderSlide } from "./PlaceholderSlide";
 
 type VideoLoopProps = {
-  webm: string;
   mp4: string;
-  poster: string;
+  webm?: string;
+  poster?: string;
   alt: string;
 };
 
-export function VideoLoop({ webm, mp4, poster, alt }: VideoLoopProps) {
+export function VideoLoop({ mp4, webm, poster, alt }: VideoLoopProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [inView, setInView] = useState(false);
   const shouldReduceMotion = useReducedMotion();
@@ -39,8 +40,11 @@ export function VideoLoop({ webm, mp4, poster, alt }: VideoLoopProps) {
   }, [inView, shouldReduceMotion]);
 
   if (shouldReduceMotion) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={poster} alt={alt} className="absolute inset-0 h-full w-full object-cover" />;
+    if (poster) {
+      // eslint-disable-next-line @next/next/no-img-element
+      return <img src={poster} alt={alt} className="absolute inset-0 h-full w-full object-cover" />;
+    }
+    return <PlaceholderSlide label={alt} />;
   }
 
   return (
@@ -54,7 +58,7 @@ export function VideoLoop({ webm, mp4, poster, alt }: VideoLoopProps) {
       aria-label={alt}
       className="absolute inset-0 h-full w-full object-cover"
     >
-      <source src={webm} type="video/webm" />
+      {webm ? <source src={webm} type="video/webm" /> : null}
       <source src={mp4} type="video/mp4" />
     </video>
   );

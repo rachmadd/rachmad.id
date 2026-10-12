@@ -20,9 +20,9 @@ export const project: Project = {
     tags: ["PHP", "Bootstrap"],
   },
   media: {
-    type: "image",
-    src: "/media/projects/hellolive/01.webp",
-    alt: { en: "Hellolive screenshot", id: "Hellolive screenshot" },
+    type: "scroll",
+    mp4: "/media/projects/hellolive/scroll.mp4",
+    alt: { en: "Hellolive walkthrough", id: "Hellolive walkthrough" },
   },
   link: "hellolive.id",
   tagline: {

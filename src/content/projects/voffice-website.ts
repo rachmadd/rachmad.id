@@ -17,12 +17,9 @@ export const project: Project = {
     tags: ["Laravel", "PHP", "Mapbox"],
   },
   media: {
-    type: "carousel",
-    images: [
-      { src: "/media/projects/voffice-website/01.webp", alt: { en: "vOffice screenshot", id: "vOffice screenshot" } },
-      { src: "/media/projects/voffice-website/02.webp", alt: { en: "vOffice screenshot", id: "vOffice screenshot" } },
-      { src: "/media/projects/voffice-website/03.webp", alt: { en: "vOffice screenshot", id: "vOffice screenshot" } },
-    ],
+    type: "scroll",
+    mp4: "/media/projects/voffice-website/scroll.mp4",
+    alt: { en: "vOffice walkthrough", id: "vOffice walkthrough" },
   },
   link: "voffice.co.id",
   tagline: {
