@@ -4,7 +4,7 @@
 
 - SEO and link previews matter, so pages are pre-rendered HTML, not a client-rendered SPA.
 - Two languages with real URLs (`/en`, `/id`) so each can be indexed and shared.
-- Every project has a shareable URL, and still opens as a modal from the gallery.
+- Every project has a shareable URL; gallery clicks navigate straight to it.
 - Hosting is Vercel Hobby, so no backend, database or paid features.
 - Maintainable by one frontend engineer: few dependencies, typed content, no CMS.
 
@@ -12,7 +12,7 @@
 
 | Concern | Choice | Why |
 |---|---|---|
-| Framework | Next.js, App Router, latest stable | SSG, metadata API, intercepting routes for the modal, Rachmad's strongest stack |
+| Framework | Next.js, App Router, latest stable | SSG, metadata API, Rachmad's strongest stack |
 | Language | TypeScript, `strict: true` | Typed content catches missing translations at build time |
 | Styling | Tailwind CSS v4, tokens in CSS (`@theme`) | Fast, token-driven, matches the design system |
 | Animation | `motion` (the package formerly called framer-motion) | `useScroll`, `whileInView`, `useReducedMotion` cover everything needed |
@@ -33,7 +33,7 @@ Check each package's installed version and read its current docs before using an
 - Do **not** use `output: 'export'`. Vercel serves the SSG output natively, and keeping the default output avoids known limits around intercepting routes and image optimization.
 - `generateStaticParams` returns every `locale` and every project `slug`.
 - With next-intl, call its static-rendering helper (`setRequestLocale`) in every layout and page so routes stay static.
-- Client components are limited to: timeline scroll animation, reveal wrappers, concept-card video control, project modal, language toggle, nav scroll-spy.
+- Client components are limited to: timeline scroll animation, reveal wrappers, concept-card video control, language toggle, nav scroll-spy.
 
 ## 4. Routes
 
@@ -48,25 +48,9 @@ Check each package's installed version and read its current docs before using an
 
 `localePrefix` is `always`. Default locale is `en`. Locale detection and the cookie are handled by next-intl's middleware (named `proxy` in the newest Next.js versions; use whichever the installed version expects).
 
-### Project modal
+### Project pages
 
-Gallery clicks open the same project content as a modal while the URL changes to `/[locale]/projects/[slug]`. Implemented with a parallel route plus an intercepting route:
-
-```
-app/[locale]/layout.tsx                    renders {children} and {modal}
-app/[locale]/@modal/default.tsx            returns null
-app/[locale]/@modal/(.)projects/[slug]/page.tsx   modal version
-app/[locale]/projects/[slug]/page.tsx             full page version
-```
-
-Behavior that must hold:
-
-- Click in the gallery: modal opens over the home page, scroll position preserved, URL updates.
-- Direct visit or refresh on `/en/projects/x`: full page, no modal.
-- Browser back, Esc, close button and backdrop click all close the modal and return to the previous scroll position.
-- The modal and the full page render the **same** `ProjectContent` component. Only the wrapper differs.
-- Use the native `<dialog>` element with `showModal()` for focus trapping, Esc and inert background. Lock body scroll while open. Return focus to the clicked card on close.
-- The modal's content must still be crawlable, so the full page is what search engines see. The modal is an enhancement.
+Gallery clicks navigate directly to `/[locale]/projects/[slug]`, a normal full page (`app/[locale]/projects/[slug]/page.tsx`). There is no modal — an earlier version intercepted this route into a dialog over the gallery, but that added complexity (focus-trap/scroll-lock edge cases, a second render path for the same content) for no benefit once the full page already covers every case, so it was removed. `ProjectContent` has one output shape, used only here.
 
 ## 5. Folder structure
 
@@ -88,9 +72,8 @@ Behavior that must hold:
 ├── src/
 │   ├── app/
 │   │   ├── [locale]/
-│   │   │   ├── layout.tsx          html lang, fonts, nav, vignette, {modal}
+│   │   │   ├── layout.tsx          html lang, fonts, nav, vignette
 │   │   │   ├── page.tsx            home
-│   │   │   ├── @modal/...
 │   │   │   ├── projects/[slug]/page.tsx
 │   │   │   └── opengraph-image.tsx
 │   │   ├── sitemap.ts
@@ -101,7 +84,7 @@ Behavior that must hold:
 │   │   ├── layout/                 Nav, LanguageToggle, Vignette, Footer
 │   │   ├── sections/               Intro, Experience, Projects, Skills, Contact
 │   │   ├── timeline/               TimelineCurve, TimelineNode
-│   │   ├── projects/               ProjectCard, ProjectMedia, ConceptVideo, ProjectContent, ProjectModal
+│   │   ├── projects/               ProjectCard, ProjectMedia, ConceptVideo, ProjectContent
 │   │   └── ui/                     Pill, Button, SectionTitle, Reveal
 │   ├── content/
 │   │   ├── schema.ts               types (see CONTENT.md)
@@ -169,7 +152,7 @@ All media frames share one wrapper (`ProjectMedia`) so every card has the same a
 ## 10. Performance guardrails
 
 - First-load JS for the home route stays lean (soft target: about 150 KB gzipped). Run `next build` and watch the route size table.
-- Only the timeline, reveal wrapper, video control and modal are client code. Do not make whole sections client components just to use one hook; extract a small client child instead.
+- Only the timeline, reveal wrapper and video control are client code. Do not make whole sections client components just to use one hook; extract a small client child instead.
 - The LCP element is the name/headline text, not an image. Avatar is small and gets `priority`.
 - Images below the fold are lazy. Every `next/image` has explicit dimensions or `fill` with a sized parent, so layout shift stays near zero.
 - Fonts: at most two families, subset, `display: swap` via `next/font`.

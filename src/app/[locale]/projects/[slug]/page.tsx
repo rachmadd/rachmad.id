@@ -122,7 +122,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </section>
 
       <div className="flex flex-col gap-[96px] pt-[96px] md:gap-[160px] md:pt-[160px]">
-        <ProjectContent project={project} locale={locale} variant="page" />
+        <ProjectContent project={project} locale={locale} />
 
         <section className="px-[24px] md:px-[40px]">
           <div className="mx-auto grid max-w-content grid-cols-1 gap-3 md:grid-cols-2">
