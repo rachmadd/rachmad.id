@@ -10,7 +10,7 @@ import type { Project } from "@/content/schema";
 export const project: Project = {
   slug: "izin-co-id",
   tier: "other",
-  order: 7,
+  order: 8,
   companyId: "voffice",
   title: { en: "IZIN.co.id", id: "IZIN.co.id" },
   year: "2020",

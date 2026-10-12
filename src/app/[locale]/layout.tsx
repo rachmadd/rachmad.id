@@ -87,6 +87,11 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem("theme");var t=s==="light"||s==="dark"?s:(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();`,
+          }}
+        />
         <noscript>
           <style>{`[data-reveal]{opacity:1 !important;transform:none !important}`}</style>
         </noscript>

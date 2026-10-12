@@ -21,6 +21,27 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
+/* RGB triplet (no alpha) backing every `rgb(var(--overlay-rgb) / N)` arbitrary
+   value used for ad hoc borders/hover overlays across components — keeps
+   every existing opacity number untouched while letting the base color
+   itself flip between themes. */
+:root {
+  --overlay-rgb: 255 255 255;
+  --surface-rgb: 21 21 24;
+}
+
+:root[data-theme="light"] {
+  --color-bg: #f6f6f7;
+  --color-surface: #ffffff;
+  --color-media-fill: #ebebee;
+  --color-border: rgb(0 0 0 / 0.08);
+  --color-border-strong: rgb(0 0 0 / 0.16);
+  --color-fg: #16181c;
+  --color-muted: #5a6472;
+  --overlay-rgb: 10 10 12;
+  --surface-rgb: 255 255 255;
+}
+
 html,
 body {
   background: var(--color-bg);

@@ -10,6 +10,7 @@ import { ProjectMediaView } from "@/components/projects/ProjectMediaView";
 import { ProjectContent } from "@/components/projects/ProjectContent";
 import { Footer } from "@/components/layout/Footer";
 import { getSiteUrl, isProductionDeployment } from "@/lib/site-url";
+import { site } from "@/content/site";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   if (!project) return {};
 
   const siteUrl = getSiteUrl();
-  const title = `${project.title[locale]} | Rachmad Syaefullah`;
+  const title = `${project.title[locale]} | ${site.name}`;
   const description = project.card.description[locale];
   const otherLocale: Locale = locale === "en" ? "id" : "en";
 
@@ -101,7 +102,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               href={`https://${project.link}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 items-center rounded-pill border border-[rgba(255,255,255,0.14)] px-[18px] text-sm text-fg no-underline hover:border-[rgba(255,255,255,0.3)]"
+              className="inline-flex h-11 items-center rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.14)] px-[18px] text-sm text-fg no-underline hover:border-[rgb(var(--overlay-rgb)_/_0.3)]"
             >
               {t("visitLiveSite")} ↗
             </a>
@@ -128,7 +129,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="mx-auto grid max-w-content grid-cols-1 gap-3 md:grid-cols-2">
             <Link
               href={`/projects/${prev.slug}`}
-              className="flex flex-col gap-[6px] rounded-card border border-border bg-surface p-[22px_26px] text-fg no-underline hover:border-[rgba(255,255,255,0.22)]"
+              className="flex flex-col gap-[6px] rounded-card border border-border bg-surface p-[22px_26px] text-fg no-underline hover:border-[rgb(var(--overlay-rgb)_/_0.22)]"
             >
               <span className="font-mono text-[12.5px] text-muted">
                 ← {t("previous")}
@@ -139,7 +140,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </Link>
             <Link
               href={`/projects/${next.slug}`}
-              className="flex flex-col items-end gap-[6px] rounded-card border border-border bg-surface p-[22px_26px] text-right text-fg no-underline hover:border-[rgba(255,255,255,0.22)]"
+              className="flex flex-col items-end gap-[6px] rounded-card border border-border bg-surface p-[22px_26px] text-right text-fg no-underline hover:border-[rgb(var(--overlay-rgb)_/_0.22)]"
             >
               <span className="font-mono text-[12.5px] text-muted">
                 {t("next")} →

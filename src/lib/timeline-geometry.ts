@@ -28,8 +28,8 @@ export function computeTimelineGeometry(params: {
   isMobile: boolean;
 }): TimelineGeometry {
   const { count, width, isMobile } = params;
-  const nodeSize = isMobile ? 44 : 56;
-  const logoSize = isMobile ? 28 : 34;
+  const nodeSize = isMobile ? 44 : 60;
+  const logoSize = isMobile ? 28 : 40;
   const rowHeight = isMobile ? 150 : 200;
   const top = isMobile ? 64 : 110;
 

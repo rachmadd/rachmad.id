@@ -5,7 +5,7 @@ import type { Project } from "@/content/schema";
 export const project: Project = {
   slug: "voffice-website",
   tier: "other",
-  order: 6,
+  order: 7,
   companyId: "voffice",
   title: { en: "vOffice", id: "vOffice" },
   year: "2020",

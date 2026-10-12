@@ -31,7 +31,7 @@ If the design export and DESIGN.md conflict on a visual detail, follow the expor
 
 ## Non-negotiable rules
 
-- **Dark only.** No light theme, no theme toggle.
+- **Dark by default, with an optional light theme.** A theme toggle sits next to the language switcher. First visit follows the OS/browser `prefers-color-scheme`; once the visitor toggles manually, that choice is remembered (`localStorage`) and wins over the system preference on return visits. Light-mode token values live in `src/app/globals.css` under `:root[data-theme="light"]`; any new hardcoded `rgba(255,255,255,…)` overlay color should use `rgba(var(--overlay-rgb),…)` instead so it flips with the theme. See `docs/DECISIONS.md` for why this reverses the project's original dark-only decision.
 - **One accent color** (red). It is used for non-text elements only: timeline path and nodes, link underlines, focus rings, the travelling dot in diagrams, small highlights. Never for body text or small labels.
 - **Everything is rounded.** No sharp corners on cards, media, buttons, tags, inputs, frames, videos. Tags and buttons are pills.
 - **No gradients, glows, blurred blobs, glassmorphism or emoji decoration.** The single exception is the fixed bottom vignette.

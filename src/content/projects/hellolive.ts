@@ -7,7 +7,7 @@ import type { Project } from "@/content/schema";
 export const project: Project = {
   slug: "hellolive",
   tier: "other",
-  order: 8,
+  order: 9,
   companyId: "voffice",
   companyLabel: { en: "vOffice", id: "vOffice" },
   title: { en: "Hellolive", id: "Hellolive" },

@@ -7,6 +7,7 @@ export interface Company {
   id: CompanyId;
   initials: string;
   name: string;
+  logo: string;
   role: Localized;
   start: string;
   end: string;
@@ -22,6 +23,7 @@ export const companies: Company[] = [
     id: "quickbill",
     initials: "QB",
     name: "Quickbill",
+    logo: "/logos/quickbill.svg",
     role: {
       en: "Senior Software Engineer, Full Stack",
       id: "Senior Software Engineer, Full Stack",
@@ -34,6 +36,7 @@ export const companies: Company[] = [
     id: "1engage",
     initials: "1E",
     name: "1Engage (Sinarmas Group)",
+    logo: "/logos/1engage.svg",
     role: {
       en: "Software Engineer, Full Stack",
       id: "Software Engineer, Full Stack",
@@ -46,6 +49,7 @@ export const companies: Company[] = [
     id: "accelbyte",
     initials: "AB",
     name: "AccelByte",
+    logo: "/logos/accelbyte.svg",
     role: {
       en: "Software Engineer II, Frontend",
       id: "Software Engineer II, Frontend",
@@ -59,6 +63,7 @@ export const companies: Company[] = [
     id: "moladin",
     initials: "MO",
     name: "Moladin",
+    logo: "/logos/moladin.svg",
     role: {
       en: "Software Engineer II, Frontend",
       id: "Software Engineer II, Frontend",
@@ -70,6 +75,7 @@ export const companies: Company[] = [
   {
     id: "maybank",
     initials: "MB",
+    logo: "/logos/maybank.svg",
     name: "Maybank Indonesia",
     role: {
       en: "Frontend Developer",
@@ -82,6 +88,7 @@ export const companies: Company[] = [
   {
     id: "voffice",
     initials: "VO",
+    logo: "/logos/voffice.svg",
     name: "vOffice Indonesia",
     role: {
       en: "Web Developer",

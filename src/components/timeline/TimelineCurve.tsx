@@ -108,6 +108,7 @@ export function TimelineCurve({
                   logoSize={geometry.logoSize}
                   initials={company.initials}
                   name={company.name}
+                  logo={company.logo}
                   role={company.role[locale]}
                   dateLabel={
                     company.remote

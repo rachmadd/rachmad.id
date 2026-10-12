@@ -43,7 +43,7 @@ export function ProjectCardInteractive({
       onFocus={() => setHovered(true)}
       onBlur={() => setHovered(false)}
       className={`relative flex flex-col rounded-card border bg-surface p-[10px] transition-colors duration-300 ${
-        hovered ? "border-[rgba(255,255,255,0.22)]" : "border-border"
+        hovered ? "border-[rgb(var(--overlay-rgb)_/_0.22)]" : "border-border"
       }`}
     >
       <div className="overflow-hidden rounded-media">
@@ -77,7 +77,7 @@ export function ProjectCardInteractive({
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex h-7 items-center rounded-pill border border-[rgba(255,255,255,0.1)] px-3 text-[12.5px]"
+              className="inline-flex h-7 items-center rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.1)] px-3 text-[12.5px]"
             >
               {tag}
             </span>

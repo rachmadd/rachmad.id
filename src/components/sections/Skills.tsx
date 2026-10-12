@@ -30,7 +30,7 @@ export async function Skills() {
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="inline-flex h-8 items-center rounded-pill border border-[rgba(255,255,255,0.1)] px-[14px] text-sm text-fg"
+                    className="inline-flex h-8 items-center rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.1)] px-[14px] text-sm text-fg"
                   >
                     {item}
                   </span>

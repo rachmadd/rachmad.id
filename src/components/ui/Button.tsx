@@ -8,7 +8,7 @@ const base =
 const variants: Record<Variant, string> = {
   primary: "bg-fg text-bg hover:bg-white",
   outline:
-    "border border-[rgba(255,255,255,0.16)] text-fg hover:border-[rgba(255,255,255,0.34)] hover:bg-[rgba(255,255,255,0.04)]",
+    "border border-[rgb(var(--overlay-rgb)_/_0.16)] text-fg hover:border-[rgb(var(--overlay-rgb)_/_0.34)] hover:bg-[rgb(var(--overlay-rgb)_/_0.04)]",
 };
 
 type CommonProps = {

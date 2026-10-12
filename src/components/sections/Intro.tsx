@@ -21,7 +21,7 @@ export async function Intro() {
           width={104}
           height={104}
           priority
-          className="h-[88px] w-[88px] rounded-full border border-[rgba(255,255,255,0.1)] bg-surface object-cover md:h-[104px] md:w-[104px]"
+          className="h-[88px] w-[88px] rounded-full border border-[rgb(var(--overlay-rgb)_/_0.1)] bg-surface object-cover md:h-[104px] md:w-[104px]"
         />
         <h1 className="m-0 mt-8 text-center text-[40px] leading-[1.05] font-medium tracking-[-0.025em] md:text-[56px]">
           {site.name}

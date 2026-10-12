@@ -9,7 +9,7 @@ import type { Project } from "@/content/schema";
 export const project: Project = {
   slug: "maybank-digital-branch",
   tier: "other",
-  order: 10,
+  order: 6,
   companyId: "maybank",
   title: {
     en: "Maybank Digital Branch Delivery System",
