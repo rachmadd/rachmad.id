@@ -9,6 +9,7 @@ import { resolveProjectMedia } from "@/components/projects/ProjectMedia";
 import { ProjectMediaView } from "@/components/projects/ProjectMediaView";
 import { ProjectContent } from "@/components/projects/ProjectContent";
 import { Footer } from "@/components/layout/Footer";
+import { getSiteUrl, isProductionDeployment } from "@/lib/site-url";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -21,14 +22,43 @@ type ProjectPageProps = {
 };
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  const { locale, slug } = await params;
+  const { locale: rawLocale, slug } = await params;
+  const locale = rawLocale as Locale;
   const project = getProjectBySlug(slug);
   if (!project) return {};
 
-  const title = `${project.title[locale as Locale]} | Rachmad`;
+  const siteUrl = getSiteUrl();
+  const title = `${project.title[locale]} | Rachmad Syaefullah`;
+  const description = project.card.description[locale];
+  const otherLocale: Locale = locale === "en" ? "id" : "en";
+
   return {
     title,
-    description: project.summary[locale as Locale],
+    description,
+    alternates: {
+      canonical: `${siteUrl}/${locale}/projects/${slug}`,
+      languages: {
+        en: `${siteUrl}/en/projects/${slug}`,
+        id: `${siteUrl}/id/projects/${slug}`,
+        "x-default": `${siteUrl}/en/projects/${slug}`,
+      },
+    },
+    openGraph: {
+      type: "article",
+      url: `${siteUrl}/${locale}/projects/${slug}`,
+      locale: locale === "en" ? "en_US" : "id_ID",
+      alternateLocale: otherLocale === "en" ? "en_US" : "id_ID",
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+    robots: isProductionDeployment()
+      ? { index: true, follow: true }
+      : { index: false, follow: false },
   };
 }
 
@@ -41,8 +71,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   if (!project) notFound();
 
   const t = await getTranslations("Project");
+  const common = await getTranslations("Common");
   const company = companies.find((c) => c.id === project.companyId);
   const companyName = company?.name ?? project.companyLabel?.[locale] ?? "";
+
+  const placeholderLabel = project.internal
+    ? common("internalToolLabel")
+    : `${common("screenshotLabel")} · ${project.title[locale]}`;
 
   const index = projects.findIndex((p) => p.slug === slug);
   const prev = projects[(index - 1 + projects.length) % projects.length];
@@ -59,39 +94,35 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {project.title[locale]}
           </h1>
           <p className="m-0 text-center text-base md:text-lg">
-            {project.role[locale]}
+            {project.tagline[locale]}
           </p>
+          {project.link ? (
+            <a
+              href={`https://${project.link}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-11 items-center rounded-pill border border-[rgba(255,255,255,0.14)] px-[18px] text-sm text-fg no-underline hover:border-[rgba(255,255,255,0.3)]"
+            >
+              {t("visitLiveSite")} ↗
+            </a>
+          ) : null}
+          {project.footnote ? (
+            <p className="m-0 max-w-[480px] text-center text-sm text-muted">
+              {project.footnote[locale]}
+            </p>
+          ) : null}
         </div>
         <div className="mx-auto mt-10 max-w-[1040px] md:mt-16">
           <ProjectMediaView
             className="border border-border"
             paused={false}
-            descriptor={resolveProjectMedia(
-              project.media,
-              `${t("overview")} · ${project.title[locale]}`,
-              locale,
-            )}
+            descriptor={resolveProjectMedia(project.media, placeholderLabel, locale)}
           />
         </div>
       </section>
 
       <div className="flex flex-col gap-[96px] pt-[96px] md:gap-[160px] md:pt-[160px]">
         <ProjectContent project={project} locale={locale} variant="page" />
-
-        {project.outcome ? (
-          <section className="px-[24px] md:px-[40px]">
-            <h2 className="m-0 mb-12 text-center text-[24px] leading-[1.15] font-medium tracking-[-0.025em] md:mb-16 md:text-[30px]">
-              {t("outcome")}
-            </h2>
-            <div className="mx-auto flex max-w-content flex-col gap-4">
-              {project.outcome[locale].map((paragraph, i) => (
-                <p key={i} className="m-0 text-wrap-pretty">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </section>
-        ) : null}
 
         <section className="px-[24px] md:px-[40px]">
           <div className="mx-auto grid max-w-content grid-cols-1 gap-3 md:grid-cols-2">

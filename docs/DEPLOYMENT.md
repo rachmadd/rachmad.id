@@ -5,7 +5,7 @@ Target: Vercel Hobby, source on GitHub, domain `rachmad.id`.
 ## 1. How CI/CD is split
 
 - **Vercel's GitHub integration deploys.** Every push to `main` deploys to production; every pull request gets a preview URL. No deploy tokens in GitHub, no custom deploy script.
-- **GitHub Actions is the quality gate.** It runs lint, typecheck, build and Lighthouse on every PR and on `main` (`.github/workflows/ci.yml`).
+- **GitHub Actions is the quality gate.** It runs lint, typecheck, test and build on every PR and on `main` (`.github/workflows/ci.yml`).
 - **Branch protection on `main`** requires the `quality` job to pass before merge, so a broken PR cannot reach production.
 
 Why not deploy from Actions with the Vercel CLI: it needs three secrets (`VERCEL_TOKEN`, org and project IDs), duplicates what the integration already does, and loses Vercel's PR comments. If Rachmad later wants "deploy only after CI passes" at the cost of that setup, the alternative is to disable Vercel's automatic Git deploys and add a workflow job that runs `vercel pull`, `vercel build --prod` and `vercel deploy --prebuilt --prod`. Do not set this up unless asked.

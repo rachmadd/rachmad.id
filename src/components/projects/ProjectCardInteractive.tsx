@@ -9,10 +9,10 @@ type ProjectCardInteractiveProps = {
   slug: string;
   companyId: string | null;
   title: string;
-  summary: string;
+  description: string;
   companyName: string;
   year: string;
-  skills: string[];
+  tags: string[];
   tier: "featured" | "other";
   descriptor: MediaDescriptor;
 };
@@ -21,10 +21,10 @@ export function ProjectCardInteractive({
   slug,
   companyId,
   title,
-  summary,
+  description,
   companyName,
   year,
-  skills,
+  tags,
   tier,
   descriptor,
 }: ProjectCardInteractiveProps) {
@@ -71,15 +71,15 @@ export function ProjectCardInteractive({
           </Link>
         </h3>
         <p className="m-0 mt-[10px] text-[15px] leading-[1.55] text-wrap-pretty text-muted">
-          {summary}
+          {description}
         </p>
         <div className="mt-1 flex flex-wrap gap-[6px]">
-          {skills.map((skill) => (
+          {tags.map((tag) => (
             <span
-              key={skill}
+              key={tag}
               className="inline-flex h-7 items-center rounded-pill border border-[rgba(255,255,255,0.1)] px-3 text-[12.5px]"
             >
-              {skill}
+              {tag}
             </span>
           ))}
         </div>

@@ -2,13 +2,12 @@ import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Pill } from "@/components/ui/Pill";
 import { Button } from "@/components/ui/Button";
-import { getCvHref, site } from "@/content/site";
+import { site } from "@/content/site";
 import type { Locale } from "@/content/schema";
 
 export async function Intro() {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("Intro");
-  const common = await getTranslations("Common");
 
   return (
     <section
@@ -41,13 +40,16 @@ export async function Intro() {
             <Pill key={tag}>{tag}</Pill>
           ))}
         </div>
+        {site.showStatusChip ? (
+          <Pill className="mt-6">{site.statusChip[locale]}</Pill>
+        ) : null}
         <p className="mt-9 w-full max-w-[600px] text-left text-wrap-pretty md:mt-11">
-          {t("description")}
+          {site.description[locale]}
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Button href="#contact">{common("contact")}</Button>
-          <Button href={getCvHref(locale)} variant="outline">
-            {common("downloadCv")}
+          <Button href="#projects">{t("ctaWork")}</Button>
+          <Button href="#contact" variant="outline">
+            {t("ctaContact")}
           </Button>
         </div>
       </div>

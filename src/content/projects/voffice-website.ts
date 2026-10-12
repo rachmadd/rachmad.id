@@ -1,57 +1,65 @@
-import type { Project, Feature } from "@/content/schema";
+// TODO: Indonesian translation pending — id mirrors en.
+import type { Project } from "@/content/schema";
 
-const features: Feature[] = [
-  {
-    title: { en: "Feature 1", id: "Fitur 1" },
-    body: {
-      en: "Real details for this feature are coming. This block shows how the layout handles the content once it's ready.",
-      id: "Detail asli untuk fitur ini akan menyusul. Blok ini menunjukkan tata letaknya begitu kontennya siap.",
-    },
-  },
-  {
-    title: { en: "Feature 2", id: "Fitur 2" },
-    body: {
-      en: "Real details for this feature are coming. This block shows how the layout handles the content once it's ready.",
-      id: "Detail asli untuk fitur ini akan menyusul. Blok ini menunjukkan tata letaknya begitu kontennya siap.",
-    },
-  },
-  {
-    title: { en: "Feature 3", id: "Fitur 3" },
-    body: {
-      en: "Real details for this feature are coming. This block shows how the layout handles the content once it's ready.",
-      id: "Detail asli untuk fitur ini akan menyusul. Blok ini menunjukkan tata letaknya begitu kontennya siap.",
-    },
-  },
-];
-
+// Source: docs/rachmad-id-copy-en-v1.md section 5.10.
 export const project: Project = {
   slug: "voffice-website",
   tier: "other",
-  order: 5,
+  order: 6,
   companyId: "voffice",
-  title: { en: "vOffice Website", id: "vOffice Website" },
-  summary: {
-    en: "The vOffice Indonesia website, built with PHP and Laravel.",
-    id: "Situs web vOffice Indonesia, dibangun dengan PHP dan Laravel.",
-  },
-  role: { en: "Web Developer", id: "Web Developer" },
+  title: { en: "vOffice", id: "vOffice" },
   year: "2020",
-  skills: ["PHP", "Laravel"],
-  stack: ["PHP", "Laravel 7"],
+  card: {
+    description: {
+      en: "The main website for vOffice Indonesia, built so marketing could update it without waiting on me.",
+      id: "The main website for vOffice Indonesia, built so marketing could update it without waiting on me.",
+    },
+    tags: ["Laravel", "PHP", "Mapbox"],
+  },
   media: {
     type: "carousel",
     images: [
-      { src: "/media/projects/voffice-website/01.webp", alt: { en: "vOffice website homepage", id: "Beranda situs vOffice" } },
-      { src: "/media/projects/voffice-website/02.webp", alt: { en: "vOffice website listing page", id: "Halaman listing situs vOffice" } },
-      { src: "/media/projects/voffice-website/03.webp", alt: { en: "vOffice website contact page", id: "Halaman kontak situs vOffice" } },
+      { src: "/media/projects/voffice-website/01.webp", alt: { en: "vOffice screenshot", id: "vOffice screenshot" } },
+      { src: "/media/projects/voffice-website/02.webp", alt: { en: "vOffice screenshot", id: "vOffice screenshot" } },
+      { src: "/media/projects/voffice-website/03.webp", alt: { en: "vOffice screenshot", id: "vOffice screenshot" } },
     ],
   },
-  overview: {
-    en: ["vOffice Website is the company website for vOffice Indonesia, built with PHP and Laravel 7 between 2019 and 2021."],
-    id: ["vOffice Website adalah situs web perusahaan untuk vOffice Indonesia, dibangun dengan PHP dan Laravel 7 antara 2019 dan 2021."],
+  link: "voffice.co.id",
+  tagline: {
+    en: "Virtual offices across Indonesia, one search away.",
+    id: "Virtual offices across Indonesia, one search away.",
   },
-  features,
-  placeholder: true,
+  product: {
+    en: [
+      "vOffice rents virtual offices and workspaces across Indonesia, and its website is where most customers start. It lists every service and every centre on a map, runs a blog, and hands visitors over to a chatbot when they have questions.",
+      "I built and maintained it, along with a Laravel CMS that let the marketing team publish blogs, promos and landing pages on their own. Most visitors came from search, so a lot of the work was the invisible kind: AMP pages, clean markup, fast loads and tidy analytics.",
+    ],
+    id: [
+      "vOffice rents virtual offices and workspaces across Indonesia, and its website is where most customers start. It lists every service and every centre on a map, runs a blog, and hands visitors over to a chatbot when they have questions.",
+      "I built and maintained it, along with a Laravel CMS that let the marketing team publish blogs, promos and landing pages on their own. Most visitors came from search, so a lot of the work was the invisible kind: AMP pages, clean markup, fast loads and tidy analytics.",
+    ],
+  },
+  inside: {
+    en: [
+      "Service pages",
+      "Centre locator on Mapbox",
+      "Blog & CMS",
+      "Chatbot integration",
+      "Contact forms",
+      "AMP pages",
+      "SEO & analytics",
+    ],
+    id: [
+      "Service pages",
+      "Centre locator on Mapbox",
+      "Blog & CMS",
+      "Chatbot integration",
+      "Contact forms",
+      "AMP pages",
+      "SEO & analytics",
+    ],
+  },
+  stack: "PHP, Laravel, jQuery, Bootstrap, Sass, Mapbox",
 };
 
 export default project;

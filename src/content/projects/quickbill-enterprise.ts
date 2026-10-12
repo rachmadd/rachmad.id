@@ -1,57 +1,58 @@
-import type { Project, Feature } from "@/content/schema";
+// TODO: Indonesian translation pending — id mirrors en.
+import type { Project } from "@/content/schema";
 
-const features: Feature[] = [
-  {
-    title: { en: "Feature 1", id: "Fitur 1" },
-    body: {
-      en: "Real details for this feature are coming. This block shows how the layout handles the content once it's ready.",
-      id: "Detail asli untuk fitur ini akan menyusul. Blok ini menunjukkan tata letaknya begitu kontennya siap.",
-    },
-  },
-  {
-    title: { en: "Feature 2", id: "Fitur 2" },
-    body: {
-      en: "Real details for this feature are coming. This block shows how the layout handles the content once it's ready.",
-      id: "Detail asli untuk fitur ini akan menyusul. Blok ini menunjukkan tata letaknya begitu kontennya siap.",
-    },
-  },
-  {
-    title: { en: "Feature 3", id: "Fitur 3" },
-    body: {
-      en: "Real details for this feature are coming. This block shows how the layout handles the content once it's ready.",
-      id: "Detail asli untuk fitur ini akan menyusul. Blok ini menunjukkan tata letaknya begitu kontennya siap.",
-    },
-  },
-];
-
+// Source: docs/rachmad-id-copy-en-v1.md section 5.2.
 export const project: Project = {
   slug: "quickbill-enterprise",
   tier: "other",
   order: 1,
   companyId: "quickbill",
-  title: { en: "Quickbill Enterprise Platform", id: "Quickbill Enterprise Platform" },
-  summary: {
-    en: "An enterprise-focused variant of the Quickbill platform.",
-    id: "Varian Quickbill yang difokuskan untuk kebutuhan enterprise.",
-  },
-  role: { en: "Software Engineer, Full Stack", id: "Software Engineer, Full Stack" },
+  title: { en: "Quickbill Enterprise", id: "Quickbill Enterprise" },
   year: "2025",
-  skills: ["Next.js", "TypeScript"],
-  stack: ["Next.js", "TypeScript"],
+  card: {
+    description: {
+      en: "Quickbill reshaped for large companies, where every payment needs a second pair of eyes before it moves.",
+      id: "Quickbill reshaped for large companies, where every payment needs a second pair of eyes before it moves.",
+    },
+    tags: ["Next.js", "TypeScript", "Go"],
+  },
   media: {
     type: "image",
     src: "/media/projects/quickbill-enterprise/01.webp",
     alt: {
-      en: "Quickbill Enterprise Platform screen",
-      id: "Tampilan Quickbill Enterprise Platform",
+      en: "Quickbill Enterprise screenshot",
+      id: "Quickbill Enterprise screenshot",
     },
   },
-  overview: {
-    en: ["Quickbill Enterprise Platform is an enterprise-focused variant of the Quickbill platform. Further details are not yet available."],
-    id: ["Quickbill Enterprise Platform adalah varian Quickbill yang difokuskan untuk kebutuhan enterprise. Detail lebih lanjut belum tersedia."],
+  tagline: {
+    en: "Same engine, built around approvals.",
+    id: "Same engine, built around approvals.",
   },
-  features,
-  placeholder: true,
+  product: {
+    en: [
+      "Enterprise clients liked the platform but couldn't use it as it was. In their finance teams, the person who prepares a payment is never the one who sends it. So we built a version around how they work: one person drafts, another approves, and nothing leaves the account until both have signed off.",
+      "It shares its core with the main platform. My job was making it feel purpose-built without forking everything.",
+    ],
+    id: [
+      "Enterprise clients liked the platform but couldn't use it as it was. In their finance teams, the person who prepares a payment is never the one who sends it. So we built a version around how they work: one person drafts, another approves, and nothing leaves the account until both have signed off.",
+      "It shares its core with the main platform. My job was making it feel purpose-built without forking everything.",
+    ],
+  },
+  myPart: {
+    en: [
+      "Built the maker-checker approval flow for payments and fund transfers",
+      "Kept shared logic and components in the main platform and Quickbill UI, so both products improved together",
+    ],
+    id: [
+      "Built the maker-checker approval flow for payments and fund transfers",
+      "Kept shared logic and components in the main platform and Quickbill UI, so both products improved together",
+    ],
+  },
+  inside: {
+    en: ["Maker-checker approvals", "Fund transfer orders", "Payments", "Authentication", "Dashboard"],
+    id: ["Maker-checker approvals", "Fund transfer orders", "Payments", "Authentication", "Dashboard"],
+  },
+  stack: "Same stack as Quickbill Platform",
 };
 
 export default project;

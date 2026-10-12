@@ -1,19 +1,22 @@
+// TODO: Indonesian translation pending — id mirrors en.
 import type { Project } from "@/content/schema";
 
+// Source: docs/rachmad-id-copy-en-v1.md section 5.3.
 export const project: Project = {
   slug: "quickbill-embedded-payment",
   tier: "other",
   order: 2,
   companyId: "quickbill",
   title: { en: "Quickbill Embedded Payment", id: "Quickbill Embedded Payment" },
-  summary: {
-    en: "An embedded payment iframe that drops Quickbill payment flows into a partner app.",
-    id: "Iframe pembayaran yang menyisipkan alur pembayaran Quickbill ke dalam aplikasi partner.",
-  },
-  role: { en: "Software Engineer, Full Stack", id: "Software Engineer, Full Stack" },
   year: "2025",
-  skills: ["Next.js", "TypeScript"],
-  stack: ["Next.js", "TypeScript"],
+  card: {
+    description: {
+      en: "A checkout screen enterprise clients drop into their own apps. Their invoices, our payment rails.",
+      id: "A checkout screen enterprise clients drop into their own apps. Their invoices, our payment rails.",
+    },
+    tags: ["Vite", "TypeScript", "Quickbill UI"],
+  },
+  internal: true,
   media: {
     type: "concept",
     component: "embedded-payment",
@@ -22,38 +25,25 @@ export const project: Project = {
       id: "Diagram alur pembayaran tersemat di dalam aplikasi partner",
     },
   },
-  overview: {
+  tagline: {
+    en: "Quickbill checkout, living inside someone else's product.",
+    id: "Quickbill checkout, living inside someone else's product.",
+  },
+  product: {
     en: [
-      "Quickbill Embedded Payment lets a partner app open an Invoice menu, tap Pay, and complete payment inside a Quickbill iframe without leaving the partner app.",
+      "Some clients already had their own invoicing and only wanted the payment part. So I built a small checkout they could embed: the customer picks a method, clears 3D Secure when needed, and lands on a clear status screen. No Quickbill account required.",
+      "I kept it light on purpose. Vite instead of Next.js, and only the components it needed from Quickbill UI. I also wrote the integration docs and worked directly with client engineers while they plugged it in.",
     ],
     id: [
-      "Quickbill Embedded Payment memungkinkan sebuah aplikasi partner membuka menu Invoice, menekan Bayar, dan menyelesaikan pembayaran di dalam iframe Quickbill tanpa keluar dari aplikasi partner.",
+      "Some clients already had their own invoicing and only wanted the payment part. So I built a small checkout they could embed: the customer picks a method, clears 3D Secure when needed, and lands on a clear status screen. No Quickbill account required.",
+      "I kept it light on purpose. Vite instead of Next.js, and only the components it needed from Quickbill UI. I also wrote the integration docs and worked directly with client engineers while they plugged it in.",
     ],
   },
-  features: [
-    {
-      title: { en: "Invoice menu", id: "Menu invoice" },
-      body: {
-        en: "The partner app opens an Invoice menu that lists what's due.",
-        id: "Aplikasi partner membuka menu Invoice yang menampilkan tagihan yang harus dibayar.",
-      },
-    },
-    {
-      title: { en: "Embedded iframe", id: "Iframe tersemat" },
-      body: {
-        en: "Tapping Pay opens a Quickbill payment iframe inside the partner app, so the user never leaves it.",
-        id: "Menekan Bayar membuka iframe pembayaran Quickbill di dalam aplikasi partner, sehingga pengguna tidak perlu keluar dari aplikasi tersebut.",
-      },
-    },
-    {
-      title: { en: "Payment success", id: "Pembayaran berhasil" },
-      body: {
-        en: "After the user fills in payment details, the flow ends with a payment success state inside the same iframe.",
-        id: "Setelah pengguna mengisi detail pembayaran, alur berakhir dengan status pembayaran berhasil di dalam iframe yang sama.",
-      },
-    },
-  ],
-  placeholder: true,
+  inside: {
+    en: ["Payment method selection", "3DS verification", "Payment status", "Embeds inside client platforms"],
+    id: ["Payment method selection", "3DS verification", "Payment status", "Embeds inside client platforms"],
+  },
+  stack: "Vite, React, TypeScript, Quickbill UI",
 };
 
 export default project;

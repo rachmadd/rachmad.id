@@ -22,8 +22,13 @@ export default async function ProjectModalPage({ params }: ModalPageProps) {
   if (!project) notFound();
 
   const t = await getTranslations("Project");
+  const common = await getTranslations("Common");
   const company = companies.find((c) => c.id === project.companyId);
   const companyName = company?.name ?? project.companyLabel?.[locale] ?? "";
+
+  const placeholderLabel = project.internal
+    ? common("internalToolLabel")
+    : `${common("screenshotLabel")} · ${project.title[locale]}`;
 
   const index = projects.findIndex((p) => p.slug === slug);
   const prev = projects[(index - 1 + projects.length) % projects.length];
@@ -49,20 +54,32 @@ export default async function ProjectModalPage({ params }: ModalPageProps) {
         <ProjectMediaView
           className="border border-border"
           paused={false}
-          descriptor={resolveProjectMedia(
-            project.media,
-            `${t("overview")} · ${project.title[locale]}`,
-            locale,
-          )}
+          descriptor={resolveProjectMedia(project.media, placeholderLabel, locale)}
         />
 
         <div className="flex flex-col items-center gap-[10px]">
           <h2 className="m-0 text-center text-[28px] leading-[1.15] font-medium tracking-[-0.025em] text-wrap-balance md:text-[36px]">
             {project.title[locale]}
           </h2>
+          <p className="m-0 text-center text-base">{project.tagline[locale]}</p>
           <p className="m-0 text-center font-mono text-[13px] text-muted">
-            {project.role[locale]} · {companyName} · {project.year}
+            {companyName} · {project.year}
           </p>
+          {project.link ? (
+            <a
+              href={`https://${project.link}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-fg underline decoration-accent decoration-[1.5px] underline-offset-[5px]"
+            >
+              {t("visitLiveSite")} ↗
+            </a>
+          ) : null}
+          {project.footnote ? (
+            <p className="m-0 max-w-[480px] text-center text-sm text-muted">
+              {project.footnote[locale]}
+            </p>
+          ) : null}
         </div>
 
         <ProjectContent project={project} locale={locale} variant="modal" />

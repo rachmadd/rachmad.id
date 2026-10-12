@@ -21,7 +21,7 @@
 | Images | `next/image` for screenshots and logos | Responsive sizes, modern formats, lazy loading |
 | Package manager | pnpm | Fast, strict |
 | Hosting | Vercel Hobby, GitHub integration | Preview per PR, zero config |
-| CI | GitHub Actions | Quality gate (lint, types, build, Lighthouse) |
+| CI | GitHub Actions | Quality gate (lint, types, test, build) |
 
 Do not add: a UI kit, a CMS, an icon library, an analytics SDK, a state library, or an MDX pipeline. If you think one is needed, record the reason in `docs/DECISIONS.md` and ask first.
 
@@ -120,7 +120,6 @@ Behavior that must hold:
 │       ├── en.json                 UI strings (nav, buttons, labels)
 │       └── id.json
 ├── next.config.ts
-├── lighthouserc.json
 └── .github/workflows/ci.yml
 ```
 

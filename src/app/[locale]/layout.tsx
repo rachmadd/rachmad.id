@@ -6,6 +6,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { Nav } from "@/components/layout/Nav";
 import { Vignette } from "@/components/layout/Vignette";
+import { site } from "@/content/site";
+import type { Locale } from "@/content/schema";
+import { getSiteUrl, isProductionDeployment } from "@/lib/site-url";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -20,10 +23,6 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Rachmad | Senior Software Engineer",
-};
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -33,6 +32,46 @@ type LocaleLayoutProps = {
   modal: React.ReactNode;
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({
+  params,
+}: Pick<LocaleLayoutProps, "params">): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
+  const siteUrl = getSiteUrl();
+  const otherLocale: Locale = locale === "en" ? "id" : "en";
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: site.seo.title[locale],
+    description: site.seo.description[locale],
+    alternates: {
+      canonical: `${siteUrl}/${locale}`,
+      languages: {
+        en: `${siteUrl}/en`,
+        id: `${siteUrl}/id`,
+        "x-default": `${siteUrl}/en`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      url: `${siteUrl}/${locale}`,
+      siteName: site.domain,
+      locale: locale === "en" ? "en_US" : "id_ID",
+      alternateLocale: otherLocale === "en" ? "en_US" : "id_ID",
+      title: site.seo.ogTitle[locale],
+      description: site.seo.ogDescription[locale],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: site.seo.ogTitle[locale],
+      description: site.seo.ogDescription[locale],
+    },
+    robots: isProductionDeployment()
+      ? { index: true, follow: true }
+      : { index: false, follow: false },
+  };
+}
 
 export default async function LocaleLayout({
   children,

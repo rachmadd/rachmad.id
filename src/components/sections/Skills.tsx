@@ -6,7 +6,7 @@ import type { Locale } from "@/content/schema";
 
 export async function Skills() {
   const locale = (await getLocale()) as Locale;
-  const t = await getTranslations("Nav");
+  const t = await getTranslations("Skills");
 
   return (
     <section
@@ -14,7 +14,10 @@ export async function Skills() {
       className="px-[24px] pt-[96px] md:px-[40px] md:pt-[160px]"
     >
       <Reveal>
-        <SectionTitle id="skills-heading">{t("skills")}</SectionTitle>
+        <SectionTitle id="skills-heading">{t("title")}</SectionTitle>
+        <p className="mx-auto mb-10 max-w-[520px] text-center text-muted md:mb-14">
+          {t("subtitle")}
+        </p>
       </Reveal>
       <div className="mx-auto flex max-w-content flex-col border-b border-border">
         {skillGroups.map((group) => (

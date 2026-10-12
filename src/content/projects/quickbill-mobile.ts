@@ -1,57 +1,42 @@
-import type { Project, Feature } from "@/content/schema";
+// TODO: Indonesian translation pending — id mirrors en.
+import type { Project } from "@/content/schema";
 
-const features: Feature[] = [
-  {
-    title: { en: "Feature 1", id: "Fitur 1" },
-    body: {
-      en: "Real details for this feature are coming. This block shows how the layout handles the content once it's ready.",
-      id: "Detail asli untuk fitur ini akan menyusul. Blok ini menunjukkan tata letaknya begitu kontennya siap.",
-    },
-  },
-  {
-    title: { en: "Feature 2", id: "Fitur 2" },
-    body: {
-      en: "Real details for this feature are coming. This block shows how the layout handles the content once it's ready.",
-      id: "Detail asli untuk fitur ini akan menyusul. Blok ini menunjukkan tata letaknya begitu kontennya siap.",
-    },
-  },
-  {
-    title: { en: "Feature 3", id: "Fitur 3" },
-    body: {
-      en: "Real details for this feature are coming. This block shows how the layout handles the content once it's ready.",
-      id: "Detail asli untuk fitur ini akan menyusul. Blok ini menunjukkan tata letaknya begitu kontennya siap.",
-    },
-  },
-];
-
+// Source: docs/rachmad-id-copy-en-v1.md section 5.5.
 export const project: Project = {
   slug: "quickbill-mobile",
   tier: "featured",
   order: 2,
   companyId: "quickbill",
-  title: { en: "Quickbill Mobile App", id: "Quickbill Mobile App" },
-  summary: {
-    en: "The Flutter mobile app for Quickbill, built alongside the main platform.",
-    id: "Aplikasi mobile Flutter untuk Quickbill, dibangun berdampingan dengan platform utamanya.",
-  },
-  role: { en: "Full Stack Engineer", id: "Full Stack Engineer" },
+  title: { en: "Quickbill Mobile", id: "Quickbill Mobile" },
   year: "2025",
-  skills: ["Flutter", "Dart"],
-  stack: ["Flutter", "Dart"],
+  card: {
+    description: {
+      en: "Quickbill on Flutter. I laid the groundwork so the mobile team could move fast without fighting the structure.",
+      id: "Quickbill on Flutter. I laid the groundwork so the mobile team could move fast without fighting the structure.",
+    },
+    tags: ["Flutter", "Riverpod", "Dio"],
+  },
   media: {
     type: "carousel",
     images: [
-      { src: "/media/projects/quickbill-mobile/01.webp", alt: { en: "Quickbill mobile app home screen", id: "Layar beranda aplikasi mobile Quickbill" } },
-      { src: "/media/projects/quickbill-mobile/02.webp", alt: { en: "Quickbill mobile app invoice detail", id: "Detail invoice di aplikasi mobile Quickbill" } },
-      { src: "/media/projects/quickbill-mobile/03.webp", alt: { en: "Quickbill mobile app menu", id: "Menu aplikasi mobile Quickbill" } },
+      { src: "/media/projects/quickbill-mobile/01.webp", alt: { en: "Quickbill Mobile screenshot", id: "Quickbill Mobile screenshot" } },
+      { src: "/media/projects/quickbill-mobile/02.webp", alt: { en: "Quickbill Mobile screenshot", id: "Quickbill Mobile screenshot" } },
+      { src: "/media/projects/quickbill-mobile/03.webp", alt: { en: "Quickbill Mobile screenshot", id: "Quickbill Mobile screenshot" } },
     ],
   },
-  overview: {
-    en: ["Quickbill Mobile App is a Flutter app built for the Quickbill platform."],
-    id: ["Quickbill Mobile App adalah aplikasi Flutter yang dibangun untuk platform Quickbill."],
+  tagline: {
+    en: "The whole platform, in your pocket.",
+    id: "The whole platform, in your pocket.",
   },
-  features,
-  placeholder: true,
+  product: {
+    en: [
+      "The mobile app does what the web platform does, on your phone. I set the project up from scratch: folder structure, state management with Riverpod, networking with Dio, and the pattern for how a new feature gets added. After that, the team could build screens without asking where things go.",
+    ],
+    id: [
+      "The mobile app does what the web platform does, on your phone. I set the project up from scratch: folder structure, state management with Riverpod, networking with Dio, and the pattern for how a new feature gets added. After that, the team could build screens without asking where things go.",
+    ],
+  },
+  stack: "Flutter, Dart, Riverpod, Dio",
 };
 
 export default project;

@@ -21,10 +21,15 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   agentRules: false,
   async headers() {
+    const isProduction = process.env.VERCEL_ENV === "production";
+    const headers = isProduction
+      ? securityHeaders
+      : [...securityHeaders, { key: "X-Robots-Tag", value: "noindex, nofollow" }];
+
     return [
       {
         source: "/:path*",
-        headers: securityHeaders,
+        headers,
       },
     ];
   },

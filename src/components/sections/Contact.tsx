@@ -2,7 +2,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";
-import { Footer } from "@/components/layout/Footer";
 import { getCvHref, site } from "@/content/site";
 import type { Locale } from "@/content/schema";
 
@@ -12,7 +11,6 @@ const rowBase =
 export async function Contact() {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("Contact");
-  const nav = await getTranslations("Nav");
   const common = await getTranslations("Common");
 
   const rows: { label: string; value: string | null; href: string | null }[] = [
@@ -40,7 +38,7 @@ export async function Contact() {
       className="px-[24px] pt-[96px] md:px-[40px] md:pt-[160px]"
     >
       <Reveal>
-        <SectionTitle id="contact-heading">{nav("contact")}</SectionTitle>
+        <SectionTitle id="contact-heading">{t("title")}</SectionTitle>
       </Reveal>
       <Reveal className="mx-auto flex max-w-[620px] flex-col gap-8">
         <p className="m-0 text-left text-wrap-pretty">{t("line")}</p>
@@ -77,7 +75,6 @@ export async function Contact() {
           <Button href={getCvHref(locale)}>{common("downloadCv")}</Button>
         </div>
       </Reveal>
-      <Footer />
     </section>
   );
 }

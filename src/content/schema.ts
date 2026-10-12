@@ -27,12 +27,6 @@ export type Media =
       poster?: string;
     };
 
-export interface Feature {
-  title: Localized;
-  body: Localized;
-  media?: { src: string; alt: Localized };
-}
-
 export type ProjectTier = "featured" | "other";
 
 export interface Project {
@@ -42,16 +36,23 @@ export interface Project {
   companyId: CompanyId | null;
   companyLabel?: Localized;
   title: Localized;
-  summary: Localized;
-  role: Localized;
   year: string;
-  skills: string[];
-  stack: string[];
+  card: {
+    description: Localized;
+    tags: string[];
+  };
+  // True when the real product can't be shown even as a screenshot
+  // (client- or employer-confidential). Drives the "Internal tool · no
+  // public screenshots" placeholder label. See docs/DECISIONS.md.
+  internal?: boolean;
   media: Media;
-  overview: Localized<string[]>;
-  features: Feature[];
-  outcome?: Localized<string[]>;
-  links?: { label: Localized; href: string }[];
+  link?: string;
+  tagline: Localized;
+  product: Localized<string[]>;
+  myPart?: Localized<string[]>;
+  inside?: Localized<string[]>;
+  stack: string;
+  footnote?: Localized;
   generic?: true;
-  placeholder: boolean;
+  placeholder?: boolean;
 }

@@ -14,21 +14,21 @@ export async function ProjectCard({ project, locale }: ProjectCardProps) {
   const company = companies.find((c) => c.id === project.companyId);
   const companyName = company?.name ?? project.companyLabel?.[locale] ?? "";
 
-  const descriptor = resolveProjectMedia(
-    project.media,
-    `${t("screenshotLabel")} · ${project.title[locale]}`,
-    locale,
-  );
+  const placeholderLabel = project.internal
+    ? t("internalToolLabel")
+    : `${t("screenshotLabel")} · ${project.title[locale]}`;
+
+  const descriptor = resolveProjectMedia(project.media, placeholderLabel, locale);
 
   return (
     <ProjectCardInteractive
       slug={project.slug}
       companyId={project.companyId}
       title={project.title[locale]}
-      summary={project.summary[locale]}
+      description={project.card.description[locale]}
       companyName={companyName}
       year={project.year}
-      skills={project.skills}
+      tags={project.card.tags}
       tier={project.tier}
       descriptor={descriptor}
     />

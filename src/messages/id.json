@@ -12,22 +12,34 @@
   "Common": {
     "contact": "Hubungi Saya",
     "downloadCv": "Unduh CV",
-    "screenshotLabel": "screenshot"
+    "screenshotLabel": "screenshot",
+    "viewDetails": "View details",
+    "internalToolLabel": "Internal tool · no public screenshots"
   },
   "Intro": {
     "meta": "{location} · {years} tahun",
-    "description": "Saya membuat produk web, kebanyakan di sisi frontend. Tujuh tahun di perbankan, fintech, dan game, dari sistem cabang bank sampai platform invoice yang saya bantu bangun dari awal. Saya suka pekerjaan yang antarmukanya harus cepat dan tidak gampang rusak."
+    "ctaWork": "See my work",
+    "ctaContact": "Get in touch"
   },
   "Experience": {
+    "title": "Where I've worked",
+    "subtitle": "From marketing sites in 2019 to building a fintech platform from scratch.",
     "remote": "Remote, AS",
     "projectsLink": "{count} proyek →"
   },
+  "Skills": {
+    "title": "What I work with",
+    "subtitle": "Frontend is home. The rest is what I pick up when a feature needs to ship end to end."
+  },
   "Projects": {
+    "title": "Things I've built",
+    "subtitle": "Most of these live behind a login, so some get a concept card instead of a screenshot.",
     "featured": "Unggulan",
     "more": "Proyek lainnya"
   },
   "Contact": {
-    "line": "Terbuka untuk peran baru. Cara tercepat menghubungi saya lewat email.",
+    "title": "Let's talk",
+    "line": "Hiring, building something, or just want to talk frontend? My inbox is open.",
     "email": "Email",
     "linkedin": "LinkedIn",
     "github": "GitHub",
@@ -35,14 +47,22 @@
     "tbd": "TBD"
   },
   "Project": {
-    "overview": "Ringkasan",
-    "keyFeatures": "Fitur utama",
-    "techStack": "Teknologi",
-    "outcome": "Hasil dan pembelajaran",
+    "product": "The product",
+    "myPart": "My part",
+    "inside": "What's inside",
+    "stack": "Built with",
+    "visitLiveSite": "Visit live site",
     "previous": "Sebelumnya",
     "next": "Berikutnya",
     "openProjectPage": "Buka halaman proyek",
-    "close": "Tutup",
-    "moreFeatures": "+ {count} fitur lainnya di halaman proyek"
+    "close": "Tutup"
+  },
+  "Footer": {
+    "line": "© 2026 Rachmad Syaefullah. Made in Bekasi."
+  },
+  "NotFound": {
+    "title": "This page doesn't exist.",
+    "body": "The rest of the site does, though.",
+    "button": "Back to home"
   }
 }

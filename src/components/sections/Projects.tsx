@@ -7,7 +7,6 @@ import type { Locale } from "@/content/schema";
 
 export async function Projects() {
   const locale = (await getLocale()) as Locale;
-  const t = await getTranslations("Nav");
   const tiersT = await getTranslations("Projects");
 
   const tiers = [
@@ -21,7 +20,10 @@ export async function Projects() {
       className="px-[24px] pt-[96px] md:px-[40px] md:pt-[160px]"
     >
       <Reveal>
-        <SectionTitle id="projects-heading">{t("projects")}</SectionTitle>
+        <SectionTitle id="projects-heading">{tiersT("title")}</SectionTitle>
+        <p className="mx-auto mb-10 max-w-[520px] text-center text-muted md:mb-14">
+          {tiersT("subtitle")}
+        </p>
       </Reveal>
       <div className="mx-auto flex max-w-[1040px] flex-col gap-[72px] md:gap-[72px]">
         {tiers.map((tier) => {

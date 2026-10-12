@@ -16,8 +16,7 @@ This folder is the brief for building Rachmad's portfolio website with Claude Co
 | `docs/DEPLOYMENT.md` | Vercel, GitHub Actions, domain setup |
 | `docs/ROADMAP.md` | Phased plan with acceptance criteria |
 | `design/README.md` | Where to put the exported designs |
-| `.github/workflows/ci.yml` | Lint, typecheck, build, Lighthouse |
-| `lighthouserc.json` | Lighthouse CI thresholds |
+| `.github/workflows/ci.yml` | Lint, typecheck, test, build |
 
 ## How to start
 

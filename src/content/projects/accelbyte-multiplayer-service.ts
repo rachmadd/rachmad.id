@@ -1,19 +1,25 @@
+// TODO: Indonesian translation pending — id mirrors en.
 import type { Project } from "@/content/schema";
 
+// Source: docs/rachmad-id-copy-en-v1.md section 5.8. Open question #3 in the
+// deck notes AMS features come from AccelByte's public docs and asks
+// Rachmad to confirm which screens he touched besides logs.
+// TODO: confirm — "What's inside" is product context; "My part" stays logs-only per the deck's own caveat.
 export const project: Project = {
   slug: "accelbyte-multiplayer-service",
   tier: "other",
-  order: 3,
+  order: 4,
   companyId: "accelbyte",
-  title: { en: "Accelbyte Multiplayer Service", id: "Accelbyte Multiplayer Service" },
-  summary: {
-    en: "A web platform for a multiplayer service, covering matchmaking and real-time logs.",
-    id: "Platform web untuk layanan multiplayer, mencakup matchmaking dan log real-time.",
-  },
-  role: { en: "Software Engineer II, Frontend", id: "Software Engineer II, Frontend" },
+  title: { en: "AccelByte Multiplayer Servers (AMS)", id: "AccelByte Multiplayer Servers (AMS)" },
   year: "2023",
-  skills: ["React", "TypeScript"],
-  stack: ["React", "TypeScript"],
+  card: {
+    description: {
+      en: "The dashboard for running dedicated game servers around the world. I built its real-time server logs.",
+      id: "The dashboard for running dedicated game servers around the world. I built its real-time server logs.",
+    },
+    tags: ["React", "gRPC", "WebSocket"],
+  },
+  internal: true,
   media: {
     type: "concept",
     component: "multiplayer",
@@ -22,38 +28,41 @@ export const project: Project = {
       id: "Diagram alur matchmaking dan log real-time pada layanan multiplayer",
     },
   },
-  overview: {
+  tagline: {
+    en: "Game servers close to players, and a live view of what they're doing.",
+    id: "Game servers close to players, and a live view of what they're doing.",
+  },
+  product: {
     en: [
-      "Accelbyte Multiplayer Service is a web platform covering a matchmaking backend, real-time logs and related tooling for a multiplayer service.",
+      "AMS runs dedicated game servers near the players who need them. Studios upload server builds, create fleets, choose which regions they run in, and decide how many servers stay warm and ready in each one. The web dashboard is where all of that gets set up and watched.",
+      "My main piece was logs. When a server misbehaves, developers want to see it as it happens, not after a refresh. I built a pipeline that streams logs between backend services over gRPC and pushes them to the browser over WebSocket, so the log view updates while the server is still writing.",
     ],
     id: [
-      "Accelbyte Multiplayer Service adalah platform web yang mencakup backend matchmaking, log real-time, dan perkakas terkait untuk layanan multiplayer.",
+      "AMS runs dedicated game servers near the players who need them. Studios upload server builds, create fleets, choose which regions they run in, and decide how many servers stay warm and ready in each one. The web dashboard is where all of that gets set up and watched.",
+      "My main piece was logs. When a server misbehaves, developers want to see it as it happens, not after a refresh. I built a pipeline that streams logs between backend services over gRPC and pushes them to the browser over WebSocket, so the log view updates while the server is still writing.",
     ],
   },
-  features: [
-    {
-      title: { en: "Matchmaking", id: "Matchmaking" },
-      body: {
-        en: "The game client connects to a matchmaking service that places players into a game session.",
-        id: "Game client terhubung ke layanan matchmaking yang menempatkan pemain ke dalam sesi game.",
-      },
-    },
-    {
-      title: { en: "Real-time logs", id: "Log real-time" },
-      body: {
-        en: "A real-time log stream feeds a small web console panel so the session can be observed as it happens.",
-        id: "Log real-time mengalir ke panel konsol web kecil sehingga sesi bisa diamati saat berlangsung.",
-      },
-    },
-    {
-      title: { en: "Related tooling", id: "Perkakas terkait" },
-      body: {
-        en: "Further tooling details are not yet available and will be added once Rachmad provides them.",
-        id: "Detail perkakas lebih lanjut belum tersedia dan akan ditambahkan setelah Rachmad memberikannya.",
-      },
-    },
-  ],
-  placeholder: true,
+  inside: {
+    en: [
+      "Fleet management",
+      "Region selection",
+      "Server buffer & scaling settings",
+      "Instance types & ports",
+      "Server build uploads",
+      "Development & production fleets",
+      "Real-time server logs",
+    ],
+    id: [
+      "Fleet management",
+      "Region selection",
+      "Server buffer & scaling settings",
+      "Instance types & ports",
+      "Server build uploads",
+      "Development & production fleets",
+      "Real-time server logs",
+    ],
+  },
+  stack: "React, TypeScript, Ant Design, Redux, TanStack Query, gRPC, WebSocket",
 };
 
 export default project;

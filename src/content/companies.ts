@@ -1,3 +1,6 @@
+// TODO: Indonesian translation pending. `role.id` currently mirrors `role.en`
+// (company names, titles and dates don't need translation; kept Localized
+// for consistency with the rest of the content layer).
 import type { CompanyId, Localized } from "./schema";
 
 export interface Company {
@@ -8,13 +11,12 @@ export interface Company {
   start: string;
   end: string;
   remote?: boolean;
-  // TODO Phase 4: replace with a count derived from src/content/projects/*.ts
-  // once that content exists, per docs/ARCHITECTURE.md ("project counts
-  // computed from project data"). docs/ROADMAP.md Phase 3 explicitly calls
-  // for stubbing this until then.
   projectCountStub: number;
 }
 
+// Source: docs/rachmad-id-copy-en-v1.md section 4. projectCountStub is a
+// manual count of src/content/projects/*.ts entries per companyId (see
+// docs/ARCHITECTURE.md for why this isn't computed automatically yet).
 export const companies: Company[] = [
   {
     id: "quickbill",
@@ -26,7 +28,7 @@ export const companies: Company[] = [
     },
     start: "2025-01",
     end: "2026-07",
-    projectCountStub: 4,
+    projectCountStub: 5,
   },
   {
     id: "1engage",
@@ -43,7 +45,7 @@ export const companies: Company[] = [
   {
     id: "accelbyte",
     initials: "AB",
-    name: "Accelbyte",
+    name: "AccelByte",
     role: {
       en: "Software Engineer II, Frontend",
       id: "Software Engineer II, Frontend",
@@ -63,12 +65,12 @@ export const companies: Company[] = [
     },
     start: "2022-02",
     end: "2023-01",
-    projectCountStub: 0,
+    projectCountStub: 1,
   },
   {
     id: "maybank",
     initials: "MB",
-    name: "Maybank",
+    name: "Maybank Indonesia",
     role: {
       en: "Frontend Developer",
       id: "Frontend Developer",
@@ -87,8 +89,6 @@ export const companies: Company[] = [
     },
     start: "2019-03",
     end: "2021-03",
-    // CONTENT.md marks this "2 (to confirm)" — izin.co.id's vOffice
-    // attribution is unresolved, see docs/DECISIONS.md.
-    projectCountStub: 2,
+    projectCountStub: 4,
   },
 ];

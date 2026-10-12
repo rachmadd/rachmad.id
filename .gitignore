@@ -8,8 +8,7 @@
 # production
 /build
 
-# testing / lighthouse
-/.lighthouseci
+# testing
 
 # misc
 .DS_Store

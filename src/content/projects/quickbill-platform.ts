@@ -1,54 +1,97 @@
+// TODO: Indonesian translation pending — id mirrors en.
 import type { Project } from "@/content/schema";
 
-const featurePlaceholder = (n: number) => ({
-  title: { en: `Feature ${n}`, id: `Fitur ${n}` },
-  body: {
-    en: "Real details for this feature are coming. This block shows how the layout handles the content once it's ready.",
-    id: "Detail asli untuk fitur ini akan menyusul. Blok ini menunjukkan tata letaknya begitu kontennya siap.",
-  },
-});
-
+// Source: docs/rachmad-id-copy-en-v1.md section 5.1.
 export const project: Project = {
   slug: "quickbill-platform",
   tier: "featured",
   order: 1,
   companyId: "quickbill",
   title: { en: "Quickbill Platform", id: "Quickbill Platform" },
-  summary: {
-    en: "An invoicing platform built from scratch, with a monorepo and an internal UI library behind it.",
-    id: "Platform invoice yang dibangun dari awal, dengan monorepo dan UI library internal di baliknya.",
-  },
-  role: {
-    en: "Founding Engineer, Full Stack",
-    id: "Founding Engineer, Full Stack",
-  },
   year: "2025",
-  skills: ["Next.js", "TypeScript", "Tailwind CSS"],
-  stack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js"],
+  card: {
+    description: {
+      en: "The invoicing and payments app at the center of Quickbill. I set up its frontend from the first commit.",
+      id: "The invoicing and payments app at the center of Quickbill. I set up its frontend from the first commit.",
+    },
+    tags: ["Next.js", "TypeScript", "Go", "PostgreSQL"],
+  },
   media: {
     type: "carousel",
     images: [
-      { src: "/media/projects/quickbill-platform/01.webp", alt: { en: "Quickbill Platform dashboard", id: "Dasbor Quickbill Platform" } },
-      { src: "/media/projects/quickbill-platform/02.webp", alt: { en: "Quickbill Platform invoice list", id: "Daftar invoice Quickbill Platform" } },
-      { src: "/media/projects/quickbill-platform/03.webp", alt: { en: "Quickbill Platform backoffice", id: "Backoffice Quickbill Platform" } },
+      { src: "/media/projects/quickbill-platform/01.webp", alt: { en: "Quickbill Platform screenshot", id: "Quickbill Platform screenshot" } },
+      { src: "/media/projects/quickbill-platform/02.webp", alt: { en: "Quickbill Platform screenshot", id: "Quickbill Platform screenshot" } },
+      { src: "/media/projects/quickbill-platform/03.webp", alt: { en: "Quickbill Platform screenshot", id: "Quickbill Platform screenshot" } },
     ],
   },
-  overview: {
+  tagline: {
+    en: "Invoices in, payments out, one place for both.",
+    id: "Invoices in, payments out, one place for both.",
+  },
+  product: {
     en: [
-      "Quickbill Platform is an invoicing platform built with Next.js. Rachmad joined as a founding engineer and helped build it from scratch.",
-      "The codebase is a monorepo with an internal UI library shared across the platform and its backoffice.",
+      "Quickbill lets businesses send invoices, collect payments and pay their own vendors without juggling separate tools. When I joined there were five engineers and no code. I picked the frontend stack, set the patterns everyone else would build on, and wired up CI/CD so shipping didn't need babysitting.",
+      "By the time I left, the team had grown past 20 engineers and the platform was moving trillions of rupiah a month for over 3,000 active users. The foundation held up under all of that, which is the part I'm proudest of.",
     ],
     id: [
-      "Quickbill Platform adalah platform invoice yang dibangun dengan Next.js. Rachmad bergabung sebagai founding engineer dan ikut membangunnya dari awal.",
-      "Basis kodenya berupa monorepo dengan UI library internal yang dipakai bersama di platform dan backoffice-nya.",
+      "Quickbill lets businesses send invoices, collect payments and pay their own vendors without juggling separate tools. When I joined there were five engineers and no code. I picked the frontend stack, set the patterns everyone else would build on, and wired up CI/CD so shipping didn't need babysitting.",
+      "By the time I left, the team had grown past 20 engineers and the platform was moving trillions of rupiah a month for over 3,000 active users. The foundation held up under all of that, which is the part I'm proudest of.",
     ],
   },
-  features: Array.from({ length: 8 }, (_, i) => featurePlaceholder(i + 1)),
-  outcome: {
-    en: ["Outcome details are not yet available and will be added once Rachmad provides them."],
-    id: ["Detail hasil belum tersedia dan akan ditambahkan setelah Rachmad memberikannya."],
+  myPart: {
+    en: [
+      "Designed the frontend architecture, folder conventions and data-fetching patterns",
+      "Chose the frontend stack and set up CI/CD on GitHub Actions",
+      "Built the payment UI on Doku and Xendit, keeping multi-step state sane across every payment method",
+      "Moved invoice PDF generation from the server to the browser, so creating invoices stayed fast under heavy load",
+      "Built the invoice viewer with live form preview and changelog diffs",
+      "Reviewed code and paired with a frontend team of six",
+    ],
+    id: [
+      "Designed the frontend architecture, folder conventions and data-fetching patterns",
+      "Chose the frontend stack and set up CI/CD on GitHub Actions",
+      "Built the payment UI on Doku and Xendit, keeping multi-step state sane across every payment method",
+      "Moved invoice PDF generation from the server to the browser, so creating invoices stayed fast under heavy load",
+      "Built the invoice viewer with live form preview and changelog diffs",
+      "Reviewed code and paired with a frontend team of six",
+    ],
   },
-  placeholder: true,
+  inside: {
+    en: [
+      "Sign in with email or Google",
+      "Role-based access",
+      "KYC & KYB onboarding",
+      "Partner management",
+      "Wallet",
+      "Pay-in invoices",
+      "Payout invoices",
+      "Bulk invoices",
+      "Bulk payments",
+      "Domestic & international payments",
+      "Invoice viewer",
+      "Dashboard",
+      "Promo banners",
+      "User & payment settings",
+    ],
+    id: [
+      "Sign in with email or Google",
+      "Role-based access",
+      "KYC & KYB onboarding",
+      "Partner management",
+      "Wallet",
+      "Pay-in invoices",
+      "Payout invoices",
+      "Bulk invoices",
+      "Bulk payments",
+      "Domestic & international payments",
+      "Invoice viewer",
+      "Dashboard",
+      "Promo banners",
+      "User & payment settings",
+    ],
+  },
+  stack:
+    "Next.js, React, TypeScript, Tailwind CSS, Quickbill UI, Zustand, Jotai, Zod, React Hook Form, Auth.js, next-intl, Pino, Go, Gin, GORM, PostgreSQL, Redis, RabbitMQ, OpenTelemetry, Jaeger, Docker, GitHub Actions",
 };
 
 export default project;
