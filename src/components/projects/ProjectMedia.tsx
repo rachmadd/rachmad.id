@@ -1,6 +1,9 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
-import type { ConceptComponentKey, Locale, Media } from "@/content/schema";
+import type { ConceptComponentKey, Media } from "@/content/schema";
+
+export const SCREENSHOT_LABEL = "attached soon";
+export const INTERNAL_TOOL_LABEL = "Internal tool · media attached soon";
 
 export type MediaDescriptor =
   | { kind: "carousel"; labels: string[] }
@@ -24,11 +27,7 @@ function hasVideoFiles(
   );
 }
 
-export function resolveProjectMedia(
-  media: Media,
-  label: string,
-  locale: Locale,
-): MediaDescriptor {
+export function resolveProjectMedia(media: Media, label: string): MediaDescriptor {
   if (media.type === "carousel") {
     const hasAllImages = media.images.every((image) =>
       publicFileExists(image.src),
@@ -39,16 +38,14 @@ export function resolveProjectMedia(
         kind: "imageCarousel",
         slides: media.images.map((image, i) => ({
           src: image.src,
-          alt: image.alt[locale] || `${label} ${i + 1}`,
+          alt: image.alt || `${label} ${i + 1}`,
         })),
       };
     }
 
     return {
       kind: "carousel",
-      labels: media.images.map(
-        (image, i) => image.alt[locale] || `${label} ${i + 1}`,
-      ),
+      labels: media.images.map((image, i) => image.alt || `${label} ${i + 1}`),
     };
   }
 
@@ -59,10 +56,10 @@ export function resolveProjectMedia(
         webm: media.webm,
         mp4: media.mp4,
         poster: media.poster,
-        alt: media.alt[locale],
+        alt: media.alt,
       };
     }
-    return { kind: "concept", component: media.component, alt: media.alt[locale] };
+    return { kind: "concept", component: media.component, alt: media.alt };
   }
 
   if (media.type === "scroll" && hasVideoFiles(media)) {
@@ -71,7 +68,7 @@ export function resolveProjectMedia(
       webm: media.webm,
       mp4: media.mp4,
       poster: media.poster,
-      alt: media.alt[locale],
+      alt: media.alt,
     };
   }
 

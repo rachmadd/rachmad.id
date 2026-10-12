@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>html,body{margin:0;background:#0b0b0d}</style>
+</helmet>
+<div ref="{{ root }}" style="position:relative;width:100%;aspect-ratio:16/10;background:#151518;overflow:hidden;font-family:'Geist Mono', ui-monospace, monospace;color:#edf2f4">
+  <div style="position:absolute;left:0;top:0;width:640px;height:400px;transform-origin:0 0;transform:scale({{ s }})">
+    <div style="position:absolute;left:30px;top:40px;width:172px;height:320px;box-sizing:border-box;border-radius:18px;background:#1a1a1e;border:1px solid rgba(255,255,255,.1)"></div>
+    <div style="position:absolute;left:46px;top:52px;font-size:11px;line-height:14px;color:#8d99ae">@quickbill/ui</div>
+
+    <div style="position:absolute;left:186px;top:96px;width:34px;height:1px;background:rgba(141,153,174,.5)"></div>
+    <div style="position:absolute;left:186px;top:140px;width:34px;height:1px;background:rgba(141,153,174,.5)"></div>
+    <div style="position:absolute;left:186px;top:184px;width:34px;height:1px;background:rgba(141,153,174,.5)"></div>
+    <div style="position:absolute;left:186px;top:228px;width:34px;height:1px;background:rgba(141,153,174,.5)"></div>
+    <div style="position:absolute;left:186px;top:272px;width:34px;height:1px;background:rgba(141,153,174,.5)"></div>
+    <div style="position:absolute;left:186px;top:316px;width:34px;height:1px;background:rgba(141,153,174,.5)"></div>
+    <div style="position:absolute;left:220px;top:96px;width:1px;height:222px;background:rgba(141,153,174,.5)"></div>
+    <div style="position:absolute;left:220px;top:96px;width:40px;height:1px;background:rgba(141,153,174,.5)"></div>
+    <div style="position:absolute;left:220px;top:156px;width:40px;height:1px;background:rgba(141,153,174,.5)"></div>
+    <div style="position:absolute;left:220px;top:210px;width:20px;height:1px;background:rgba(141,153,174,.5)"></div>
+    <div style="position:absolute;left:220px;top:318px;width:40px;height:1px;background:rgba(141,153,174,.5)"></div>
+
+    <div style="position:absolute;left:46px;top:83px;width:140px;height:26px;box-sizing:border-box;border-radius:13px;padding-left:12px;font-size:12.5px;line-height:24px;border:1px solid {{ v.iInB }};background:{{ v.iInBg }}">Input</div>
+    <div style="position:absolute;left:46px;top:127px;width:140px;height:26px;box-sizing:border-box;border-radius:13px;padding-left:12px;font-size:12.5px;line-height:24px;border:1px solid {{ v.iBtB }};background:{{ v.iBtBg }}">Button</div>
+    <div style="position:absolute;left:46px;top:171px;width:140px;height:26px;box-sizing:border-box;border-radius:13px;padding-left:12px;font-size:12.5px;line-height:24px;border:1px solid {{ v.iAcB }};background:{{ v.iAcBg }}">Autocomplete</div>
+    <div style="position:absolute;left:46px;top:215px;width:140px;height:26px;box-sizing:border-box;border-radius:13px;padding-left:12px;font-size:12.5px;line-height:24px;border:1px solid rgba(237,242,244,.1);background:rgba(237,242,244,.02)">Select</div>
+    <div style="position:absolute;left:46px;top:259px;width:140px;height:26px;box-sizing:border-box;border-radius:13px;padding-left:12px;font-size:12.5px;line-height:24px;border:1px solid {{ v.iDlB }};background:{{ v.iDlBg }}">Dialog</div>
+    <div style="position:absolute;left:46px;top:303px;width:140px;height:26px;box-sizing:border-box;border-radius:13px;padding-left:12px;font-size:12.5px;line-height:24px;border:1px solid rgba(237,242,244,.1);background:rgba(237,242,244,.02)">Toast</div>
+
+    <div style="position:absolute;left:240px;top:40px;width:370px;height:320px;box-sizing:border-box;border-radius:18px;background:#1b1b1f;border:1px solid rgba(255,255,255,.1)"></div>
+    <div style="position:absolute;left:260px;top:52px;font-size:11px;line-height:14px;color:#8d99ae">app / new invoice</div>
+
+    <div style="position:absolute;left:260px;top:66px;font-size:10.5px;line-height:12px;color:#8d99ae">customer</div>
+    <div style="position:absolute;left:260px;top:80px;width:330px;height:32px;box-sizing:border-box;border-radius:16px;border:1px dashed rgba(141,153,174,.35);opacity:{{ v.inGhost }}"></div>
+    <div style="position:absolute;left:260px;top:80px;width:330px;height:32px;box-sizing:border-box;border-radius:16px;border:1px solid {{ v.inB }};background:#151518;padding-left:14px;font-size:12.5px;line-height:30px;opacity:{{ v.inOn }}"><span style="opacity:{{ v.inTxt }}">PT Sinar Jaya</span></div>
+
+    <div style="position:absolute;left:260px;top:126px;font-size:10.5px;line-height:12px;color:#8d99ae">item</div>
+    <div style="position:absolute;left:260px;top:140px;width:330px;height:32px;box-sizing:border-box;border-radius:16px;border:1px dashed rgba(141,153,174,.35);opacity:{{ v.acGhost }}"></div>
+    <div style="position:absolute;left:260px;top:140px;width:330px;height:32px;box-sizing:border-box;border-radius:16px;border:1px solid {{ v.acB }};background:#151518;font-size:12.5px;line-height:30px;opacity:{{ v.acOn }}">
+      <span style="position:absolute;left:14px;top:0;opacity:{{ v.acQ }}">host<span style="display:inline-block;width:1px;height:13px;margin-left:2px;vertical-align:-2px;background:#edf2f4;opacity:{{ v.caret }}"></span></span>
+      <span style="position:absolute;left:14px;top:0;opacity:{{ v.acVal }}">Hosting plan · Rp 1.200.000</span>
+    </div>
+    <div style="position:absolute;left:260px;top:178px;width:330px;height:92px;box-sizing:border-box;border-radius:16px;background:#151518;border:1px solid rgba(237,242,244,.22);padding:5px;opacity:{{ v.dd }};transform:translateY({{ v.ddY }}px)">
+      <div style="height:26px;border-radius:13px;padding-left:10px;font-size:12px;line-height:26px;background:{{ v.o1 }}">Hosting plan</div>
+      <div style="height:26px;border-radius:13px;padding-left:10px;font-size:12px;line-height:26px;color:#8d99ae">Hosting setup</div>
+      <div style="height:26px;border-radius:13px;padding-left:10px;font-size:12px;line-height:26px;color:#8d99ae">Hosting renewal</div>
+    </div>
+
+    <div style="position:absolute;left:260px;top:300px;width:150px;height:36px;box-sizing:border-box;border-radius:18px;border:1px dashed rgba(141,153,174,.35);opacity:{{ v.btGhost }}"></div>
+    <div style="position:absolute;left:260px;top:300px;width:150px;height:36px;box-sizing:border-box;border-radius:18px;background:{{ v.btBg }};color:#0b0b0d;text-align:center;font-size:12.5px;line-height:36px;opacity:{{ v.btOn }};transform:scale({{ v.btS }})">Create invoice</div>
+
+    <div style="position:absolute;left:241px;top:41px;width:368px;height:318px;border-radius:17px;background:rgba(11,11,13,.62);opacity:{{ v.scrim }}"></div>
+    <div style="position:absolute;left:320px;top:146px;width:230px;height:128px;box-sizing:border-box;border-radius:18px;background:#151518;border:1px solid {{ v.dlB }};opacity:{{ v.dl }};transform:translateY({{ v.dlY }}px)">
+      <div style="position:absolute;left:18px;top:16px;font-size:13.5px">Invoice created</div>
+      <div style="position:absolute;left:18px;top:38px;font-size:11px;color:#8d99ae">INV-0242 · Rp 1.200.000</div>
+      <div style="position:absolute;right:16px;bottom:16px;width:64px;height:30px;box-sizing:border-box;border-radius:15px;border:1px solid rgba(237,242,244,.3);text-align:center;font-size:12px;line-height:28px">Done</div>
+    </div>
+
+    <div style="position:absolute;left:{{ d.x }}px;top:{{ d.y }}px;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#ef233c;opacity:{{ d.o }}"></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:960,&quot;height&quot;:600},&quot;reducedMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const DUR = 6, STATIC = 2.45;
+const cl = v => Math.max(0, Math.min(1, v));
+const ramp = (t, a, b) => cl((t - a) / (b - a));
+const win = (t, a, b, f = 0.15) => ramp(t, a, a + f) * (1 - ramp(t, b - f, b));
+const ease = v => v < .5 ? 2 * v * v : 1 - Math.pow(-2 * v + 2, 2) / 2;
+const hb = v => `rgba(237,242,244,${(0.1 + 0.45 * v).toFixed(3)})`;
+const hbg = v => `rgba(237,242,244,${(0.02 + 0.07 * v).toFixed(3)})`;
+const TRIPS = [
+  { s: 0.1, iy: 96, ty: 96, tx: 260 },
+  { s: 1.15, iy: 184, ty: 156, tx: 260 },
+  { s: 2.95, iy: 140, ty: 318, tx: 260 },
+  { s: 3.95, iy: 272, ty: 210, tx: 320 },
+];
+const tripPos = (tr, t) => {
+  const k = t - tr.s, seg = (a, b, x0, y0, x1, y1) => { const e = ease(cl((k - a) / (b - a))); return { x: x0 + (x1 - x0) * e, y: y0 + (y1 - y0) * e }; };
+  if (k < 0.2) return seg(0, 0.2, 186, tr.iy, 220, tr.iy);
+  if (k < 0.5) return seg(0.2, 0.5, 220, tr.iy, 220, tr.ty);
+  return seg(0.5, 0.7, 220, tr.ty, tr.tx, tr.ty);
+};
+
+class Component extends DCLogic {
+  state = { t: STATIC, s: 1 };
+  root = React.createRef();
+  get reduced() { return !!this.props.reducedMotion || window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  componentDidMount() {
+    this.measure = () => { let el = this.root.current; while (el && el.parentElement && el.getBoundingClientRect().width < 2) el = el.parentElement; const w = el ? el.getBoundingClientRect().width : 0; const sc = w / 640; if (sc && Math.abs(sc - this.state.s) > 0.002) this.setState({ s: sc }); };
+    try { this.ro = new ResizeObserver(() => this.measure()); this.ro.observe(this.root.current); } catch (e) {}
+    setTimeout(this.measure, 0);
+    this.start();
+  }
+  componentDidUpdate(pp) { if (this.reduced) this.measure(); if (pp.reducedMotion !== this.props.reducedMotion) { this.stop(); this.start(); } }
+  componentWillUnmount() { this.stop(); this.ro && this.ro.disconnect(); }
+  start() {
+    if (this.reduced) { this.setState({ t: STATIC }); return; }
+    const t0 = performance.now(); let last = 0;
+    const loop = now => { if (now - last > 30) { last = now; this.measure(); this.setState({ t: ((now - t0) / 1000) % DUR }); } this.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop);
+  }
+  stop() { cancelAnimationFrame(this.raf); }
+  renderVals() {
+    const t = this.state.t, out = 1 - ramp(t, 5.45, 5.85);
+    let d = { x: 186, y: 96, o: 0 };
+    TRIPS.forEach(tr => { if (t >= tr.s - 0.05 && t < tr.s + 0.8) { const p = tripPos(tr, t); d = { x: p.x, y: p.y, o: win(t, tr.s - 0.05, tr.s + 0.8, 0.1) }; } });
+    const item = tr => win(t, tr.s - 0.05, tr.s + 0.85);
+    const [A, B, C, D] = TRIPS.map(tr => tr.s + 0.7);
+    const built = a => ramp(t, a - 0.05, a + 0.15) * out;
+    const flash = a => win(t, a - 0.05, a + 0.45);
+    const inOn = built(A), acOn = built(B), btOn = built(C);
+    const ddIn = ramp(t, 2.0, 2.15) * (1 - ramp(t, 2.75, 2.9));
+    const pick = ramp(t, 2.75, 2.9);
+    const press = win(t, 3.75, 4.0, 0.1);
+    const dlIn = ramp(t, D - 0.1, D + 0.15) * (1 - ramp(t, 5.3, 5.6));
+    return {
+      root: this.root, s: this.state.s, d,
+      v: {
+        iInB: hb(item(TRIPS[0])), iInBg: hbg(item(TRIPS[0])), iAcB: hb(item(TRIPS[1])), iAcBg: hbg(item(TRIPS[1])),
+        iBtB: hb(item(TRIPS[2])), iBtBg: hbg(item(TRIPS[2])), iDlB: hb(item(TRIPS[3])), iDlBg: hbg(item(TRIPS[3])),
+        inGhost: 1 - inOn, inOn, inB: hb(0.15 + 0.85 * flash(A)), inTxt: ramp(t, A + 0.3, A + 0.5),
+        acGhost: 1 - acOn, acOn, acB: hb(Math.max(0.15 + 0.85 * flash(B), ddIn)),
+        acQ: ramp(t, B + 0.2, B + 0.35) * (1 - pick), acVal: pick, caret: Math.floor(t * 4) % 2 ? 1 : 0.2,
+        dd: ddIn * out, ddY: (1 - ramp(t, 2.0, 2.15)) * -4, o1: `rgba(237,242,244,${(0.1 * ramp(t, 2.3, 2.45)).toFixed(3)})`,
+        btGhost: 1 - btOn, btOn, btBg: press > 0.01 ? '#ffffff' : '#edf2f4', btS: 1 - 0.03 * press,
+        scrim: dlIn, dl: dlIn, dlY: (1 - ramp(t, D - 0.1, D + 0.15)) * 8, dlB: hb(0.3 + 0.7 * flash(D)),
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

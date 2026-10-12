@@ -1,11 +1,5 @@
-import type { Locale } from "@/content/schema";
-
-export function formatCompanyDateRange(
-  start: string,
-  end: string,
-  locale: Locale,
-): string {
-  const formatter = new Intl.DateTimeFormat(locale, {
+export function formatCompanyDateRange(start: string, end: string): string {
+  const formatter = new Intl.DateTimeFormat("en-US", {
     month: "short",
     year: "numeric",
   });

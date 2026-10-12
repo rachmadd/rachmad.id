@@ -1,5 +1,4 @@
 import type { ComponentType } from "react";
-import { getLocale, getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";
@@ -11,16 +10,11 @@ import {
   MailIcon,
 } from "@/components/ui/icons";
 import { getCvHref, site } from "@/content/site";
-import type { Locale } from "@/content/schema";
 
 const rowBase =
   "flex min-h-[56px] items-center justify-between gap-3 rounded-pill px-[22px]";
 
-export async function Contact() {
-  const locale = (await getLocale()) as Locale;
-  const t = await getTranslations("Contact");
-  const common = await getTranslations("Common");
-
+export function Contact() {
   const rows: {
     label: string;
     value: string | null;
@@ -29,32 +23,32 @@ export async function Contact() {
     wide?: boolean;
   }[] = [
     {
-      label: t("email"),
+      label: "Email",
       value: site.email,
       href: site.email ? `mailto:${site.email}` : null,
       Icon: MailIcon,
       wide: true,
     },
     {
-      label: t("linkedin"),
+      label: "LinkedIn",
       value: site.linkedin,
       href: site.linkedin ? `https://linkedin.com/in/${site.linkedin}` : null,
       Icon: LinkedInIcon,
     },
     {
-      label: t("github"),
+      label: "GitHub",
       value: site.github,
       href: site.github ? `https://github.com/${site.github}` : null,
       Icon: GitHubIcon,
     },
     {
-      label: t("instagram"),
+      label: "Instagram",
       value: site.instagram,
       href: site.instagram ? `https://instagram.com/${site.instagram}` : null,
       Icon: InstagramIcon,
     },
     {
-      label: t("leetcode"),
+      label: "LeetCode",
       value: site.leetcode,
       href: site.leetcode ? `https://leetcode.com/u/${site.leetcode}/` : null,
       Icon: LeetCodeIcon,
@@ -67,10 +61,12 @@ export async function Contact() {
       className="px-[24px] pt-[96px] md:px-[40px] md:pt-[160px]"
     >
       <Reveal>
-        <SectionTitle id="contact-heading">{t("title")}</SectionTitle>
+        <SectionTitle id="contact-heading">Contact</SectionTitle>
       </Reveal>
       <Reveal className="mx-auto flex max-w-[620px] flex-col gap-8">
-        <p className="m-0 text-center text-wrap-pretty">{t("line")}</p>
+        <p className="m-0 text-center text-wrap-pretty">
+          Open to full-time and contract roles. Email is the fastest way to reach me.
+        </p>
         <div className="grid grid-cols-1 gap-[10px] md:grid-cols-2">
           {rows.map((row) =>
             row.href ? (
@@ -97,13 +93,13 @@ export async function Contact() {
                   <row.Icon className="h-4 w-4 text-fg" />
                   {row.label}
                 </span>
-                <span className="text-[15px] text-muted">{t("tbd")}</span>
+                <span className="text-[15px] text-muted">TBD</span>
               </div>
             ),
           )}
         </div>
         <div className="flex justify-center">
-          <Button href={getCvHref(locale)}>{common("downloadCv")}</Button>
+          <Button href={getCvHref()}>Download CV</Button>
         </div>
       </Reveal>
     </section>

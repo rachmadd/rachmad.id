@@ -1,31 +1,28 @@
-import { getTranslations } from "next-intl/server";
 import { companies } from "@/content/companies";
-import type { Locale, Project } from "@/content/schema";
-import { resolveProjectMedia } from "./ProjectMedia";
+import type { Project } from "@/content/schema";
+import { resolveProjectMedia, SCREENSHOT_LABEL, INTERNAL_TOOL_LABEL } from "./ProjectMedia";
 import { ProjectCardInteractive } from "./ProjectCardInteractive";
 
 type ProjectCardProps = {
   project: Project;
-  locale: Locale;
 };
 
-export async function ProjectCard({ project, locale }: ProjectCardProps) {
-  const t = await getTranslations("Common");
+export function ProjectCard({ project }: ProjectCardProps) {
   const company = companies.find((c) => c.id === project.companyId);
-  const companyName = company?.name ?? project.companyLabel?.[locale] ?? "";
+  const companyName = company?.name ?? project.companyLabel ?? "";
 
   const placeholderLabel = project.internal
-    ? t("internalToolLabel")
-    : `${t("screenshotLabel")} · ${project.title[locale]}`;
+    ? INTERNAL_TOOL_LABEL
+    : `${SCREENSHOT_LABEL} · ${project.title}`;
 
-  const descriptor = resolveProjectMedia(project.media, placeholderLabel, locale);
+  const descriptor = resolveProjectMedia(project.media, placeholderLabel);
 
   return (
     <ProjectCardInteractive
       slug={project.slug}
       companyId={project.companyId}
-      title={project.title[locale]}
-      description={project.card.description[locale]}
+      title={project.title}
+      description={project.card.description}
       companyName={companyName}
       year={project.year}
       tags={project.card.tags}

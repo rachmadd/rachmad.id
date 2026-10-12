@@ -1,40 +1,26 @@
-// TODO: Indonesian translation pending — id mirrors en.
 import type { Project } from "@/content/schema";
 
-// Source: docs/rachmad-id-copy-en-v1.md section 5.4.
+// Source: docs/rachmad-id-copy-en-v2.md section 5.4.
 export const project: Project = {
   slug: "quickbill-ui",
   tier: "other",
-  order: 3,
+  order: 4,
   companyId: "quickbill",
-  title: { en: "Quickbill UI", id: "Quickbill UI" },
+  title: "Quickbill UI",
   year: "2025",
   card: {
-    description: {
-      en: "The component library every Quickbill web app is built from.",
-      id: "The component library every Quickbill web app is built from.",
-    },
+    description: "The component library behind every Quickbill web app. I started it.",
     tags: ["shadcn/ui", "Base UI", "Storybook"],
   },
   media: {
-    type: "image",
-    src: "/media/projects/quickbill-ui/01.webp",
-    alt: { en: "Quickbill UI screenshot", id: "Quickbill UI screenshot" },
+    type: "concept",
+    component: "ui-library",
+    alt: "Animated diagram of the Quickbill UI component library building an invoice form",
   },
-  tagline: {
-    en: "The shared building blocks under every Quickbill screen.",
-    id: "The shared building blocks under every Quickbill screen.",
-  },
-  product: {
-    en: [
-      "With several apps being built at once, the same date picker was about to get written four different ways. I built Quickbill UI so it wouldn't. It sits on shadcn and Base UI, uses Tailwind for styling, and lives in Storybook so anyone on the team can find a component before writing a new one.",
-      "It's the reason the platform, the enterprise app and the embedded checkout all look like one product.",
-    ],
-    id: [
-      "With several apps being built at once, the same date picker was about to get written four different ways. I built Quickbill UI so it wouldn't. It sits on shadcn and Base UI, uses Tailwind for styling, and lives in Storybook so anyone on the team can find a component before writing a new one.",
-      "It's the reason the platform, the enterprise app and the embedded checkout all look like one product.",
-    ],
-  },
+  about: [
+    "A shared component library built on shadcn/ui and Base UI, styled with Tailwind and documented in Storybook. I started it so teams stopped rebuilding the same components in each app. Every Quickbill web app now uses it, so they look and behave like one product.",
+  ],
+  myPart: ["Started and built the library", "Set up Storybook as the place to find and test components"],
   stack: "React, TypeScript, Tailwind CSS, shadcn/ui, Base UI, Storybook",
 };
 

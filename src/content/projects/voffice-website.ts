@@ -1,62 +1,42 @@
-// TODO: Indonesian translation pending — id mirrors en.
 import type { Project } from "@/content/schema";
 
-// Source: docs/rachmad-id-copy-en-v1.md section 5.10.
+// Source: docs/rachmad-id-copy-en-v2.md section 5.11.
 export const project: Project = {
   slug: "voffice-website",
   tier: "other",
   order: 7,
   companyId: "voffice",
-  title: { en: "vOffice", id: "vOffice" },
+  title: "vOffice",
   year: "2020",
   card: {
-    description: {
-      en: "The main website for vOffice Indonesia, built so marketing could update it without waiting on me.",
-      id: "The main website for vOffice Indonesia, built so marketing could update it without waiting on me.",
-    },
+    description: "vOffice Indonesia's main website and the Laravel CMS behind it.",
     tags: ["Laravel", "PHP", "Mapbox"],
   },
   media: {
     type: "scroll",
     mp4: "/media/projects/voffice-website/scroll.mp4",
-    alt: { en: "vOffice walkthrough", id: "vOffice walkthrough" },
+    alt: "vOffice walkthrough",
   },
   link: "voffice.co.id",
-  tagline: {
-    en: "Virtual offices across Indonesia, one search away.",
-    id: "Virtual offices across Indonesia, one search away.",
-  },
-  product: {
-    en: [
-      "vOffice rents virtual offices and workspaces across Indonesia, and its website is where most customers start. It lists every service and every centre on a map, runs a blog, and hands visitors over to a chatbot when they have questions.",
-      "I built and maintained it, along with a Laravel CMS that let the marketing team publish blogs, promos and landing pages on their own. Most visitors came from search, so a lot of the work was the invisible kind: AMP pages, clean markup, fast loads and tidy analytics.",
-    ],
-    id: [
-      "vOffice rents virtual offices and workspaces across Indonesia, and its website is where most customers start. It lists every service and every centre on a map, runs a blog, and hands visitors over to a chatbot when they have questions.",
-      "I built and maintained it, along with a Laravel CMS that let the marketing team publish blogs, promos and landing pages on their own. Most visitors came from search, so a lot of the work was the invisible kind: AMP pages, clean markup, fast loads and tidy analytics.",
-    ],
-  },
-  inside: {
-    en: [
-      "Service pages",
-      "Centre locator on Mapbox",
-      "Blog & CMS",
-      "Chatbot integration",
-      "Contact forms",
-      "AMP pages",
-      "SEO & analytics",
-    ],
-    id: [
-      "Service pages",
-      "Centre locator on Mapbox",
-      "Blog & CMS",
-      "Chatbot integration",
-      "Contact forms",
-      "AMP pages",
-      "SEO & analytics",
-    ],
-  },
-  stack: "PHP, Laravel, jQuery, Bootstrap, Sass, Mapbox",
+  about: [
+    "vOffice rents virtual offices and workspaces across Indonesia. The site covers its services, an interactive map of every centre in Indonesia and abroad, a blog and chatbot support. Most of its traffic comes from search.",
+  ],
+  myPart: [
+    "Built and maintained the website",
+    "Built an interactive Mapbox map of every vOffice location in Indonesia and worldwide",
+    "Built a custom Laravel CMS so the marketing team could publish blogs, promos, services and landing pages themselves",
+    "Handled SEO, AMP pages, performance and analytics",
+  ],
+  features: [
+    "Service pages",
+    "Interactive location map (Indonesia & worldwide)",
+    "Blog & CMS",
+    "Chatbot integration",
+    "Contact forms",
+    "AMP pages",
+    "SEO & analytics",
+  ],
+  stack: "PHP, Laravel, MySQL, jQuery, Bootstrap, Sass, Mapbox",
 };
 
 export default project;

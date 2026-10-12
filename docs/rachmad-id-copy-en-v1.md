@@ -91,7 +91,7 @@ Optional side entry: **RevoU** · Mentor (Part-time) · Apr 2024 – Jun 2024
 - Card button: **View details**
 - Detail labels: **The product** · **My part** · **What's inside** · **Built with**
 - Link: **Visit live site**
-- Concept-card label: **Internal tool · no public screenshots**
+- Concept-card label: **Internal tool · media attached soon**
 - Close: **Close**
 
 ---

@@ -2,19 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useReducedMotion, useScroll } from "motion/react";
-import { useTranslations } from "next-intl";
 import { computeTimelineGeometry } from "@/lib/timeline-geometry";
 import { formatCompanyDateRange } from "@/lib/format-date";
 import { TimelineNode } from "./TimelineNode";
 import type { Company } from "@/content/companies";
-import type { Locale } from "@/content/schema";
 
 const MOBILE_BREAKPOINT = 720;
 const MAX_WIDTH = 1040;
+const REMOTE_LABEL = "Remote, USA";
+
+function projectsLabel(count: number): string {
+  return `${count} ${count === 1 ? "project" : "projects"} →`;
+}
 
 type TimelineCurveProps = {
   companies: Company[];
-  locale: Locale;
 };
 
 function highlightProjectCards(companyId: string) {
@@ -27,16 +29,10 @@ function highlightProjectCards(companyId: string) {
   });
 }
 
-export function TimelineCurve({
-  companies,
-  locale,
-}: TimelineCurveProps) {
-  const t = useTranslations("Experience");
+export function TimelineCurve({ companies }: TimelineCurveProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const shouldReduceMotion = useReducedMotion();
-  const remoteLabel = t("remote");
-  const projectsLabel = (count: number) => t("projectsLink", { count });
 
   useEffect(() => {
     const el = containerRef.current;
@@ -109,11 +105,11 @@ export function TimelineCurve({
                   initials={company.initials}
                   name={company.name}
                   logo={company.logo}
-                  role={company.role[locale]}
+                  role={company.role}
                   dateLabel={
                     company.remote
-                      ? `${formatCompanyDateRange(company.start, company.end, locale)} · ${remoteLabel}`
-                      : formatCompanyDateRange(company.start, company.end, locale)
+                      ? `${formatCompanyDateRange(company.start, company.end)} · ${REMOTE_LABEL}`
+                      : formatCompanyDateRange(company.start, company.end)
                   }
                   projectsLabel={
                     hasProjects ? projectsLabel(company.projectCountStub) : null
@@ -125,11 +121,11 @@ export function TimelineCurve({
               ) : (
                 <div className="flex flex-col gap-1 border-t border-border py-6 first:border-t-0">
                   <h3 className="m-0 text-[17px] font-medium">{company.name}</h3>
-                  <p className="m-0 text-[15px]">{company.role[locale]}</p>
+                  <p className="m-0 text-[15px]">{company.role}</p>
                   <p className="m-0 font-mono text-[12.5px] text-muted">
                     {company.remote
-                      ? `${formatCompanyDateRange(company.start, company.end, locale)} · ${remoteLabel}`
-                      : formatCompanyDateRange(company.start, company.end, locale)}
+                      ? `${formatCompanyDateRange(company.start, company.end)} · ${REMOTE_LABEL}`
+                      : formatCompanyDateRange(company.start, company.end)}
                   </p>
                   {hasProjects ? (
                     <a

@@ -1,11 +1,8 @@
 import { notFound } from "next/navigation";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { routing } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { projects, getProjectBySlug } from "@/content/projects";
 import { companies } from "@/content/companies";
-import type { Locale } from "@/content/schema";
-import { resolveProjectMedia } from "@/components/projects/ProjectMedia";
+import { resolveProjectMedia, SCREENSHOT_LABEL, INTERNAL_TOOL_LABEL } from "@/components/projects/ProjectMedia";
 import { ProjectMediaView } from "@/components/projects/ProjectMediaView";
 import { ProjectContent } from "@/components/projects/ProjectContent";
 import { Footer } from "@/components/layout/Footer";
@@ -13,42 +10,33 @@ import { getSiteUrl, isProductionDeployment } from "@/lib/site-url";
 import { site } from "@/content/site";
 
 export function generateStaticParams() {
-  return routing.locales.flatMap((locale) =>
-    projects.map((project) => ({ locale, slug: project.slug })),
-  );
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
 type ProjectPageProps = {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  const { locale: rawLocale, slug } = await params;
-  const locale = rawLocale as Locale;
+  const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return {};
 
   const siteUrl = getSiteUrl();
-  const title = `${project.title[locale]} | ${site.name}`;
-  const description = project.card.description[locale];
-  const otherLocale: Locale = locale === "en" ? "id" : "en";
+  const title = `${project.title} | ${site.name}`;
+  const description = project.card.description;
+  const pageUrl = `${siteUrl}/projects/${slug}`;
 
   return {
     title,
     description,
     alternates: {
-      canonical: `${siteUrl}/${locale}/projects/${slug}`,
-      languages: {
-        en: `${siteUrl}/en/projects/${slug}`,
-        id: `${siteUrl}/id/projects/${slug}`,
-        "x-default": `${siteUrl}/en/projects/${slug}`,
-      },
+      canonical: pageUrl,
     },
     openGraph: {
       type: "article",
-      url: `${siteUrl}/${locale}/projects/${slug}`,
-      locale: locale === "en" ? "en_US" : "id_ID",
-      alternateLocale: otherLocale === "en" ? "en_US" : "id_ID",
+      url: pageUrl,
+      locale: "en_US",
       title,
       description,
     },
@@ -64,38 +52,37 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { locale: rawLocale, slug } = await params;
-  const locale = rawLocale as Locale;
-  setRequestLocale(locale);
+  const { slug } = await params;
 
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
-  const t = await getTranslations("Project");
-  const common = await getTranslations("Common");
   const company = companies.find((c) => c.id === project.companyId);
-  const companyName = company?.name ?? project.companyLabel?.[locale] ?? "";
+  const companyName = company?.name ?? project.companyLabel ?? "";
 
   const placeholderLabel = project.internal
-    ? common("internalToolLabel")
-    : `${common("screenshotLabel")} · ${project.title[locale]}`;
+    ? INTERNAL_TOOL_LABEL
+    : `${SCREENSHOT_LABEL} · ${project.title}`;
 
   const index = projects.findIndex((p) => p.slug === slug);
   const prev = projects[(index - 1 + projects.length) % projects.length];
   const next = projects[(index + 1) % projects.length];
 
+  const roleTitle = project.roleTitle ?? company?.role ?? "";
+  const startYear = company?.start.slice(0, 4);
+  const endYear = company?.end.slice(0, 4);
+  const years = company ? (startYear === endYear ? startYear : `${startYear}–${endYear}`) : project.year;
+  const roleLine = (company ? [roleTitle, companyName, years] : [roleTitle, years]).filter(Boolean).join(" · ");
+
   return (
     <>
       <section className="px-[24px] pt-[112px] md:px-[40px] md:pt-[168px]">
         <div className="mx-auto flex max-w-content flex-col items-center gap-[14px]">
-          <p className="m-0 text-center font-mono text-[13px] text-muted">
-            {companyName} · {project.year}
-          </p>
           <h1 className="m-0 text-center text-[36px] leading-[1.08] font-medium tracking-[-0.025em] text-wrap-balance md:text-[52px]">
-            {project.title[locale]}
+            {project.title}
           </h1>
-          <p className="m-0 text-center text-base md:text-lg">
-            {project.tagline[locale]}
+          <p className="m-0 text-center font-mono text-[13px] text-muted">
+            {roleLine}
           </p>
           {project.link ? (
             <a
@@ -104,12 +91,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               rel="noopener noreferrer"
               className="inline-flex h-11 items-center rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.14)] px-[18px] text-sm text-fg no-underline hover:border-[rgb(var(--overlay-rgb)_/_0.3)]"
             >
-              {t("visitLiveSite")} ↗
+              Visit site ↗
             </a>
           ) : null}
           {project.footnote ? (
             <p className="m-0 max-w-[480px] text-center text-sm text-muted">
-              {project.footnote[locale]}
+              {project.footnote}
             </p>
           ) : null}
         </div>
@@ -117,13 +104,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <ProjectMediaView
             className="border border-border"
             paused={false}
-            descriptor={resolveProjectMedia(project.media, placeholderLabel, locale)}
+            descriptor={resolveProjectMedia(project.media, placeholderLabel)}
           />
         </div>
       </section>
 
       <div className="flex flex-col gap-[96px] pt-[96px] md:gap-[160px] md:pt-[160px]">
-        <ProjectContent project={project} locale={locale} />
+        <ProjectContent project={project} />
 
         <section className="px-[24px] md:px-[40px]">
           <div className="mx-auto grid max-w-content grid-cols-1 gap-3 md:grid-cols-2">
@@ -132,10 +119,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               className="flex flex-col gap-[6px] rounded-card border border-border bg-surface p-[22px_26px] text-fg no-underline hover:border-[rgb(var(--overlay-rgb)_/_0.22)]"
             >
               <span className="font-mono text-[12.5px] text-muted">
-                ← {t("previous")}
+                ← Previous
               </span>
               <span className="text-[17px] font-medium">
-                {prev.title[locale]}
+                {prev.title}
               </span>
             </Link>
             <Link
@@ -143,10 +130,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               className="flex flex-col items-end gap-[6px] rounded-card border border-border bg-surface p-[22px_26px] text-right text-fg no-underline hover:border-[rgb(var(--overlay-rgb)_/_0.22)]"
             >
               <span className="font-mono text-[12.5px] text-muted">
-                {t("next")} →
+                Next →
               </span>
               <span className="text-[17px] font-medium">
-                {next.title[locale]}
+                {next.title}
               </span>
             </Link>
           </div>

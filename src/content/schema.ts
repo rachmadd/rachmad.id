@@ -1,7 +1,3 @@
-export type Locale = "en" | "id";
-
-export type Localized<T = string> = Record<Locale, T>;
-
 export type CompanyId =
   | "quickbill"
   | "1engage"
@@ -10,16 +6,16 @@ export type CompanyId =
   | "maybank"
   | "voffice";
 
-export type ConceptComponentKey = "embedded-payment" | "micro-frontend" | "multiplayer";
+export type ConceptComponentKey = "embedded-payment" | "micro-frontend" | "multiplayer" | "ui-library";
 
 export type Media =
-  | { type: "image"; src: string; alt: Localized }
-  | { type: "carousel"; images: { src: string; alt: Localized }[] }
-  | { type: "scroll"; mp4: string; webm?: string; poster?: string; alt: Localized }
+  | { type: "image"; src: string; alt: string }
+  | { type: "carousel"; images: { src: string; alt: string }[] }
+  | { type: "scroll"; mp4: string; webm?: string; poster?: string; alt: string }
   | {
       type: "concept";
       component: ConceptComponentKey;
-      alt: Localized;
+      alt: string;
       // Optional video fallback for a component that can't be ported
       // faithfully as a live animation. See docs/DECISIONS.md.
       webm?: string;
@@ -34,25 +30,28 @@ export interface Project {
   tier: ProjectTier;
   order: number;
   companyId: CompanyId | null;
-  companyLabel?: Localized;
-  title: Localized;
+  companyLabel?: string;
+  // Overrides the company's role (from companies.ts) in the detail page's
+  // role line. Only needed when companyId is null (freelance work has no
+  // companies.ts entry to read a job title from).
+  roleTitle?: string;
+  title: string;
   year: string;
   card: {
-    description: Localized;
+    description: string;
     tags: string[];
   };
   // True when the real product can't be shown even as a screenshot
-  // (client- or employer-confidential). Drives the "Internal tool · no
-  // public screenshots" placeholder label. See docs/DECISIONS.md.
+  // (client- or employer-confidential). Drives the "Internal tool · media
+  // attached soon" placeholder label. See docs/DECISIONS.md.
   internal?: boolean;
   media: Media;
   link?: string;
-  tagline: Localized;
-  product: Localized<string[]>;
-  myPart?: Localized<string[]>;
-  inside?: Localized<string[]>;
+  about: string[];
+  myPart?: string[];
+  features?: string[];
   stack: string;
-  footnote?: Localized;
+  footnote?: string;
   generic?: true;
   placeholder?: boolean;
 }

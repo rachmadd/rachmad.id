@@ -113,7 +113,7 @@ Order inside each tier is the order below. Slugs are final and used in routes, f
 | `quickbill-enterprise` | Quickbill Enterprise Platform | quickbill | `image` placeholder | Unknown. **Ask Rachmad.** If none, make it a `concept` card |
 | `quickbill-embedded-payment` | Quickbill Embedded Payment | quickbill | `concept` | None. Concept video |
 | `accelbyte-multiplayer-service` | Accelbyte Multiplayer Service | accelbyte | `concept` | None. Concept video |
-| `maybank-digital-branch` | Maybank Digital Branch Delivery System | maybank | `concept`, `generic: true` | None, and none may be shown. Concept video |
+| `maybank-digital-branch` | Maybank Branch Delivery System | maybank | `concept` | None, and none may be shown. Concept card (live component, not a video) |
 | `voffice-website` | vOffice Website | voffice | `carousel` | Some screenshots |
 | `izin-co-id` | izin.co.id | voffice (to confirm) | `carousel` | Some screenshots |
 | `company-profile-websites` | Company Profile Websites | null ("Freelance") | `carousel` | Some screenshots (static sites) |

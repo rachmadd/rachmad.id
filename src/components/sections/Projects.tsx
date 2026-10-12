@@ -1,32 +1,27 @@
-import { getLocale, getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { getProjectsByTier } from "@/content/projects";
-import type { Locale } from "@/content/schema";
 
-export async function Projects() {
-  const locale = (await getLocale()) as Locale;
-  const tiersT = await getTranslations("Projects");
+const TIERS = [
+  { key: "featured" as const, label: "Featured" },
+  { key: "other" as const, label: "More projects" },
+];
 
-  const tiers = [
-    { key: "featured" as const, label: tiersT("featured") },
-    { key: "other" as const, label: tiersT("more") },
-  ];
-
+export function Projects() {
   return (
     <section
       id="projects"
       className="px-[24px] pt-[96px] md:px-[40px] md:pt-[160px]"
     >
       <Reveal>
-        <SectionTitle id="projects-heading">{tiersT("title")}</SectionTitle>
+        <SectionTitle id="projects-heading">Projects</SectionTitle>
         <p className="mx-auto mb-10 max-w-[520px] text-center text-muted md:mb-14">
-          {tiersT("subtitle")}
+          Everything I&apos;ve worked on since 2019, from company websites to banking systems and payment platforms.
         </p>
       </Reveal>
       <div className="mx-auto flex max-w-[1040px] flex-col gap-[72px] md:gap-[72px]">
-        {tiers.map((tier) => {
+        {TIERS.map((tier) => {
           const tierProjects = getProjectsByTier(tier.key);
           return (
             <div key={tier.key} className="flex flex-col gap-5">
@@ -42,7 +37,7 @@ export async function Projects() {
               >
                 {tierProjects.map((project) => (
                   <Reveal key={project.slug}>
-                    <ProjectCard project={project} locale={locale} />
+                    <ProjectCard project={project} />
                   </Reveal>
                 ))}
               </div>

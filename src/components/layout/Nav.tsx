@@ -1,25 +1,53 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 import { motion, useReducedMotion } from 'motion/react'
-import { Link } from '@/i18n/navigation'
-import { LanguageToggle } from './LanguageToggle'
 import { ThemeToggle } from './ThemeToggle'
-import LiquidGlass from 'liquid-glass-react'
 
-const SECTION_IDS = ['experience', 'projects', 'skills', 'contact'] as const
+const SECTION_LINKS = [
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
+] as const
+
+function MenuToggleIcon({ open }: { open: boolean }) {
+  const reducedMotion = useReducedMotion()
+  const transition = { duration: reducedMotion ? 0 : 0.3, ease: 'easeInOut' as const }
+
+  return (
+    <span className="relative block h-4 w-[18px]" aria-hidden="true">
+      <motion.span
+        className="absolute inset-x-0 top-0 h-[1.6px] rounded-full bg-fg"
+        animate={{ y: open ? 7 : 0, rotate: open ? 45 : 0 }}
+        transition={transition}
+      />
+      <motion.span
+        className="absolute inset-x-0 top-[7px] h-[1.6px] rounded-full bg-fg"
+        animate={{ opacity: open ? 0 : 1, scale: open ? 0.5 : 1 }}
+        transition={transition}
+      />
+      <motion.span
+        className="absolute inset-x-0 bottom-0 h-[1.6px] rounded-full bg-fg"
+        animate={{ y: open ? -7 : 0, rotate: open ? -45 : 0 }}
+        transition={transition}
+      />
+    </span>
+  )
+}
 
 export function Nav() {
-  const t = useTranslations('Nav')
+  const pathname = usePathname()
   const [active, setActive] = useState<string | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const reducedMotion = useReducedMotion()
   const underlineDuration = reducedMotion ? 0 : 0.25
 
   useEffect(() => {
-    const sections = SECTION_IDS.map((id) =>
-      document.getElementById(id),
+    const sections = SECTION_LINKS.map((link) =>
+      document.getElementById(link.id),
     ).filter((el): el is HTMLElement => el !== null)
     if (sections.length === 0) return
 
@@ -35,9 +63,7 @@ export function Nav() {
 
     sections.forEach((section) => observer.observe(section))
     return () => observer.disconnect()
-  }, [])
-
-  const links = SECTION_IDS.map((id) => ({ id, label: t(id) }))
+  }, [pathname])
 
   return (
     <header className="sticky top-4 z-30 flex justify-center px-4">
@@ -45,11 +71,11 @@ export function Nav() {
         aria-label="Primary"
         className="bg-surface hidden items-center gap-0.5 rounded-pill p-[6px] md:flex"
       >
-        {links.map((link) => (
+        {SECTION_LINKS.map((link) => (
           <Link
             key={link.id}
             href={`/#${link.id}`}
-            className="relative inline-flex h-[38px] items-center whitespace-nowrap rounded-pill px-4 text-sm text-fg no-underline hover:bg-[rgb(var(--overlay-rgb)_/_0.06)] hover:text-white"
+            className="relative inline-flex h-[38px] items-center whitespace-nowrap rounded-pill px-4 text-sm text-fg no-underline hover:bg-[rgb(var(--overlay-rgb)_/_0.06)]"
           >
             {link.label}
             <motion.span
@@ -66,7 +92,6 @@ export function Nav() {
           </Link>
         ))}
         <span className="mx-1.5 h-5 w-px bg-[rgb(var(--overlay-rgb)_/_0.1)]" />
-        <LanguageToggle />
         <ThemeToggle />
       </nav>
       <div className="relative w-full max-w-[440px] md:hidden">
@@ -77,25 +102,34 @@ export function Nav() {
           <button
             type="button"
             aria-expanded={menuOpen}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMenuOpen((open) => !open)}
-            className="h-[46px] rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.12)] bg-transparent px-5 text-sm text-fg"
+            className="flex h-[46px] items-center justify-center rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.12)] bg-transparent px-5 text-fg transition-colors hover:bg-[rgb(var(--overlay-rgb)_/_0.06)]"
           >
-            {menuOpen ? t('menuClose') : t('menuOpen')}
+            <MenuToggleIcon open={menuOpen} />
           </button>
           <div className="flex items-center gap-1.5">
-            <LanguageToggle size="mobile" />
             <ThemeToggle size="mobile" />
           </div>
         </nav>
         {menuOpen && (
           <div className="bg-surface absolute inset-x-0 top-[66px] flex flex-col rounded-[24px] p-2">
-            {links.map((link) => (
+            {SECTION_LINKS.map((link) => (
               <Link
                 key={link.id}
                 href={`/#${link.id}`}
                 onClick={() => setMenuOpen(false)}
-                className="flex min-h-[52px] items-center rounded-2xl px-4 text-[17px] text-fg no-underline hover:bg-[rgb(var(--overlay-rgb)_/_0.05)]"
+                aria-current={active === link.id ? 'page' : undefined}
+                className={`relative flex min-h-[52px] items-center rounded-2xl px-4 text-[17px] no-underline hover:bg-[rgb(var(--overlay-rgb)_/_0.05)] ${
+                  active === link.id ? 'bg-[rgb(var(--overlay-rgb)_/_0.05)] font-medium text-fg' : 'text-fg'
+                }`}
               >
+                {active === link.id && (
+                  <span
+                    aria-hidden="true"
+                    className="bg-accent absolute top-1/2 left-1.5 h-5 w-[3px] -translate-y-1/2 rounded-full"
+                  />
+                )}
                 {link.label}
               </Link>
             ))}

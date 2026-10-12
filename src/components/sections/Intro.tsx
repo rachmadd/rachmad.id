@@ -1,14 +1,9 @@
 import Image from "next/image";
-import { getLocale, getTranslations } from "next-intl/server";
 import { Pill } from "@/components/ui/Pill";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/content/site";
-import type { Locale } from "@/content/schema";
 
-export async function Intro() {
-  const locale = (await getLocale()) as Locale;
-  const t = await getTranslations("Intro");
-
+export function Intro() {
   return (
     <section
       id="top"
@@ -27,13 +22,10 @@ export async function Intro() {
           {site.name}
         </h1>
         <p className="m-0 mt-[14px] text-center text-[18px] leading-[1.3] md:text-[20px]">
-          {site.primaryTitle[locale]}
+          {site.primaryTitle}
         </p>
         <p className="m-0 mt-[10px] text-center font-mono text-[13px] text-muted">
-          {t("meta", {
-            location: site.location[locale],
-            years: site.experienceYears,
-          })}
+          {site.location} · {site.experienceYears} years
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-2">
           {site.roleTags.map((tag) => (
@@ -41,15 +33,15 @@ export async function Intro() {
           ))}
         </div>
         {site.showStatusChip ? (
-          <Pill className="mt-6">{site.statusChip[locale]}</Pill>
+          <Pill className="mt-6">{site.statusChip}</Pill>
         ) : null}
         <p className="mt-9 w-full max-w-[600px] text-left text-wrap-pretty md:mt-11">
-          {site.description[locale]}
+          {site.description}
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Button href="#projects">{t("ctaWork")}</Button>
+          <Button href="#projects">See my work</Button>
           <Button href="#contact" variant="outline">
-            {t("ctaContact")}
+            Get in touch
           </Button>
         </div>
       </div>

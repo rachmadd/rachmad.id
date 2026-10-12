@@ -1,10 +1,6 @@
-// TODO: Indonesian translation pending. Group labels and items are product
-// and library names; they don't translate, so id mirrors en here.
-import type { Localized } from "./schema";
-
 export interface SkillGroup {
   key: "frontend" | "mobileDesktop" | "backend" | "data" | "infra" | "testing";
-  label: Localized;
+  label: string;
   items: string[];
 }
 
@@ -12,7 +8,7 @@ export interface SkillGroup {
 export const skillGroups: SkillGroup[] = [
   {
     key: "frontend",
-    label: { en: "Frontend", id: "Frontend" },
+    label: "Frontend",
     items: [
       "React",
       "Next.js",
@@ -35,22 +31,22 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     key: "mobileDesktop",
-    label: { en: "Mobile & Desktop", id: "Mobile & Desktop" },
+    label: "Mobile & Desktop",
     items: ["Flutter", "Riverpod", "React Native", "Electron"],
   },
   {
     key: "backend",
-    label: { en: "Backend", id: "Backend" },
+    label: "Backend",
     items: ["Go (Gin, GORM)", "Node.js (Express)", "Laravel", "Python (FastAPI)"],
   },
   {
     key: "data",
-    label: { en: "Data", id: "Data" },
+    label: "Data",
     items: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Supabase"],
   },
   {
     key: "infra",
-    label: { en: "Infra & Tooling", id: "Infra & Tooling" },
+    label: "Infra & Tooling",
     items: [
       "Docker",
       "GitHub Actions",
@@ -65,7 +61,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     key: "testing",
-    label: { en: "Testing", id: "Testing" },
+    label: "Testing",
     items: ["Jest", "Cypress"],
   },
 ];

@@ -3,7 +3,7 @@
 ## 1. Goals that drive the decisions
 
 - SEO and link previews matter, so pages are pre-rendered HTML, not a client-rendered SPA.
-- Two languages with real URLs (`/en`, `/id`) so each can be indexed and shared.
+- English only — see `docs/DECISIONS.md` for why the original bilingual (EN/ID) plan was reversed.
 - Every project has a shareable URL; gallery clicks navigate straight to it.
 - Hosting is Vercel Hobby, so no backend, database or paid features.
 - Maintainable by one frontend engineer: few dependencies, typed content, no CMS.
@@ -16,7 +16,6 @@
 | Language | TypeScript, `strict: true` | Typed content catches missing translations at build time |
 | Styling | Tailwind CSS v4, tokens in CSS (`@theme`) | Fast, token-driven, matches the design system |
 | Animation | `motion` (the package formerly called framer-motion) | `useScroll`, `whileInView`, `useReducedMotion` cover everything needed |
-| i18n | `next-intl` | Locale routing, static rendering support, typed messages |
 | Fonts | `next/font` (self-hosted) | No layout shift, no third-party request |
 | Images | `next/image` for screenshots and logos | Responsive sizes, modern formats, lazy loading |
 | Package manager | pnpm | Fast, strict |
@@ -25,32 +24,29 @@
 
 Do not add: a UI kit, a CMS, an icon library, an analytics SDK, a state library, or an MDX pipeline. If you think one is needed, record the reason in `docs/DECISIONS.md` and ask first.
 
-Check each package's installed version and read its current docs before using an API. Next.js and next-intl in particular have changed their conventions between major versions (for example the middleware file and the async `params` handling).
+Check each package's installed version and read its current docs before using an API. Next.js in particular has changed its conventions between major versions (for example the middleware/proxy file and the async `params` handling).
 
 ## 3. Rendering strategy
 
 - Everything is statically generated at build time. No runtime data fetching.
 - Do **not** use `output: 'export'`. Vercel serves the SSG output natively, and keeping the default output avoids known limits around intercepting routes and image optimization.
-- `generateStaticParams` returns every `locale` and every project `slug`.
-- With next-intl, call its static-rendering helper (`setRequestLocale`) in every layout and page so routes stay static.
-- Client components are limited to: timeline scroll animation, reveal wrappers, concept-card video control, language toggle, nav scroll-spy.
+- `generateStaticParams` returns every project `slug`.
+- Client components are limited to: timeline scroll animation, reveal wrappers, concept-card video control, nav scroll-spy, theme toggle.
 
 ## 4. Routes
 
 ```
-/                              -> redirects to /en or /id (locale detection, default en)
-/en, /id                       -> home (all five sections)
-/en/projects/[slug]            -> full project page
-/id/projects/[slug]            -> full project page
+/                              -> home (all five sections)
+/projects/[slug]               -> full project page
 /sitemap.xml, /robots.txt      -> generated
-/en/opengraph-image            -> generated OG image per locale (see SEO.md)
+/opengraph-image               -> generated OG image (see SEO.md)
 ```
 
-`localePrefix` is `always`. Default locale is `en`. Locale detection and the cookie are handled by next-intl's middleware (named `proxy` in the newest Next.js versions; use whichever the installed version expects).
+No middleware, no locale routing, no locale cookie.
 
 ### Project pages
 
-Gallery clicks navigate directly to `/[locale]/projects/[slug]`, a normal full page (`app/[locale]/projects/[slug]/page.tsx`). There is no modal — an earlier version intercepted this route into a dialog over the gallery, but that added complexity (focus-trap/scroll-lock edge cases, a second render path for the same content) for no benefit once the full page already covers every case, so it was removed. `ProjectContent` has one output shape, used only here.
+Gallery clicks navigate directly to `/projects/[slug]`, a normal full page (`app/projects/[slug]/page.tsx`). There is no modal — an earlier version intercepted this route into a dialog over the gallery, but that added complexity (focus-trap/scroll-lock edge cases, a second render path for the same content) for no benefit once the full page already covers every case, so it was removed. `ProjectContent` has one output shape, used only here.
 
 ## 5. Folder structure
 
@@ -63,25 +59,23 @@ Gallery clicks navigate directly to `/[locale]/projects/[slug]`, a normal full p
 ├── public/
 │   ├── avatar.webp
 │   ├── cv/
-│   │   ├── Rachmad-CV-en.pdf
-│   │   └── Rachmad-CV-id.pdf
+│   │   └── Rachmad-CV-en.pdf
 │   ├── logos/                      one file per company (see ASSETS.md)
 │   └── media/
 │       ├── projects/<slug>/        screenshots, loops
 │       └── concepts/<slug>.{webm,mp4,jpg}   concept-card videos + poster
 ├── src/
 │   ├── app/
-│   │   ├── [locale]/
-│   │   │   ├── layout.tsx          html lang, fonts, nav, vignette
-│   │   │   ├── page.tsx            home
-│   │   │   ├── projects/[slug]/page.tsx
-│   │   │   └── opengraph-image.tsx
+│   │   ├── layout.tsx               html lang, fonts, nav, vignette
+│   │   ├── page.tsx                 home
+│   │   ├── projects/[slug]/page.tsx
+│   │   ├── opengraph-image.tsx
 │   │   ├── sitemap.ts
 │   │   ├── robots.ts
-│   │   ├── globals.css             Tailwind import + @theme tokens
+│   │   ├── globals.css              Tailwind import + @theme tokens
 │   │   └── not-found.tsx
 │   ├── components/
-│   │   ├── layout/                 Nav, LanguageToggle, Vignette, Footer
+│   │   ├── layout/                 Nav, ThemeToggle, Vignette, Footer
 │   │   ├── sections/               Intro, Experience, Projects, Skills, Contact
 │   │   ├── timeline/               TimelineCurve, TimelineNode
 │   │   ├── projects/               ProjectCard, ProjectMedia, ConceptVideo, ProjectContent
@@ -89,29 +83,19 @@ Gallery clicks navigate directly to `/[locale]/projects/[slug]`, a normal full p
 │   ├── content/
 │   │   ├── schema.ts               types (see CONTENT.md)
 │   │   ├── site.ts                 domain, handles, nav, contact links
-│   │   ├── companies.ts            company data per locale
-│   │   ├── projects/<slug>.ts      one file per project, both locales inside
+│   │   ├── companies.ts            company data
+│   │   ├── projects/<slug>.ts      one file per project
 │   │   └── skills.ts
-│   ├── i18n/
-│   │   ├── routing.ts              locales, default, prefix
-│   │   ├── request.ts
-│   │   └── navigation.ts
-│   ├── lib/
-│   │   ├── seo.ts                  metadata + JSON-LD builders
-│   │   └── timeline-geometry.ts    S-curve path + node positions
-│   └── messages/
-│       ├── en.json                 UI strings (nav, buttons, labels)
-│       └── id.json
+│   └── lib/
+│       ├── seo.ts                  metadata + JSON-LD builders
+│       └── timeline-geometry.ts    S-curve path + node positions
 ├── next.config.ts
 └── .github/workflows/ci.yml
 ```
 
 ## 6. Content model
 
-Two kinds of text, kept separate:
-
-1. **UI strings** (nav labels, button text, section titles, aria labels) live in `src/messages/{en,id}.json` and are read with next-intl.
-2. **Content** (intro copy, companies, projects, skills) lives in typed TypeScript under `src/content/`. Each translatable field is `{ en: string; id: string }`. A shared `Localized<T>` type makes a missing translation a compile error.
+One kind of text: **content** (intro copy, companies, projects, skills) lives in typed TypeScript under `src/content/`, plain `string`/`string[]` fields. UI chrome text (nav labels, button text, section titles) is hardcoded directly in the component that renders it — there's no separate message-catalog layer, since there's only one language to maintain.
 
 No database, no MDX. Project pages are built from a structured list of feature blocks (see `docs/CONTENT.md`) so that long projects like Quickbill Platform stay consistent.
 
@@ -142,14 +126,7 @@ Rules for video: `muted`, `loop`, `playsInline`, `preload="none"` with a poster,
 
 All media frames share one wrapper (`ProjectMedia`) so every card has the same aspect ratio, radius and border.
 
-## 9. Language handling
-
-- `<html lang>` follows the locale.
-- The nav toggle links to the same page in the other locale (a normal link, so it works without JS and crawlers can follow it).
-- `hreflang` alternates and canonical URLs are set per page (see SEO.md).
-- Indonesian strings run 15 to 20% longer. No fixed-width containers around text. Test every component in both locales.
-
-## 10. Performance guardrails
+## 9. Performance guardrails
 
 - First-load JS for the home route stays lean (soft target: about 150 KB gzipped). Run `next build` and watch the route size table.
 - Only the timeline, reveal wrapper and video control are client code. Do not make whole sections client components just to use one hook; extract a small client child instead.
@@ -157,12 +134,12 @@ All media frames share one wrapper (`ProjectMedia`) so every card has the same a
 - Images below the fold are lazy. Every `next/image` has explicit dimensions or `fill` with a sized parent, so layout shift stays near zero.
 - Fonts: at most two families, subset, `display: swap` via `next/font`.
 
-## 11. Security and privacy
+## 10. Security and privacy
 
-- No third-party scripts. No cookies other than the locale cookie from next-intl.
+- No third-party scripts. No cookies at all.
 - Set security headers in `next.config.ts` (`X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options` or CSP `frame-ancestors`, `Permissions-Policy`). Keep the CSP simple, since there are no third-party embeds.
 - Email shown as a `mailto:` link. Do not render the address in structured data twice if avoidable.
 
-## 12. Decisions log
+## 11. Decisions log
 
 Keep `docs/DECISIONS.md` as a short running list: date, decision, reason. Create it in Phase 0.

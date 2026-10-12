@@ -1,7 +1,6 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { MoonIcon, SunIcon } from "@/components/ui/icons";
 
@@ -29,7 +28,6 @@ type ThemeToggleProps = {
 };
 
 export function ThemeToggle({ size = "desktop" }: ThemeToggleProps) {
-  const t = useTranslations("Nav");
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const reducedMotion = useReducedMotion();
 
@@ -46,7 +44,7 @@ export function ThemeToggle({ size = "desktop" }: ThemeToggleProps) {
     <button
       type="button"
       onClick={toggle}
-      aria-label={t("theme")}
+      aria-label="Toggle theme"
       className={`relative flex items-center justify-center overflow-hidden rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.1)] bg-transparent text-fg transition-colors duration-300 hover:bg-[rgb(var(--overlay-rgb)_/_0.06)] ${sizing}`}
     >
       <AnimatePresence mode="wait" initial={false}>

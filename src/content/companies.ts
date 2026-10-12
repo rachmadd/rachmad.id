@@ -1,14 +1,11 @@
-// TODO: Indonesian translation pending. `role.id` currently mirrors `role.en`
-// (company names, titles and dates don't need translation; kept Localized
-// for consistency with the rest of the content layer).
-import type { CompanyId, Localized } from "./schema";
+import type { CompanyId } from "./schema";
 
 export interface Company {
   id: CompanyId;
   initials: string;
   name: string;
   logo: string;
-  role: Localized;
+  role: string;
   start: string;
   end: string;
   remote?: boolean;
@@ -24,10 +21,7 @@ export const companies: Company[] = [
     initials: "QB",
     name: "Quickbill",
     logo: "/logos/quickbill.svg",
-    role: {
-      en: "Senior Software Engineer, Full Stack",
-      id: "Senior Software Engineer, Full Stack",
-    },
+    role: "Senior Software Engineer, Full Stack",
     start: "2025-01",
     end: "2026-07",
     projectCountStub: 5,
@@ -37,10 +31,7 @@ export const companies: Company[] = [
     initials: "1E",
     name: "1Engage (Sinarmas Group)",
     logo: "/logos/1engage.svg",
-    role: {
-      en: "Software Engineer, Full Stack",
-      id: "Software Engineer, Full Stack",
-    },
+    role: "Software Engineer, Full Stack",
     start: "2024-04",
     end: "2024-12",
     projectCountStub: 1,
@@ -50,10 +41,7 @@ export const companies: Company[] = [
     initials: "AB",
     name: "AccelByte",
     logo: "/logos/accelbyte.svg",
-    role: {
-      en: "Software Engineer II, Frontend",
-      id: "Software Engineer II, Frontend",
-    },
+    role: "Software Engineer II, Frontend",
     start: "2023-01",
     end: "2024-04",
     remote: true,
@@ -64,10 +52,7 @@ export const companies: Company[] = [
     initials: "MO",
     name: "Moladin",
     logo: "/logos/moladin.svg",
-    role: {
-      en: "Software Engineer II, Frontend",
-      id: "Software Engineer II, Frontend",
-    },
+    role: "Software Engineer II, Frontend",
     start: "2022-02",
     end: "2023-01",
     projectCountStub: 1,
@@ -77,10 +62,7 @@ export const companies: Company[] = [
     initials: "MB",
     logo: "/logos/maybank.svg",
     name: "Maybank Indonesia",
-    role: {
-      en: "Frontend Developer",
-      id: "Frontend Developer",
-    },
+    role: "Frontend Developer",
     start: "2021-03",
     end: "2022-02",
     projectCountStub: 1,
@@ -90,10 +72,7 @@ export const companies: Company[] = [
     initials: "VO",
     logo: "/logos/voffice.svg",
     name: "vOffice Indonesia",
-    role: {
-      en: "Web Developer",
-      id: "Web Developer",
-    },
+    role: "Web Developer",
     start: "2019-03",
     end: "2021-03",
     projectCountStub: 4,

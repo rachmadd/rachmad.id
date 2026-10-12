@@ -49,6 +49,7 @@ export function ImageCarousel({ slides, paused }: ImageCarouselProps) {
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-contain"
+            {...(i === 0 ? { priority: true } : { loading: "lazy" })}
           />
         </div>
       ))}

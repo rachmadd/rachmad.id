@@ -3,10 +3,10 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "reac
 type Variant = "primary" | "outline";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-pill text-[15px] font-medium no-underline transition-colors";
+  "inline-flex items-center justify-center gap-2 rounded-pill text-[15px] font-medium no-underline transition-opacity";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-fg text-bg hover:bg-white",
+  primary: "bg-fg text-bg hover:opacity-85",
   outline:
     "border border-[rgb(var(--overlay-rgb)_/_0.16)] text-fg hover:border-[rgb(var(--overlay-rgb)_/_0.34)] hover:bg-[rgb(var(--overlay-rgb)_/_0.04)]",
 };

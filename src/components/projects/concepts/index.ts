@@ -1,8 +1,9 @@
 import { EmbeddedPaymentConcept } from "./EmbeddedPaymentConcept";
 import { MicroFrontendConcept } from "./MicroFrontendConcept";
 import { MultiplayerConcept } from "./MultiplayerConcept";
+import { UILibraryConcept } from "./UILibraryConcept";
 
-export type ConceptKey = "embedded-payment" | "micro-frontend" | "multiplayer";
+export type ConceptKey = "embedded-payment" | "micro-frontend" | "multiplayer" | "ui-library";
 
 export const CONCEPT_COMPONENTS: Record<
   ConceptKey,
@@ -11,4 +12,5 @@ export const CONCEPT_COMPONENTS: Record<
   "embedded-payment": EmbeddedPaymentConcept,
   "micro-frontend": MicroFrontendConcept,
   multiplayer: MultiplayerConcept,
+  "ui-library": UILibraryConcept,
 };
