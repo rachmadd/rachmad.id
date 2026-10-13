@@ -33,7 +33,7 @@ export const site = {
   email: "rachmadsyaefullah13@gmail.com" as string | null,
   linkedin: "rachmad-syaefullah" as string | null,
   instagram: "rachmad.sf" as string | null,
-  github: "rach-mad" as string | null,
+  github: "rachmadd" as string | null,
   leetcode: "rach_md" as string | null,
   devto: "rachmadd" as string | null,
   medium: "rachmadd" as string | null,
