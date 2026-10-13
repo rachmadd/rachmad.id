@@ -1,19 +1,57 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { GitHubIcon } from "@/components/ui/icons";
 
 type VisitSiteButtonProps = {
-  href: string;
-  color: string;
+  href?: string;
+  color?: string;
+  repoHref?: string;
 };
 
-const BUTTON_CLASS =
-  "inline-flex h-12 items-center rounded-pill px-[26px] text-[15px] font-medium text-white no-underline ring-1 ring-inset ring-white/20 hover:brightness-110";
+const BASE_CLASS =
+  "inline-flex h-12 items-center rounded-pill px-[26px] text-[15px] font-medium no-underline";
+const VISIT_CLASS = `${BASE_CLASS} text-white ring-1 ring-inset ring-white/20 hover:brightness-110`;
+const REPO_CLASS = `${BASE_CLASS} gap-2 border border-[rgb(var(--overlay-rgb)_/_0.22)] bg-bg text-fg hover:border-[rgb(var(--overlay-rgb)_/_0.4)]`;
 
-// Filled "Visit site" button for the project hero. Once it scrolls out of
-// view above the viewport, a second copy fades in, centered at the bottom.
-export function VisitSiteButton({ href, color }: VisitSiteButtonProps) {
-  const heroRef = useRef<HTMLAnchorElement>(null);
+type ActionsProps = VisitSiteButtonProps & { tabIndex?: number };
+
+function Actions({ href, color, repoHref, tabIndex }: ActionsProps) {
+  return (
+    <>
+      {href && color ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          tabIndex={tabIndex}
+          className={VISIT_CLASS}
+          style={{ backgroundColor: color }}
+        >
+          Visit site ↗
+        </a>
+      ) : null}
+      {repoHref ? (
+        <a
+          href={repoHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          tabIndex={tabIndex}
+          className={REPO_CLASS}
+        >
+          <GitHubIcon className="size-5" />
+          GitHub
+        </a>
+      ) : null}
+    </>
+  );
+}
+
+// Hero actions for a project page ("Visit site" filled in the project's
+// color, optional "GitHub" outline). Once they scroll out of view above the
+// viewport, a copy fades in, centered at the bottom.
+export function VisitSiteButton(props: VisitSiteButtonProps) {
+  const heroRef = useRef<HTMLDivElement>(null);
   const [isFloating, setIsFloating] = useState(false);
 
   useEffect(() => {
@@ -29,29 +67,17 @@ export function VisitSiteButton({ href, color }: VisitSiteButtonProps) {
 
   return (
     <>
-      <a
-        ref={heroRef}
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={BUTTON_CLASS}
-        style={{ backgroundColor: color }}
-      >
-        Visit site ↗
-      </a>
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+      <div ref={heroRef} className="flex flex-wrap justify-center gap-3">
+        <Actions {...props} />
+      </div>
+      <div
         aria-hidden={!isFloating}
-        tabIndex={isFloating ? 0 : -1}
-        className={`${BUTTON_CLASS} fixed bottom-6 left-1/2 z-40 -translate-x-1/2 transition-[opacity,translate] duration-300 ease-out motion-reduce:transition-none ${
+        className={`fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 gap-3 transition-[opacity,translate] duration-300 ease-out motion-reduce:transition-none ${
           isFloating ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
         }`}
-        style={{ backgroundColor: color }}
       >
-        Visit site ↗
-      </a>
+        <Actions {...props} tabIndex={isFloating ? 0 : -1} />
+      </div>
     </>
   );
 }

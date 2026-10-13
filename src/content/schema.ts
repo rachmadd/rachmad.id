@@ -50,6 +50,8 @@ export interface Project {
   // Fill color of the "Visit site" buttons, taken from the mockup background
   // of the project's media. Required whenever `link` is set.
   brandColor?: string;
+  // Source repository, host-first like `link` (no protocol).
+  repo?: string;
   about: string[];
   myPart?: string[];
   features?: string[];

@@ -85,8 +85,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p className="m-0 text-center font-mono text-[13px] text-muted">
             {roleLine}
           </p>
-          {project.link && project.brandColor ? (
-            <VisitSiteButton href={`https://${project.link}`} color={project.brandColor} />
+          {(project.link && project.brandColor) || project.repo ? (
+            <VisitSiteButton
+              href={project.link ? `https://${project.link}` : undefined}
+              color={project.brandColor}
+              repoHref={project.repo ? `https://${project.repo}` : undefined}
+            />
           ) : null}
         </div>
         <div className="mx-auto mt-10 max-w-[1040px] md:mt-16">

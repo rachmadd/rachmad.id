@@ -18,6 +18,7 @@ export const project: Project = {
   },
   link: "main--6ace544728e8e596ac5d731e.chromatic.com/",
   brandColor: "#2662e7",
+  repo: "github.com/rachmadd/quickbill-ui",
   about: [
     "Quickbill's shared design system: design tokens, icons, components and hooks, built on shadcn/ui and Base UI and styled with Tailwind. It's published as an npm package through GitHub and documented in Storybook. Every Quickbill web app installs it, so they look and behave like one product.",
   ],
