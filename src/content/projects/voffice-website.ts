@@ -14,7 +14,8 @@ export const project: Project = {
   },
   media: {
     type: "scroll",
-    mp4: "/media/projects/voffice-website/scroll.mp4",
+    mp4: "/projects/voffice-website/scroll-detail-desktop.mp4",
+    poster: "/projects/voffice-website/scroll-poster-desktop.webp",
     alt: "vOffice walkthrough",
   },
   link: "voffice.co.id",

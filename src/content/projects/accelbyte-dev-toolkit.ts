@@ -16,11 +16,11 @@ export const project: Project = {
   media: {
     type: "carousel",
     images: [
-      { src: "/media/projects/accelbyte-dev-toolkit/01.webp", alt: "AccelByte Development Toolkit screenshot" },
-      { src: "/media/projects/accelbyte-dev-toolkit/02.webp", alt: "AccelByte Development Toolkit screenshot" },
-      { src: "/media/projects/accelbyte-dev-toolkit/03.webp", alt: "AccelByte Development Toolkit screenshot" },
-      { src: "/media/projects/accelbyte-dev-toolkit/04.webp", alt: "AccelByte Development Toolkit screenshot" },
-      { src: "/media/projects/accelbyte-dev-toolkit/05.webp", alt: "AccelByte Development Toolkit screenshot" },
+      { src: "/projects/accelbyte-dev-toolkit/01-detail-desktop.webp", alt: "AccelByte Development Toolkit screenshot" },
+      { src: "/projects/accelbyte-dev-toolkit/02-detail-desktop.webp", alt: "AccelByte Development Toolkit screenshot" },
+      { src: "/projects/accelbyte-dev-toolkit/03-detail-desktop.webp", alt: "AccelByte Development Toolkit screenshot" },
+      { src: "/projects/accelbyte-dev-toolkit/04-detail-desktop.webp", alt: "AccelByte Development Toolkit screenshot" },
+      { src: "/projects/accelbyte-dev-toolkit/05-detail-desktop.webp", alt: "AccelByte Development Toolkit screenshot" },
     ],
   },
   about: [

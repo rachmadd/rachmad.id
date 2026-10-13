@@ -12,7 +12,10 @@
     "typecheck": "tsc --noEmit",
     "test": "node --test src/**/*.test.ts",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "media:scan": "node scripts/process-media.mjs scan",
+    "media:process": "node scripts/process-media.mjs process",
+    "media:validate": "node scripts/validate-media.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -30,6 +33,7 @@
     "@types/react-dom": "19.3.0",
     "eslint": "9.39.5",
     "eslint-config-next": "16.4.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3"
   }

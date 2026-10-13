@@ -16,9 +16,9 @@ export const project: Project = {
   media: {
     type: "carousel",
     images: [
-      { src: "/media/projects/1engage-platform/01.webp", alt: "1Engage Platform screenshot" },
-      { src: "/media/projects/1engage-platform/02.webp", alt: "1Engage Platform screenshot" },
-      { src: "/media/projects/1engage-platform/03.webp", alt: "1Engage Platform screenshot" },
+      { src: "/projects/1engage-platform/01-detail-desktop.webp", alt: "1Engage Platform screenshot" },
+      { src: "/projects/1engage-platform/02-detail-desktop.webp", alt: "1Engage Platform screenshot" },
+      { src: "/projects/1engage-platform/03-detail-desktop.webp", alt: "1Engage Platform screenshot" },
     ],
   },
   about: [

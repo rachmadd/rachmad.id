@@ -16,10 +16,10 @@ export const project: Project = {
   media: {
     type: "carousel",
     images: [
-      { src: "/media/projects/quickbill-platform/01.webp", alt: "Quickbill Platform screenshot" },
-      { src: "/media/projects/quickbill-platform/02.webp", alt: "Quickbill Platform screenshot" },
-      { src: "/media/projects/quickbill-platform/03.webp", alt: "Quickbill Platform screenshot" },
-      { src: "/media/projects/quickbill-platform/04.webp", alt: "Quickbill Platform screenshot" },
+      { src: "/projects/quickbill-platform/01-detail-desktop.webp", alt: "Quickbill Platform screenshot" },
+      { src: "/projects/quickbill-platform/02-detail-desktop.webp", alt: "Quickbill Platform screenshot" },
+      { src: "/projects/quickbill-platform/03-detail-desktop.webp", alt: "Quickbill Platform screenshot" },
+      { src: "/projects/quickbill-platform/04-detail-desktop.webp", alt: "Quickbill Platform screenshot" },
     ],
   },
   about: [

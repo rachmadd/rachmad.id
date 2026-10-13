@@ -12,11 +12,11 @@ export const project: Project = {
     description: "Moladin's vehicle refinancing product: the customer application site and the internal sales CRM.",
     tags: ["React", "Redux", "Ant Design"],
   },
-  internal: true,
   media: {
-    type: "image",
-    src: "/media/projects/moladin-refinancing/01.webp",
-    alt: "Moladin Refinancing screenshot",
+    type: "scroll",
+    mp4: "/projects/moladin-refinancing/scroll-detail-desktop.mp4",
+    poster: "/projects/moladin-refinancing/scroll-poster-desktop.webp",
+    alt: "Moladin Refinancing walkthrough",
   },
   about: [
     "Moladin offers refinancing solutions for vehicle owners. Customers apply through a multi-step website. Sales officers, partner agents and regional managers process those applications in an internal CRM organized by regional team.",

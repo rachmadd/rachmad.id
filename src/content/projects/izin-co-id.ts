@@ -14,7 +14,8 @@ export const project: Project = {
   },
   media: {
     type: "scroll",
-    mp4: "/media/projects/izin-co-id/scroll.mp4",
+    mp4: "/projects/izin-co-id/scroll-detail-desktop.mp4",
+    poster: "/projects/izin-co-id/scroll-poster-desktop.webp",
     alt: "IZIN.co.id walkthrough",
   },
   about: [

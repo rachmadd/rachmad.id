@@ -1,0 +1,413 @@
+{
+  "generatedAt": "2026-10-13T11:16:19.148Z",
+  "projects": [
+    {
+      "slug": "1engage-platform",
+      "folderName": "1engage-platform",
+      "coverIndex": 0,
+      "files": [
+        {
+          "filename": "01.webp",
+          "stem": "01",
+          "relativePath": "1engage-platform/01.webp",
+          "kind": "image",
+          "scale": 2,
+          "width": 2076,
+          "height": 1296,
+          "isOffRatio": false,
+          "order": 0,
+          "fileSizeBytes": 86782,
+          "altPlaceholder": "1Engage Platform screenshot 1 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        },
+        {
+          "filename": "02.webp",
+          "stem": "02",
+          "relativePath": "1engage-platform/02.webp",
+          "kind": "image",
+          "scale": 2,
+          "width": 2076,
+          "height": 1296,
+          "isOffRatio": false,
+          "order": 1,
+          "fileSizeBytes": 110410,
+          "altPlaceholder": "1Engage Platform screenshot 2 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        },
+        {
+          "filename": "03.webp",
+          "stem": "03",
+          "relativePath": "1engage-platform/03.webp",
+          "kind": "image",
+          "scale": 2,
+          "width": 2076,
+          "height": 1296,
+          "isOffRatio": false,
+          "order": 2,
+          "fileSizeBytes": 66582,
+          "altPlaceholder": "1Engage Platform screenshot 3 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "slug": "accelbyte-dev-toolkit",
+      "folderName": "accelbyte-dev-toolkit",
+      "coverIndex": 0,
+      "files": [
+        {
+          "filename": "01.webp",
+          "stem": "01",
+          "relativePath": "accelbyte-dev-toolkit/01.webp",
+          "kind": "image",
+          "scale": 2,
+          "width": 2076,
+          "height": 1296,
+          "isOffRatio": false,
+          "order": 0,
+          "fileSizeBytes": 61486,
+          "altPlaceholder": "AccelByte Development Toolkit screenshot 1 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        },
+        {
+          "filename": "02.webp",
+          "stem": "02",
+          "relativePath": "accelbyte-dev-toolkit/02.webp",
+          "kind": "image",
+          "scale": 2,
+          "width": 2076,
+          "height": 1296,
+          "isOffRatio": false,
+          "order": 1,
+          "fileSizeBytes": 147736,
+          "altPlaceholder": "AccelByte Development Toolkit screenshot 2 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        },
+        {
+          "filename": "03.webp",
+          "stem": "03",
+          "relativePath": "accelbyte-dev-toolkit/03.webp",
+          "kind": "image",
+          "scale": 2,
+          "width": 2076,
+          "height": 1296,
+          "isOffRatio": false,
+          "order": 2,
+          "fileSizeBytes": 65170,
+          "altPlaceholder": "AccelByte Development Toolkit screenshot 3 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        },
+        {
+          "filename": "04.webp",
+          "stem": "04",
+          "relativePath": "accelbyte-dev-toolkit/04.webp",
+          "kind": "image",
+          "scale": 2,
+          "width": 2076,
+          "height": 1296,
+          "isOffRatio": false,
+          "order": 3,
+          "fileSizeBytes": 84338,
+          "altPlaceholder": "AccelByte Development Toolkit screenshot 4 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        },
+        {
+          "filename": "05.webp",
+          "stem": "05",
+          "relativePath": "accelbyte-dev-toolkit/05.webp",
+          "kind": "image",
+          "scale": 2,
+          "width": 2076,
+          "height": 1296,
+          "isOffRatio": false,
+          "order": 4,
+          "fileSizeBytes": 109546,
+          "altPlaceholder": "AccelByte Development Toolkit screenshot 5 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "slug": "hellolive",
+      "folderName": "hellolive",
+      "coverIndex": 0,
+      "files": [
+        {
+          "filename": "scroll.mp4",
+          "stem": "scroll",
+          "relativePath": "hellolive/scroll.mp4",
+          "kind": "video",
+          "scale": null,
+          "width": 1822,
+          "height": 1136,
+          "isOffRatio": false,
+          "order": 0,
+          "fileSizeBytes": 42754720,
+          "altPlaceholder": "Hellolive walkthrough 1 (placeholder — review before shipping)",
+          "codec": "h264",
+          "durationSeconds": 21.316667,
+          "fps": 60,
+          "hasAudio": false,
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "slug": "izin-co-id",
+      "folderName": "izin-co-id",
+      "coverIndex": 0,
+      "files": [
+        {
+          "filename": "scroll.mp4",
+          "stem": "scroll",
+          "relativePath": "izin-co-id/scroll.mp4",
+          "kind": "video",
+          "scale": null,
+          "width": 1822,
+          "height": 1136,
+          "isOffRatio": false,
+          "order": 0,
+          "fileSizeBytes": 21452989,
+          "altPlaceholder": "IZIN.co.id walkthrough 1 (placeholder — review before shipping)",
+          "codec": "h264",
+          "durationSeconds": 11.05,
+          "fps": 60,
+          "hasAudio": false,
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "slug": "moladin-refinancing",
+      "folderName": "moladin-refinancing",
+      "coverIndex": 0,
+      "files": [
+        {
+          "filename": "scroll.mp4",
+          "stem": "scroll",
+          "relativePath": "moladin-refinancing/scroll.mp4",
+          "kind": "video",
+          "scale": null,
+          "width": 1822,
+          "height": 1136,
+          "isOffRatio": false,
+          "order": 0,
+          "fileSizeBytes": 49740257,
+          "altPlaceholder": "Moladin Refinancing walkthrough 1 (placeholder — review before shipping)",
+          "codec": "h264",
+          "durationSeconds": 23.35,
+          "fps": 60,
+          "hasAudio": false,
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "slug": "quickbill-mobile",
+      "folderName": "quickbill-mobile",
+      "coverIndex": 0,
+      "files": [
+        {
+          "filename": "01.webp",
+          "stem": "01",
+          "relativePath": "quickbill-mobile/01.webp",
+          "kind": "image",
+          "scale": 3,
+          "width": 3114,
+          "height": 1944,
+          "isOffRatio": false,
+          "order": 0,
+          "fileSizeBytes": 142168,
+          "altPlaceholder": "Quickbill Mobile screenshot 1 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        },
+        {
+          "filename": "02.webp",
+          "stem": "02",
+          "relativePath": "quickbill-mobile/02.webp",
+          "kind": "image",
+          "scale": 3,
+          "width": 3114,
+          "height": 1944,
+          "isOffRatio": false,
+          "order": 1,
+          "fileSizeBytes": 102424,
+          "altPlaceholder": "Quickbill Mobile screenshot 2 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "slug": "quickbill-platform",
+      "folderName": "quickbill-platform",
+      "coverIndex": 0,
+      "files": [
+        {
+          "filename": "01.png",
+          "stem": "01",
+          "relativePath": "quickbill-platform/01.png",
+          "kind": "image",
+          "scale": 3,
+          "width": 3114,
+          "height": 1944,
+          "isOffRatio": false,
+          "order": 0,
+          "fileSizeBytes": 1606212,
+          "altPlaceholder": "Quickbill Platform screenshot 1 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        },
+        {
+          "filename": "02.png",
+          "stem": "02",
+          "relativePath": "quickbill-platform/02.png",
+          "kind": "image",
+          "scale": 3,
+          "width": 3114,
+          "height": 1944,
+          "isOffRatio": false,
+          "order": 1,
+          "fileSizeBytes": 1561577,
+          "altPlaceholder": "Quickbill Platform screenshot 2 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        },
+        {
+          "filename": "03.png",
+          "stem": "03",
+          "relativePath": "quickbill-platform/03.png",
+          "kind": "image",
+          "scale": 3,
+          "width": 3114,
+          "height": 1944,
+          "isOffRatio": false,
+          "order": 2,
+          "fileSizeBytes": 1633025,
+          "altPlaceholder": "Quickbill Platform screenshot 3 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        },
+        {
+          "filename": "04.png",
+          "stem": "04",
+          "relativePath": "quickbill-platform/04.png",
+          "kind": "image",
+          "scale": 3,
+          "width": 3114,
+          "height": 1944,
+          "isOffRatio": false,
+          "order": 3,
+          "fileSizeBytes": 1773505,
+          "altPlaceholder": "Quickbill Platform screenshot 4 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "slug": "shop-and-bike",
+      "folderName": "shop-and-bike",
+      "coverIndex": 0,
+      "files": [
+        {
+          "filename": "scroll.mp4",
+          "stem": "scroll",
+          "relativePath": "shop-and-bike/scroll.mp4",
+          "kind": "video",
+          "scale": null,
+          "width": 1822,
+          "height": 1136,
+          "isOffRatio": false,
+          "order": 0,
+          "fileSizeBytes": 35016437,
+          "altPlaceholder": "Shop&Bike walkthrough 1 (placeholder — review before shipping)",
+          "codec": "h264",
+          "durationSeconds": 18.916667,
+          "fps": 60,
+          "hasAudio": false,
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "slug": "voffice-website",
+      "folderName": "voffice-website",
+      "coverIndex": 0,
+      "files": [
+        {
+          "filename": "scroll.mp4",
+          "stem": "scroll",
+          "relativePath": "voffice-website/scroll.mp4",
+          "kind": "video",
+          "scale": null,
+          "width": 1822,
+          "height": 1136,
+          "isOffRatio": false,
+          "order": 0,
+          "fileSizeBytes": 32053737,
+          "altPlaceholder": "vOffice walkthrough 1 (placeholder — review before shipping)",
+          "codec": "h264",
+          "durationSeconds": 15.75,
+          "fps": 60,
+          "hasAudio": false,
+          "ambiguous": false
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    "maybank-digital-branch"
+  ]
+}

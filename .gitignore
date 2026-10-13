@@ -27,3 +27,6 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# raw project media sources (optimized copies live in public/projects/)
+/media-src/

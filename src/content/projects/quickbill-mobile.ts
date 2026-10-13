@@ -15,8 +15,8 @@ export const project: Project = {
   media: {
     type: "carousel",
     images: [
-      { src: "/media/projects/quickbill-mobile/01.webp", alt: "Quickbill Mobile screenshot" },
-      { src: "/media/projects/quickbill-mobile/02.webp", alt: "Quickbill Mobile screenshot" },
+      { src: "/projects/quickbill-mobile/01-detail-desktop.webp", alt: "Quickbill Mobile screenshot" },
+      { src: "/projects/quickbill-mobile/02-detail-desktop.webp", alt: "Quickbill Mobile screenshot" },
     ],
   },
   about: ["The mobile version of the Quickbill platform, with the same features as the web app."],

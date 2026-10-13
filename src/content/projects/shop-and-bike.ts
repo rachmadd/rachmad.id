@@ -17,9 +17,10 @@ export const project: Project = {
     tags: ["PHP", "Bootstrap"],
   },
   media: {
-    type: "image",
-    src: "/media/projects/shop-and-bike/01.webp",
-    alt: "Shop&Bike screenshot",
+    type: "scroll",
+    mp4: "/projects/shop-and-bike/scroll-detail-desktop.mp4",
+    poster: "/projects/shop-and-bike/scroll-poster-desktop.webp",
+    alt: "Shop&Bike walkthrough",
   },
   link: "shopandbike.co.id",
   about: [
