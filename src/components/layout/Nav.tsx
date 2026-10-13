@@ -104,7 +104,7 @@ export function Nav() {
             aria-expanded={menuOpen}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex h-[46px] items-center justify-center rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.12)] bg-transparent px-5 text-fg transition-colors hover:bg-[rgb(var(--overlay-rgb)_/_0.06)]"
+            className="flex h-[46px] items-center justify-center rounded-pill bg-transparent px-5 text-fg transition-colors hover:bg-[rgb(var(--overlay-rgb)_/_0.06)]"
           >
             <MenuToggleIcon open={menuOpen} />
           </button>
