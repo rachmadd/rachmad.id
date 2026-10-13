@@ -55,7 +55,6 @@ export const skillGroups: SkillGroup[] = [
       "gRPC",
       "WebSocket",
       "OpenTelemetry",
-      "Jaeger",
       "Grafana",
     ],
   },
