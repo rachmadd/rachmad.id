@@ -10,9 +10,12 @@ import { getSiteUrl } from "@/lib/site-url";
 
 export default function Home() {
   const siteUrl = getSiteUrl();
+  const personId = `${siteUrl}/#person`;
   const sameAs = [
     site.linkedin ? `https://linkedin.com/in/${site.linkedin}` : null,
     site.github ? `https://github.com/${site.github}` : null,
+    site.devto ? `https://dev.to/${site.devto}` : null,
+    site.medium ? `https://medium.com/@${site.medium}` : null,
     site.instagram ? `https://instagram.com/${site.instagram}` : null,
   ].filter((value): value is string => Boolean(value));
 
@@ -20,10 +23,12 @@ export default function Home() {
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      name: site.name,
+      "@id": personId,
+      name: site.fullName,
       jobTitle: site.primaryTitle,
       url: siteUrl,
       image: `${siteUrl}/avatar.webp`,
+      description: site.seo.description,
       ...(sameAs.length > 0 ? { sameAs } : {}),
       address: {
         "@type": "PostalAddress",
@@ -35,9 +40,11 @@ export default function Home() {
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
       name: site.domain,
       url: siteUrl,
       inLanguage: "en",
+      publisher: { "@id": personId },
     },
   ];
 

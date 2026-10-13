@@ -17,6 +17,16 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   agentRules: false,
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.rachmad.id" }],
+        destination: "https://rachmad.id/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     const isProduction = process.env.VERCEL_ENV === "production";
     const headers = isProduction

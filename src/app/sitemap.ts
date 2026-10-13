@@ -6,11 +6,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = getSiteUrl();
   const lastModified = new Date();
 
-  const homeEntry = { url: siteUrl, lastModified };
+  const homeEntry: MetadataRoute.Sitemap[number] = {
+    url: siteUrl,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 1.0,
+  };
 
-  const projectEntries = projects.map((project) => ({
+  const projectEntries: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${siteUrl}/projects/${project.slug}`,
     lastModified,
+    changeFrequency: "yearly",
+    priority: 0.7,
   }));
 
   return [homeEntry, ...projectEntries];

@@ -45,6 +45,19 @@ export function generateMetadata(): Metadata {
     robots: isProductionDeployment()
       ? { index: true, follow: true }
       : { index: false, follow: false },
+    verification: buildVerification(),
+  };
+}
+
+function buildVerification(): Metadata["verification"] {
+  const google = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+  const bing = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
+
+  if (!google && !bing) return undefined;
+
+  return {
+    ...(google ? { google } : {}),
+    ...(bing ? { other: { "msvalidate.01": bing } } : {}),
   };
 }
 

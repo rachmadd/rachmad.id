@@ -1,0 +1,32 @@
+# Rachmad Syaefullah
+
+> Senior frontend engineer based in Jakarta, specializing in React and Next.js, with 7+ years building fintech, banking and game infrastructure products end to end.
+
+## Pages
+
+- [Home](https://rachmad.id/): Intro, experience timeline, projects, skills, and contact links.
+
+## Projects
+
+- [Quickbill Platform](https://rachmad.id/projects/quickbill-platform): Invoicing and payments platform for businesses, built from the first commit across the Next.js app and the Go services.
+- [Quickbill Enterprise](https://rachmad.id/projects/quickbill-enterprise): Quickbill for large companies, with maker-checker approval on every payment.
+- [Quickbill Embedded Payment](https://rachmad.id/projects/quickbill-embedded-payment): An embeddable checkout that lets enterprise clients take Quickbill payments inside their own apps.
+- [Quickbill UI](https://rachmad.id/projects/quickbill-ui): The component library behind every Quickbill web app.
+- [Quickbill Mobile](https://rachmad.id/projects/quickbill-mobile): Quickbill's Flutter app, including its architecture and project structure.
+- [1Engage Platform](https://rachmad.id/projects/1engage-platform): Multi-tenant platform for brands to run WhatsApp broadcasts, chatbots and voice at scale.
+- [AccelByte Development Toolkit](https://rachmad.id/projects/accelbyte-dev-toolkit): Desktop app for getting game builds to playtesters and collecting crash reports.
+- [AccelByte Multiplayer Servers (AMS)](https://rachmad.id/projects/accelbyte-multiplayer-service): AccelByte's dedicated game server hosting dashboard, including a real-time log monitor and Express BFF.
+- [Moladin Refinancing](https://rachmad.id/projects/moladin-refinancing): Moladin's vehicle refinancing product: the customer application site and the internal sales CRM.
+- [vOffice](https://rachmad.id/projects/voffice-website): vOffice Indonesia's main website and the Laravel CMS behind it.
+- [IZIN.co.id](https://rachmad.id/projects/izin-co-id): Website for vOffice's legal and licensing service, with self-service tools for business owners.
+- [Hellolive](https://rachmad.id/projects/hellolive): Website for vOffice's podcast studio and event space in Jakarta.
+- [Shop&Bike](https://rachmad.id/projects/shop-and-bike): Company site with a small online shop for Astra Otoparts' motorcycle workshop chain.
+- [Maybank Branch Delivery System](https://rachmad.id/projects/maybank-digital-branch): The system Maybank Indonesia branch staff use for counter transactions, including its move to micro-frontends.
+
+## Contact
+
+- LinkedIn: https://linkedin.com/in/rachmad-syaefullah
+- GitHub: https://github.com/rach-mad
+- dev.to: https://dev.to/rachmadd
+- Medium: https://medium.com/@rachmadd
+- Email: rachmadsyaefullah13@gmail.com

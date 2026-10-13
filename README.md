@@ -25,3 +25,13 @@ This folder is the brief for building Rachmad's portfolio website with Claude Co
 3. Create a GitHub repo, copy this folder in as the repo root, then `git init`, commit and push.
 4. Open the folder in Claude Code and paste the prompt from `docs/KICKOFF_PROMPT.md`.
 5. Review each phase report before approving the next phase.
+
+## IndexNow (optional, manual)
+
+`scripts/indexnow.mjs` submits every URL in the production sitemap to IndexNow (picked up by Bing, Yandex and others) so changes get crawled faster than waiting on the normal crawl schedule. It is not run automatically.
+
+```bash
+node scripts/indexnow.mjs
+```
+
+The key file it points at lives at `public/caf6466d6c085df983f03194e18205a5.txt` and must keep matching the key embedded in the script. Generate a fresh key at https://www.bing.com/indexnow if this one is ever rotated, and update both the script and the key file together.
