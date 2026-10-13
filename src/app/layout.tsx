@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Nav } from "@/components/layout/Nav";
 import { ThemeSync } from "@/components/layout/ThemeSync";
@@ -83,6 +84,7 @@ export default function RootLayout({
         <Nav />
         <main>{children}</main>
         <Vignette />
+        <Analytics />
       </body>
     </html>
   );
