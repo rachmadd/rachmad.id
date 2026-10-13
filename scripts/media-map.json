@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T11:16:19.148Z",
+  "generatedAt": "2026-10-13T16:50:19.391Z",
   "projects": [
     {
       "slug": "1engage-platform",
@@ -348,6 +348,31 @@
           "order": 3,
           "fileSizeBytes": 1773505,
           "altPlaceholder": "Quickbill Platform screenshot 4 (placeholder — review before shipping)",
+          "codec": null,
+          "durationSeconds": null,
+          "fps": null,
+          "hasAudio": null,
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "slug": "quickbill-ui",
+      "folderName": "quickbill-ui",
+      "coverIndex": 0,
+      "files": [
+        {
+          "filename": "01.png",
+          "stem": "01",
+          "relativePath": "quickbill-ui/01.png",
+          "kind": "image",
+          "scale": 3,
+          "width": 3114,
+          "height": 1944,
+          "isOffRatio": false,
+          "order": 0,
+          "fileSizeBytes": 2684888,
+          "altPlaceholder": "Quickbill UI screenshot 1 (placeholder — review before shipping)",
           "codec": null,
           "durationSeconds": null,
           "fps": null,

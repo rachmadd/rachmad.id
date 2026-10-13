@@ -47,11 +47,13 @@ export interface Project {
   internal?: boolean;
   media: Media;
   link?: string;
+  // Fill color of the "Visit site" buttons, taken from the mockup background
+  // of the project's media. Required whenever `link` is set.
+  brandColor?: string;
   about: string[];
   myPart?: string[];
   features?: string[];
   stack: string;
-  footnote?: string;
   generic?: true;
   placeholder?: boolean;
 }

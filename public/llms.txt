@@ -11,7 +11,7 @@
 - [Quickbill Platform](https://rachmad.id/projects/quickbill-platform): Invoicing and payments platform for businesses, built from the first commit across the Next.js app and the Go services.
 - [Quickbill Enterprise](https://rachmad.id/projects/quickbill-enterprise): Quickbill for large companies, with maker-checker approval on every payment.
 - [Quickbill Embedded Payment](https://rachmad.id/projects/quickbill-embedded-payment): An embeddable checkout that lets enterprise clients take Quickbill payments inside their own apps.
-- [Quickbill UI](https://rachmad.id/projects/quickbill-ui): The component library behind every Quickbill web app.
+- [Quickbill UI](https://rachmad.id/projects/quickbill-ui): The design system and component library behind every Quickbill web app, shipped as an npm package.
 - [Quickbill Mobile](https://rachmad.id/projects/quickbill-mobile): Quickbill's Flutter app, including its architecture and project structure.
 - [1Engage Platform](https://rachmad.id/projects/1engage-platform): Multi-tenant platform for brands to run WhatsApp broadcasts, chatbots and voice at scale.
 - [AccelByte Development Toolkit](https://rachmad.id/projects/accelbyte-dev-toolkit): Desktop app for getting game builds to playtesters and collecting crash reports.

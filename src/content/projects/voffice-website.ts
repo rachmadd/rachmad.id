@@ -19,6 +19,7 @@ export const project: Project = {
     alt: "vOffice walkthrough",
   },
   link: "voffice.co.id",
+  brandColor: "#962854",
   about: [
     "vOffice rents virtual offices and workspaces across Indonesia. The site covers its services, an interactive map of every centre in Indonesia and abroad, a blog and chatbot support. Most of its traffic comes from search.",
   ],

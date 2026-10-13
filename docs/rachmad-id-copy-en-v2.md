@@ -354,7 +354,6 @@ PHP, Laravel, MySQL, jQuery, Bootstrap, Sass, Mapbox
 **Role:** Web Developer · vOffice Indonesia · 2019–2021
 **Link:** none (the live site has since been rebuilt by another team)
 **Thumbnail:** Archived screenshot from my era, or a concept card. Not the current site.
-**Footnote:** The live site has been rebuilt since I worked on it.
 
 **About**
 IZIN.co.id helps businesses set up a PT or CV, register trademarks and get business permits in Indonesia. The site explains each service, brings in leads through forms and WhatsApp, and offers free tools that help business owners check and plan before they apply.

@@ -283,6 +283,24 @@ export const projectMedia: Record<string, ProjectMediaEntry> = {
       }
     ]
   },
+  "quickbill-ui": {
+    "slug": "quickbill-ui",
+    "coverIndex": 0,
+    "items": [
+      {
+        "kind": "image",
+        "alt": "Quickbill UI screenshot 1 (placeholder — review before shipping)",
+        "card": {
+          "desktop": "/projects/quickbill-ui/01-card-desktop.webp",
+          "mobile": "/projects/quickbill-ui/01-card-mobile.webp"
+        },
+        "detail": {
+          "desktop": "/projects/quickbill-ui/01-detail-desktop.webp",
+          "mobile": "/projects/quickbill-ui/01-detail-mobile.webp"
+        }
+      }
+    ]
+  },
   "shop-and-bike": {
     "slug": "shop-and-bike",
     "coverIndex": 0,

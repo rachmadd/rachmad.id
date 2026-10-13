@@ -23,6 +23,7 @@ export const project: Project = {
     alt: "Shop&Bike walkthrough",
   },
   link: "shopandbike.co.id",
+  brandColor: "#8d081a",
   about: [
     "Shop&Bike is Astra Otoparts' network of motorcycle service shops. Besides company information, promos, articles and an outlet finder, the site has a small shop where customers create an account and order the products listed.",
   ],

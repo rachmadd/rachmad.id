@@ -20,6 +20,7 @@ export const project: Project = {
     alt: "Hellolive walkthrough",
   },
   link: "hellolive.id",
+  brandColor: "#163053",
   about: [
     "Hellolive rents podcast studios and event space in South Jakarta. The site shows the rooms, equipment and packages, and sends visitors to WhatsApp to book.",
   ],

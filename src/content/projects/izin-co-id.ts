@@ -40,7 +40,8 @@ export const project: Project = {
     "SEO & AMP",
   ],
   stack: "PHP, Laravel, jQuery, Bootstrap, Sass",
-  footnote: "The live site has been rebuilt since I worked on it.",
+  link: "izin.co.id",
+  brandColor: "#207f3d",
 };
 
 export default project;

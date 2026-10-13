@@ -4,6 +4,7 @@ import { projects, getProjectBySlug } from "@/content/projects";
 import { companies } from "@/content/companies";
 import { resolveProjectMedia, SCREENSHOT_LABEL, INTERNAL_TOOL_LABEL } from "@/components/projects/ProjectMedia";
 import { ProjectMediaView } from "@/components/projects/ProjectMediaView";
+import { VisitSiteButton } from "@/components/projects/VisitSiteButton";
 import { ProjectContent } from "@/components/projects/ProjectContent";
 import { Footer } from "@/components/layout/Footer";
 import { getSiteUrl, isProductionDeployment } from "@/lib/site-url";
@@ -84,20 +85,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p className="m-0 text-center font-mono text-[13px] text-muted">
             {roleLine}
           </p>
-          {project.link ? (
-            <a
-              href={`https://${project.link}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center rounded-pill border border-[rgb(var(--overlay-rgb)_/_0.14)] px-[18px] text-sm text-fg no-underline hover:border-[rgb(var(--overlay-rgb)_/_0.3)]"
-            >
-              Visit site ↗
-            </a>
-          ) : null}
-          {project.footnote ? (
-            <p className="m-0 max-w-[480px] text-center text-sm text-muted">
-              {project.footnote}
-            </p>
+          {project.link && project.brandColor ? (
+            <VisitSiteButton href={`https://${project.link}`} color={project.brandColor} />
           ) : null}
         </div>
         <div className="mx-auto mt-10 max-w-[1040px] md:mt-16">

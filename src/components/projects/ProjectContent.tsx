@@ -30,7 +30,7 @@ export function ProjectContent({ project }: ProjectContentProps) {
           <h2 className="m-0 mb-12 text-center text-[24px] leading-[1.15] font-medium tracking-[-0.025em] md:mb-16 md:text-[30px]">
             My part
           </h2>
-          <ul className="mx-auto flex max-w-content flex-col gap-3 pl-5">
+          <ul className="mx-auto flex max-w-content list-disc flex-col gap-3 pl-5 marker:text-muted">
             {project.myPart.map((item, i) => (
               <li key={i} className="text-left text-wrap-pretty">
                 {item}
