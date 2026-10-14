@@ -1,37 +1,57 @@
-# rachmad.id: project brief
+# rachmad.id
 
-This folder is the brief for building Rachmad's portfolio website with Claude Code. It contains no application code yet.
+Personal portfolio of Rachmad Syaefullah, a senior frontend engineer based in Jakarta, live at [rachmad.id](https://rachmad.id).
 
-## Contents
+A single-page, English-only site with a dark theme (and an optional light theme). It covers an intro, an experience timeline, a project gallery, skills and contact links. Each project also has its own page and opens as a modal from the gallery.
 
-| Path | Purpose |
+## Stack
+
+- [Next.js](https://nextjs.org) (App Router), React, TypeScript (strict)
+- Tailwind CSS v4
+- [motion](https://motion.dev) for scroll and UI animation
+- pnpm, Node 24 (see `.nvmrc`)
+- Deployed to Vercel, with Vercel Analytics
+
+## Getting started
+
+```bash
+pnpm install
+pnpm dev          # local dev server on http://localhost:3000
+```
+
+| Script | Purpose |
 |---|---|
-| `CLAUDE.md` | Entry file the coding agent reads first: rules, stack, commands |
-| `docs/KICKOFF_PROMPT.md` | The prompt to paste into Claude Code to start |
-| `docs/ARCHITECTURE.md` | Stack, routes, folder structure, technical decisions |
-| `docs/DESIGN.md` | Design tokens, layout, components, motion |
-| `docs/CONTENT.md` | Content schema, companies, projects, voice rules |
-| `docs/ASSETS.md` | Asset manifest and what is still placeholder |
-| `docs/SEO.md` | Metadata, JSON-LD, performance targets |
-| `docs/DEPLOYMENT.md` | Vercel, GitHub Actions, domain setup |
-| `docs/ROADMAP.md` | Phased plan with acceptance criteria |
-| `design/README.md` | Where to put the exported designs |
-| `.github/workflows/ci.yml` | Lint, typecheck, test, build |
+| `pnpm dev` | Development server |
+| `pnpm lint` | ESLint |
+| `pnpm typecheck` | `tsc --noEmit` |
+| `pnpm test` | Unit tests (Node test runner) |
+| `pnpm build` | Production build |
+| `pnpm start` | Serve the production build |
+| `pnpm media:scan` / `media:process` / `media:validate` | Project media pipeline (see [MEDIA.md](MEDIA.md)) |
 
-## How to start
+The media scripts use `sharp` and `ffmpeg`. CI runs lint, typecheck, media validation, tests and build on every push and pull request (`.github/workflows/ci.yml`).
 
-1. Put the Claude Design export into `design/` (see `design/README.md`).
-2. Put available assets (logos, avatar, screenshots, CV) into the paths listed in `docs/ASSETS.md`. Missing ones can stay as placeholders.
-3. Create a GitHub repo, copy this folder in as the repo root, then `git init`, commit and push.
-4. Open the folder in Claude Code and paste the prompt from `docs/KICKOFF_PROMPT.md`.
-5. Review each phase report before approving the next phase.
+## Project structure
+
+```
+src/
+  app/          routes, metadata, sitemap, robots, OG image
+  components/   layout, sections, timeline, projects, ui
+  content/      site copy, companies, projects, skills
+  data/         generated project media manifest
+  lib/          helpers (site URL, date format, timeline geometry)
+public/         static assets, project media, CV, llms.txt
+scripts/        media pipeline and IndexNow submission
+```
+
+Site copy, companies and projects live in `src/content/`. To add or edit a project, change its file in `src/content/projects/`.
 
 ## IndexNow (optional, manual)
 
-`scripts/indexnow.mjs` submits every URL in the production sitemap to IndexNow (picked up by Bing, Yandex and others) so changes get crawled faster than waiting on the normal crawl schedule. It is not run automatically.
+`scripts/indexnow.mjs` submits every URL in the production sitemap to IndexNow (picked up by Bing, Yandex and others) so changes get crawled sooner. It is not run automatically.
 
 ```bash
 node scripts/indexnow.mjs
 ```
 
-The key file it points at lives at `public/caf6466d6c085df983f03194e18205a5.txt` and must keep matching the key embedded in the script. Generate a fresh key at https://www.bing.com/indexnow if this one is ever rotated, and update both the script and the key file together.
+The key file it points at is `public/caf6466d6c085df983f03194e18205a5.txt` and must match the key embedded in the script. If you rotate the key (generate one at https://www.bing.com/indexnow), update both together.

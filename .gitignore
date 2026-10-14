@@ -30,3 +30,8 @@ next-env.d.ts
 
 # raw project media sources (optimized copies live in public/projects/)
 /media-src/
+
+# AI-assistant briefs, working docs and design-tool exports (kept locally only)
+/CLAUDE.md
+/docs/
+/design/
