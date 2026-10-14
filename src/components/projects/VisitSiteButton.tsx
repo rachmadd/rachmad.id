@@ -10,7 +10,7 @@ type VisitSiteButtonProps = {
 };
 
 const BASE_CLASS =
-  "inline-flex h-12 items-center rounded-pill px-[26px] text-[15px] font-medium no-underline";
+  "inline-flex h-12 shrink-0 items-center whitespace-nowrap rounded-pill px-[26px] text-[15px] font-medium no-underline";
 const VISIT_CLASS = `${BASE_CLASS} text-white ring-1 ring-inset ring-white/20 hover:brightness-110`;
 const REPO_CLASS = `${BASE_CLASS} gap-2 border border-[rgb(var(--overlay-rgb)_/_0.22)] bg-bg text-fg hover:border-[rgb(var(--overlay-rgb)_/_0.4)]`;
 
@@ -70,13 +70,15 @@ export function VisitSiteButton(props: VisitSiteButtonProps) {
       <div ref={heroRef} className="flex flex-wrap justify-center gap-3">
         <Actions {...props} />
       </div>
-      <div
-        aria-hidden={!isFloating}
-        className={`fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 gap-3 transition-[opacity,translate] duration-300 ease-out motion-reduce:transition-none ${
-          isFloating ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
-        }`}
-      >
-        <Actions {...props} tabIndex={isFloating ? 0 : -1} />
+      <div className="pointer-events-none fixed inset-x-0 bottom-6 z-40 flex justify-center px-4">
+        <div
+          aria-hidden={!isFloating}
+          className={`flex gap-3 transition-[opacity,translate] duration-300 ease-out motion-reduce:transition-none ${
+            isFloating ? "pointer-events-auto translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+          }`}
+        >
+          <Actions {...props} tabIndex={isFloating ? 0 : -1} />
+        </div>
       </div>
     </>
   );
